@@ -1,0 +1,156 @@
+import type { CurriculumSlice } from "@/types/content";
+
+export const g8ShangUnit5Slice: CurriculumSlice = {
+  grade: {
+    id: "g8",
+    label: "八年级",
+    shortLabel: "八上",
+    description: "从图形证明、代数运算与函数关系中提升推理能力。",
+  },
+  volume: {
+    id: "shang",
+    gradeId: "g8",
+    label: "上册",
+    description: "以三角形、代数运算与数据分析为主线的能力提升阶段。",
+  },
+  chapter: {
+    id: "g8-shang-unit-5",
+    gradeId: "g8",
+    volumeId: "shang",
+    slug: "shu-ju-de-fen-xi",
+    title: "第五章 数据的分析",
+    summary: "理解平均数、中位数、众数和方差的意义，会根据数据特征选择合适的统计量并进行解释。",
+    order: 5,
+    lessonIds: ["lesson-g8s5-central-tendency", "lesson-g8s5-dispersion"],
+    workedExampleIds: ["example-g8s5-mean-median", "example-g8s5-variance"],
+    quizId: "quiz-g8-shang-unit-5",
+  },
+  lessons: [
+    {
+      id: "lesson-g8s5-central-tendency",
+      chapterId: "g8-shang-unit-5",
+      slug: "ping-jun-shu-zhong-wei-shu-zhong-shu",
+      title: "平均数、中位数与众数",
+      summary: "会计算平均数、中位数和众数，并能根据情境判断哪一种更能代表数据特征。",
+      learningObjectives: [
+        "会计算平均数、中位数和众数。",
+        "能区分三种统计量的含义。",
+        "会根据极端值判断平均数是否可靠。",
+      ],
+      keyRules: [
+        "平均数反映总体平均水平。",
+        "中位数反映中间位置，受极端值影响较小。",
+        "众数反映出现次数最多的值。",
+      ],
+      bodyBlocks: [
+        {
+          type: "richText",
+          id: "g8s5-center-context",
+          title: "同一组数据为什么会有三种“中心”",
+          content: [
+            "平均数、中位数和众数都在描述数据的集中趋势，但关注点不同。",
+            "遇到极端值时，中位数往往比平均数更稳定。",
+          ],
+        },
+      ],
+      relatedExampleIds: ["example-g8s5-mean-median"],
+      order: 1,
+      videoPlaceholder: {
+        title: "板书微课：三种统计量怎么选",
+        durationLabel: "5 分钟",
+        description: "从代表性和稳定性理解平均数、中位数和众数。",
+      },
+    },
+    {
+      id: "lesson-g8s5-dispersion",
+      chapterId: "g8-shang-unit-5",
+      slug: "fang-cha-yu-bo-dong",
+      title: "方差与数据波动",
+      summary: "理解方差反映数据波动程度，会通过简单比较判断两组数据谁更稳定。",
+      learningObjectives: [
+        "知道方差越大波动越大。",
+        "会用“离均差”理解方差意义。",
+        "能结合平均数和方差综合判断数据特征。",
+      ],
+      keyRules: [
+        "平均数相同的两组数据，方差小的更稳定。",
+        "方差不是看最大值减最小值，而是看整体偏离平均数的程度。",
+        "评价数据时常要同时看集中趋势与离散程度。",
+      ],
+      bodyBlocks: [
+        {
+          type: "richText",
+          id: "g8s5-var-context",
+          title: "稳定不等于平均数高",
+          content: [
+            "有时两组数据平均数相同，但一组更平稳，另一组起伏更大，这时就要看方差。",
+            "比较数据时不能只盯着一个统计量。",
+          ],
+        },
+      ],
+      relatedExampleIds: ["example-g8s5-variance"],
+      order: 2,
+      videoPlaceholder: {
+        title: "板书微课：方差到底在看什么",
+        durationLabel: "5 分钟",
+        description: "用“离平均值有多远”理解波动程度。",
+      },
+    },
+  ],
+  workedExamples: [
+    {
+      id: "example-g8s5-mean-median",
+      chapterId: "g8-shang-unit-5",
+      slug: "ping-jun-shu-yu-zhong-wei-shu-bi-jiao",
+      title: "例题 1：平均数与中位数比较",
+      summary: "通过排序和求和比较平均数、中位数的差异。",
+      problem: "某组数据为 2，3，3，4，20。求平均数、中位数和众数，并说明哪一个更适合描述这组数据。",
+      steps: [
+        { id: "step-1", title: "求平均数", content: "平均数为 (2+3+3+4+20)/5=6.4。" },
+        { id: "step-2", title: "求中位数和众数", content: "中位数是排序后中间的 3，众数也是 3。" },
+        { id: "step-3", title: "判断代表性", content: "由于 20 是极端值，中位数或众数更能代表整体情况。" },
+      ],
+      answer: "平均数 6.4，中位数 3，众数 3，更适合用中位数或众数描述",
+      commonMistakes: ["被极端值误导，以为平均数最能代表数据。"],
+      relatedLessonIds: ["lesson-g8s5-central-tendency"],
+      order: 1,
+    },
+    {
+      id: "example-g8s5-variance",
+      chapterId: "g8-shang-unit-5",
+      slug: "fang-cha-bi-jiao-wen-ding-xing",
+      title: "例题 2：用方差比较稳定性",
+      summary: "在平均数相同的情况下比较数据波动。",
+      problem: "甲组数据 5，5，5，5；乙组数据 2，4，6，8。两组平均数都为 5，哪组更稳定？",
+      steps: [
+        { id: "step-1", title: "看平均数", content: "两组平均数相同，都是 5。" },
+        { id: "step-2", title: "看偏离程度", content: "甲组每个数据都等于平均数，波动为 0；乙组数据偏离平均数更明显。" },
+        { id: "step-3", title: "得出结论", content: "甲组方差更小，所以更稳定。" },
+      ],
+      answer: "甲组更稳定",
+      commonMistakes: ["只比较最大值和最小值，不看整体偏离。"],
+      relatedLessonIds: ["lesson-g8s5-dispersion"],
+      order: 2,
+    },
+  ],
+  quiz: {
+    id: "quiz-g8-shang-unit-5",
+    chapterId: "g8-shang-unit-5",
+    title: "第五章单元小测",
+    instructions:
+      "共 10 题，基础 2 题、进阶 4 题、压轴 4 题，整体难度明显上调，更强调多步推理、信息提取与综合应用。",
+    passingScore: 80,
+    questions: [
+      { id: "q1", quizId: "quiz-g8-shang-unit-5", type: "single-choice", difficulty: "basic", stem: "一组数据 2，4，4，6，8 的众数是多少？", options: [{ id: "a", label: "A", content: "4" }, { id: "b", label: "B", content: "5" }, { id: "c", label: "C", content: "6" }, { id: "d", label: "D", content: "8" }], correctOptionId: "a", explanation: "4 出现次数最多，所以众数是 4。", relatedLessonIds: ["lesson-g8s5-central-tendency"] },
+      { id: "q2", quizId: "quiz-g8-shang-unit-5", type: "single-choice", difficulty: "basic", stem: "如果两组数据平均数相同，想比较谁更稳定，更应该看哪个统计量？", options: [{ id: "a", label: "A", content: "众数" }, { id: "b", label: "B", content: "中位数" }, { id: "c", label: "C", content: "方差" }, { id: "d", label: "D", content: "最大值" }], correctOptionId: "c", explanation: "比较稳定性时更应看方差大小。", relatedLessonIds: ["lesson-g8s5-dispersion"] },
+      { id: "q3", quizId: "quiz-g8-shang-unit-5", type: "fill-blank", difficulty: "advanced", stem: "数据 3，5，7，9，11 的平均数和中位数分别是多少？", blanks: [{ id: "mean", prompt: "平均数", hint: "先求和再除以 5。", acceptableAnswers: ["7"], placeholder: "请填写结果" }, { id: "median", prompt: "依据相关关系，中位数", hint: "先判断所用关系或方法，再已经有序，直接看中间数。", acceptableAnswers: ["7"], placeholder: "请填写结果" }], explanation: "依据题目中的条件和相关性质，和为 35，平均数是 7；中间数也是 7。", relatedLessonIds: ["lesson-g8s5-central-tendency"] },
+      { id: "q4", quizId: "quiz-g8-shang-unit-5", type: "single-choice", difficulty: "advanced", stem: "某组数据的平均数是 10，如果在这组数据后再添一个 10，则新的平均数怎样变化？", options: [{ id: "a", label: "A", content: "变大" }, { id: "b", label: "B", content: "变小" }, { id: "c", label: "C", content: "不变" }, { id: "d", label: "D", content: "无法确定" }], correctOptionId: "c", explanation: "加上的数等于原平均数，所以平均数不变。", relatedLessonIds: ["lesson-g8s5-central-tendency"] },
+      { id: "q5", quizId: "quiz-g8-shang-unit-5", type: "fill-blank", difficulty: "advanced", stem: "一组数据按从小到大排列为 1，2，x，6，9，且中位数是 4。请写出 x 的值，并求平均数。", blanks: [{ id: "x", prompt: "x 的值", hint: "五个数的中位数是中间那个数。", acceptableAnswers: ["4"], placeholder: "请填写结果" }, { id: "mean", prompt: "平均数", hint: "代入 x 后求和再除以 5。", acceptableAnswers: ["4.4"], placeholder: "请填写结果" }], explanation: "中位数是中间数，所以 x=4；平均数为 (1+2+4+6+9)/5=4.4。", relatedLessonIds: ["lesson-g8s5-central-tendency"] },
+      { id: "q6", quizId: "quiz-g8-shang-unit-5", type: "single-choice", difficulty: "advanced", stem: "甲、乙两组数据平均数都为 80，甲组成绩更整齐。下列判断合理的是哪个？", options: [{ id: "a", label: "A", content: "甲组方差更大" }, { id: "b", label: "B", content: "乙组方差更小" }, { id: "c", label: "C", content: "甲组方差更小" }, { id: "d", label: "D", content: "两组方差相等" }], correctOptionId: "c", explanation: "更整齐说明波动更小，所以甲组方差更小。", relatedLessonIds: ["lesson-g8s5-dispersion"] },
+      { id: "q7", quizId: "quiz-g8-shang-unit-5", type: "fill-blank", difficulty: "challenge", stem: "某次测试 5 名同学成绩为 70，70，80，90，90。请填写众数，并判断平均数和中位数哪个更大。", blanks: [{ id: "mode", prompt: "众数", hint: "看出现次数最多的值。", acceptableAnswers: ["70和90", "70、90"], placeholder: "请填写结果" }, { id: "compare", prompt: "平均数与中位数比较", hint: "先算平均数，再看中位数。", acceptableAnswers: ["平均数=中位数", "相等"], placeholder: "请填写关系" }], explanation: "众数是 70 和 90；平均数为 80，中位数也是 80，所以相等。", relatedLessonIds: ["lesson-g8s5-central-tendency"] },
+      { id: "q8", quizId: "quiz-g8-shang-unit-5", type: "single-choice", difficulty: "challenge", stem: "两组数据：甲 4，5，6；乙 3，5，7。下列说法正确的是哪个？", options: [{ id: "a", label: "A", content: "平均数不同" }, { id: "b", label: "B", content: "中位数不同" }, { id: "c", label: "C", content: "平均数相同但乙更分散" }, { id: "d", label: "D", content: "乙更稳定" }], correctOptionId: "c", explanation: "两组平均数都为 5，中位数也都为 5，但乙偏离平均数更大，所以更分散。", relatedLessonIds: ["lesson-g8s5-dispersion"] },
+      { id: "q9", quizId: "quiz-g8-shang-unit-5", type: "fill-blank", difficulty: "challenge", stem: "某班男生平均身高为 168cm，女生平均身高为 160cm。若男生 20 人，女生 15 人，请写出全班平均身高（保留 1 位小数）。", blanks: [{ id: "avg", prompt: "全班平均身高", hint: "用加权平均：总身高除以总人数。", acceptableAnswers: ["164.6", "164.7"], placeholder: "请填写结果" }, { id: "idea", prompt: "所用统计思想关键词", hint: "不是简单平均，是按人数加权。", acceptableAnswers: ["加权平均", "平均数"], placeholder: "请填写关键词" }], explanation: "总身高为 168×20 + 160×15 = 5760，总人数 35，平均身高约为 164.6。", relatedLessonIds: ["lesson-g8s5-central-tendency"] },
+      { id: "q10", quizId: "quiz-g8-shang-unit-5", type: "fill-blank", difficulty: "challenge", stem: "甲、乙两班平均分都为 82，其中甲班成绩更集中。请写出更适合用来说明“更集中”的统计量，并说明这个统计量应满足什么大小规律。", blanks: [{ id: "stat", prompt: "统计量名称", hint: "看波动大小。", acceptableAnswers: ["方差"], placeholder: "请填写结果" }, { id: "rule", prompt: "大小规律", hint: "更集中意味着它应该更小。", acceptableAnswers: ["更小", "方差更小"], placeholder: "请填写判断" }], explanation: "表示数据波动程度的统计量是方差。数据越集中，方差越小。", relatedLessonIds: ["lesson-g8s5-dispersion"] },
+    ],
+  },
+};

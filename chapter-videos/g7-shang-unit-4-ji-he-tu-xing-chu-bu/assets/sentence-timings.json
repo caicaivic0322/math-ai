@@ -1,0 +1,323 @@
+{
+  "rootDuration": 227.7,
+  "audioDuration": 227.540583,
+  "segments": [
+    {
+      "scene": 1,
+      "text": "同学你好，这一节我们学习七年级上册第四章，几何图形初步。",
+      "caption": "这一节学习：七年级上册第四章，几何图形初步。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/01.wav",
+      "duration": 6.027958,
+      "start": 0,
+      "end": 6.027958
+    },
+    {
+      "scene": 1,
+      "text": "这一章先从生活中的物体出发，认识立体图形和平面图形；再学习直线、射线、线段和角。",
+      "caption": "从生活物体出发，认识图形、线和角。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/02.wav",
+      "duration": 8.739083,
+      "start": 6.167958,
+      "end": 14.907041
+    },
+    {
+      "scene": 1,
+      "text": "学习时抓住一条主线：看图形属于空间还是平面，判断线要看端点，计算角要找角度关系。",
+      "caption": "主线：看空间和平面，抓端点，找角度关系。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/03.wav",
+      "duration": 10.828333,
+      "start": 15.047041,
+      "end": 25.875374
+    },
+    {
+      "scene": 2,
+      "text": "先看立体图形和平面图形。占有空间、能看出长宽高的图形，是立体图形。",
+      "caption": "立体图形：占有空间，能看出长宽高。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/04.wav",
+      "duration": 7.303375,
+      "start": 26.275374,
+      "end": 33.578749
+    },
+    {
+      "scene": 2,
+      "text": "长方体、正方体、圆柱、圆锥和球，都是常见立体图形；长方形、正方形、三角形和圆，是常见平面图形。",
+      "caption": "长方体、正方体、圆柱、圆锥、球；长方形、正方形、三角形、圆。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/05.wav",
+      "duration": 14.423375,
+      "start": 33.718749,
+      "end": 48.142124
+    },
+    {
+      "scene": 2,
+      "text": "做题时先问自己：这是整个物体，还是物体表面的一个形状。",
+      "caption": "先分清：整个物体，还是表面的形状。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/06.wav",
+      "duration": 5.461042,
+      "start": 48.282124,
+      "end": 53.743166
+    },
+    {
+      "scene": 3,
+      "text": "从不同方向观察立体图形，看到的平面形状可能不同。",
+      "caption": "从不同方向观察，看到的平面形状可能不同。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/07.wav",
+      "duration": 5.865167,
+      "start": 54.143166,
+      "end": 60.008333
+    },
+    {
+      "scene": 3,
+      "text": "比如一个正方体纸盒，从正面看是一个正方形，从上面看也可以是一个正方形。",
+      "caption": "正方体：从正面和上面看，都可以是正方形。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/08.wav",
+      "duration": 8.978458,
+      "start": 60.148333,
+      "end": 69.126791
+    },
+    {
+      "scene": 3,
+      "text": "关键不是把整个立体图形搬到纸上，而是看某个方向看到的面。",
+      "caption": "关键：看某个方向看到的面。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/09.wav",
+      "duration": 5.539958,
+      "start": 69.266791,
+      "end": 74.806749
+    },
+    {
+      "scene": 4,
+      "text": "接下来对比直线、射线和线段，判断它们最重要的是看端点个数。",
+      "caption": "直线、射线、线段：先看端点个数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/10.wav",
+      "duration": 7.454667,
+      "start": 75.206749,
+      "end": 82.661416
+    },
+    {
+      "scene": 4,
+      "text": "直线没有端点，可以向两端无限延伸。",
+      "caption": "直线：没有端点，向两端无限延伸。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/11.wav",
+      "duration": 3.6285,
+      "start": 82.801416,
+      "end": 86.429916
+    },
+    {
+      "scene": 4,
+      "text": "射线有一个端点，从端点出发向一个方向无限延伸。",
+      "caption": "射线：一个端点，向一端无限延伸。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/12.wav",
+      "duration": 4.58225,
+      "start": 86.569916,
+      "end": 91.15216600000001
+    },
+    {
+      "scene": 4,
+      "text": "线段有两个端点，长度是确定的，线段 AB 可以记作 AB。",
+      "caption": "线段：两个端点，长度确定，可记作 AB。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/13.wav",
+      "duration": 8.586625,
+      "start": 91.29216600000001,
+      "end": 99.878791
+    },
+    {
+      "scene": 5,
+      "text": "再看角。角是由两条有公共端点的射线组成的，公共端点叫角的顶点。",
+      "caption": "角：两条有公共端点的射线组成，公共端点叫顶点。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/14.wav",
+      "duration": 8.574792,
+      "start": 100.27879100000001,
+      "end": 108.85358300000001
+    },
+    {
+      "scene": 5,
+      "text": "表示角时，常写作角 AOB，中间的字母 O 表示顶点。",
+      "caption": "∠AOB 中，O 是顶点，必须写在中间。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/15.wav",
+      "duration": 5.857917,
+      "start": 108.99358300000002,
+      "end": 114.85150000000002
+    },
+    {
+      "scene": 5,
+      "text": "平角等于一百八十度，周角等于三百六十度，很多角度计算都从这两个关系出发。",
+      "caption": "平角 = 180°，周角 = 360°。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/16.wav",
+      "duration": 6.244625,
+      "start": 114.99150000000002,
+      "end": 121.23612500000002
+    },
+    {
+      "scene": 6,
+      "text": "看第一个例题：一个正方体纸盒放在桌面上，从正面看和从上面看分别是什么图形。",
+      "caption": "例题 1：正方体从正面和上面看，分别是什么图形？",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/17.wav",
+      "duration": 7.275833,
+      "start": 121.63612500000002,
+      "end": 128.91195800000003
+    },
+    {
+      "scene": 6,
+      "text": "正方体的每个面都是大小相同的正方形；从某个方向看，就是看对应方向上的那个面。",
+      "caption": "正方体每个面都是正方形；观察方向决定看到哪个面。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/18.wav",
+      "duration": 8.0155,
+      "start": 129.051958,
+      "end": 137.06745800000002
+    },
+    {
+      "scene": 6,
+      "text": "所以从正面看是正方形，从上面看也是正方形。",
+      "caption": "结论：正面和上面看到的都是正方形。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/19.wav",
+      "duration": 3.701042,
+      "start": 137.207458,
+      "end": 140.9085
+    },
+    {
+      "scene": 7,
+      "text": "第二个例题：A、O、B 在同一直线上，射线 O C 把平角 A O B 分成两个角。",
+      "caption": "例题 2：A、O、B 在同一直线上，OC 分平角 AOB。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/20.wav",
+      "duration": 9.061208,
+      "start": 141.3085,
+      "end": 150.369708
+    },
+    {
+      "scene": 7,
+      "text": "已知角 A O C 等于六十八度，要求角 C O B 的度数。",
+      "caption": "已知 ∠AOC = 68°，求 ∠COB。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/21.wav",
+      "duration": 5.859292,
+      "start": 150.509708,
+      "end": 156.369
+    },
+    {
+      "scene": 7,
+      "text": "因为 A、O、B 在同一直线上，所以角 A O B 是平角，等于一百八十度。于是角 C O B 等于一百八十度减六十八度，等于一百一十二度。",
+      "caption": "∠COB = 180° - 68° = 112°。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/22.wav",
+      "duration": 11.62475,
+      "start": 156.509,
+      "end": 168.13375
+    },
+    {
+      "scene": 7,
+      "text": "写答案时不要漏掉角度单位，所以角 C O B 等于一百一十二度。",
+      "caption": "答案：∠COB = 112°，不要漏写单位。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/23.wav",
+      "duration": 7.060583,
+      "start": 168.27374999999998,
+      "end": 175.334333
+    },
+    {
+      "scene": 8,
+      "text": "本章最容易错的地方有三个。第一，把整个立体图形和它看到的平面形状混在一起。",
+      "caption": "易错点 1：混淆立体图形和看到的平面形状。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/24.wav",
+      "duration": 7.537292,
+      "start": 175.734333,
+      "end": 183.271625
+    },
+    {
+      "scene": 8,
+      "text": "第二，表示射线时忘记端点要写在前面；第三，角度计算时知道数字，却忘记写度数单位。",
+      "caption": "易错点 2：射线端点写错。易错点 3：角度漏单位。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/25.wav",
+      "duration": 9.856875,
+      "start": 183.411625,
+      "end": 193.2685
+    },
+    {
+      "scene": 8,
+      "text": "遇到图形题，先慢一点，把图形类型、端点和角度关系分别标出来。",
+      "caption": "做题前先标：图形类型、端点、角度关系。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/26.wav",
+      "duration": 6.895542,
+      "start": 193.40849999999998,
+      "end": 200.30404199999998
+    },
+    {
+      "scene": 9,
+      "text": "最后总结：几何图形初步不是背图形名字，而是学会观察和表达。",
+      "caption": "总结：几何图形初步，核心是观察和表达。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/27.wav",
+      "duration": 7.308458,
+      "start": 200.704042,
+      "end": 208.0125
+    },
+    {
+      "scene": 9,
+      "text": "学完这一章，你要能识别立体和平面图形，会表示直线、射线、线段和角，并能用平角、周角关系进行简单计算。",
+      "caption": "会识图、会表示线和角、会用 180° 和 360° 计算。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/28.wav",
+      "duration": 11.225333,
+      "start": 208.15249999999997,
+      "end": 219.37783299999998
+    },
+    {
+      "scene": 9,
+      "text": "现在回到软件里完成第四章单元小测，检查自己能不能把图形信息读清楚。",
+      "caption": "回到软件里完成第四章单元小测。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-4-ji-he-tu-xing-chu-bu/assets/sentence-segments-smooth-female-teacher-v2/trimmed/29.wav",
+      "duration": 7.22275,
+      "start": 219.51783299999997,
+      "end": 226.74058299999996
+    }
+  ],
+  "scenes": [
+    {
+      "scene": 1,
+      "start": 0,
+      "end": 25.875374,
+      "duration": 26.275374
+    },
+    {
+      "scene": 2,
+      "start": 26.275374,
+      "end": 53.743166,
+      "duration": 27.867792
+    },
+    {
+      "scene": 3,
+      "start": 54.143166,
+      "end": 74.806749,
+      "duration": 21.063583
+    },
+    {
+      "scene": 4,
+      "start": 75.206749,
+      "end": 99.878791,
+      "duration": 25.07204200000001
+    },
+    {
+      "scene": 5,
+      "start": 100.27879100000001,
+      "end": 121.23612500000002,
+      "duration": 21.35733400000001
+    },
+    {
+      "scene": 6,
+      "start": 121.63612500000002,
+      "end": 140.9085,
+      "duration": 19.672374999999988
+    },
+    {
+      "scene": 7,
+      "start": 141.3085,
+      "end": 175.334333,
+      "duration": 34.42583299999998
+    },
+    {
+      "scene": 8,
+      "start": 175.734333,
+      "end": 200.30404199999998,
+      "duration": 24.969708999999995
+    },
+    {
+      "scene": 9,
+      "start": 200.704042,
+      "end": 226.74058299999996,
+      "duration": 26.995958
+    }
+  ]
+}

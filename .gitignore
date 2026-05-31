@@ -1,0 +1,40 @@
+.next
+.next-build
+.cache
+public/generated
+public/videos
+data
+node_modules
+coverage
+dist
+.DS_Store
+*.log
+
+# 章节视频生成产物
+chapter-videos/*/renders/
+chapter-videos/*/assets/narration*.wav
+chapter-videos/*/assets/narration*.aiff
+chapter-videos/*/assets/sentence-segments/
+chapter-videos/*/assets/sentence-segments-*/
+chapter-videos/*/.waveform-cache/
+chapter-videos/*/index.sentence-aligned-*.backup.txt
+chapter-videos/*/snapshots/
+chapter-videos/*/.thumbnails/
+chapter-videos/*/scripts/
+
+# 宣传视频生成产物
+promo-video/renders/
+promo-video/.thumbnails/
+promo-video/assets/narration*.wav
+promo-video/assets/narration*.aiff
+
+# 构建缓存
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# 本地工具配置
+.claude/
+
+# 中间产物
+*.bak
+*.backup

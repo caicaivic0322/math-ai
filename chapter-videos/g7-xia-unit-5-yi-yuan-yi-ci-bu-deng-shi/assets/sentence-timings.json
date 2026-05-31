@@ -1,0 +1,382 @@
+{
+  "rootDuration": 248.2,
+  "audioDuration": 248.07175,
+  "timingMethod": "per-segment-measured",
+  "segments": [
+    {
+      "scene": 1,
+      "text": "学习七年级下册第五章：一元一次不等式与一元一次不等式组。这一章学会把条件翻译成范围，再准确地写出来、画出来。",
+      "caption": "学习七年级下册第五章：一元一次不等式与一元一次不等式组。这一章学会把条件翻译成范围，再准确地写出来、画出来。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s1-01.wav",
+      "duration": 11.156792,
+      "start": 0,
+      "end": 11.156792,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 1,
+      "text": "方程常常求一个确定的值，比如 x 等于几。不等式更多是在找一段范围，比如 x 大于几。所以看到不等式，先不要急着写等号答案。",
+      "caption": "方程常常求一个确定的值，比如 x 等于几。不等式更多是在找一段范围，比如 x 大于几。所以看到不等式，先不要急着写等号答案。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s1-02.wav",
+      "duration": 4.147875,
+      "start": 11.336791999999999,
+      "end": 15.484666999999998,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 1,
+      "text": "主线四步：先看大小关系，再求解集；数轴要看端点；遇到负数运算要变号；不等式组则要取公共部分。",
+      "caption": "主线四步：先看大小关系，再求解集；数轴要看端点；遇到负数运算要变号；不等式组则要取公共部分。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s1-03.wav",
+      "duration": 9.784542,
+      "start": 15.664666999999998,
+      "end": 25.449208999999996,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "不等式用大于、小于、大于等于、小于等于表示大小关系。这里的符号不是装饰，它直接告诉我们哪些数能取、哪些数不能取。",
+      "caption": "不等式用大于、小于、大于等于、小于等于表示大小关系。这里的符号不是装饰，它直接告诉我们哪些数能取、哪些数不能取。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-01.wav",
+      "duration": 12.745792,
+      "start": 25.869208999999998,
+      "end": 38.615001,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "比如 x 大于 3，不是说 x 只能等于 4，而是 3 右边的数都可以，像 3.1、4、10 都满足条件。",
+      "caption": "比如 x 大于 3，不是说 x 只能等于 4，而是 3 右边的数都可以，像 3.1、4、10 都满足条件。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-02.wav",
+      "duration": 10.983458,
+      "start": 38.795001,
+      "end": 49.778459,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "x 小于等于负 1，表示负 1 本身可以取，负 2、负 3 这些更小的数也可以取。有没有等号会影响端点是否包含。",
+      "caption": "x 小于等于负 1，表示负 1 本身可以取，负 2、负 3 这些更小的数也可以取。有没有等号会影响端点是否包含。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-03.wav",
+      "duration": 10.107917,
+      "start": 49.958459,
+      "end": 60.066376,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "能使不等式成立的未知数的值，叫做不等式的解。判断方法很简单：把数代进去，看大小关系是否成立。",
+      "caption": "能使不等式成立的未知数的值，叫做不等式的解。判断方法很简单：把数代进去，看大小关系是否成立。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-04.wav",
+      "duration": 10.426708,
+      "start": 60.246376,
+      "end": 70.673084,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "所有解合在一起，叫做解集。解集通常是一段范围，最后要写成 x 大于几、x 小于等于几的形式。",
+      "caption": "所有解合在一起，叫做解集。解集通常是一段范围，最后要写成 x 大于几、x 小于等于几的形式。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-05.wav",
+      "duration": 2.734458,
+      "start": 70.85308400000001,
+      "end": 73.58754200000001,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "对比一下：方程 x 加 2 等于 5 的解只有 x 等于 3，因为只有 3 代进去刚好相等。",
+      "caption": "对比一下：方程 x 加 2 等于 5 的解只有 x 等于 3，因为只有 3 代进去刚好相等。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-06.wav",
+      "duration": 0.81425,
+      "start": 73.76754200000002,
+      "end": 74.58179200000002,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 2,
+      "text": "但不等式 x 大于 3 的解集是所有大于 3 的数。答案不是一个点，而是从 3 往右的一整段，这是方程和不等式最大的区别。",
+      "caption": "但不等式 x 大于 3 的解集是所有大于 3 的数。答案不是一个点，而是从 3 往右的一整段，这是方程和不等式最大的区别。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s2-07.wav",
+      "duration": 11.542792,
+      "start": 74.76179200000003,
+      "end": 86.30458400000003,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 3,
+      "text": "数轴表示解集时，先看端点是否包含。端点是分界的那个数，比如 x 大于 4 里的 4，x 小于等于负 2 里的负 2。",
+      "caption": "数轴表示解集时，先看端点是否包含。端点是分界的那个数，比如 x 大于 4 里的 4，x 小于等于负 2 里的负 2。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s3-01.wav",
+      "duration": 10.916292,
+      "start": 86.72458400000004,
+      "end": 97.64087600000003,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 3,
+      "text": "大于或小于没有等号，画空心点，表示端点不包含。大于等于或小于等于有等号，画实心点，表示端点包含。",
+      "caption": "大于或小于没有等号，画空心点，表示端点不包含。大于等于或小于等于有等号，画实心点，表示端点包含。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s3-02.wav",
+      "duration": 12.583458,
+      "start": 97.82087600000004,
+      "end": 110.40433400000003,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 3,
+      "text": "方向也要一起看。x 大于 4，表示比 4 大的数，箭头向右。x 小于等于负 2，表示负 2 和它左边的数，箭头向左。",
+      "caption": "方向也要一起看。x 大于 4，表示比 4 大的数，箭头向右。x 小于等于负 2，表示负 2 和它左边的数，箭头向左。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s3-03.wav",
+      "duration": 4.856458,
+      "start": 110.58433400000004,
+      "end": 115.44079200000004,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 4,
+      "text": "解一元一次不等式，前半段和解方程很像：先移项，把含 x 的项和常数项分开；再合并同类项；最后把系数化为 1。",
+      "caption": "解一元一次不等式，前半段和解方程很像：先移项，把含 x 的项和常数项分开；再合并同类项；最后把系数化为 1。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s4-01.wav",
+      "duration": 14.026958,
+      "start": 115.86079200000005,
+      "end": 129.88775000000004,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 4,
+      "text": "关键区别：不等式两边同乘或同除以同一个负数时，大小顺序会反过来，所以不等号方向必须改变。",
+      "caption": "关键区别：不等式两边同乘或同除以同一个负数时，大小顺序会反过来，所以不等号方向必须改变。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s4-02.wav",
+      "duration": 10.508375,
+      "start": 130.06775000000005,
+      "end": 140.57612500000005,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 4,
+      "text": "例如负 2x 大于 6。为了得到 x，两边除以负 2。因为除的是负数，大于号变成小于号，得到 x 小于负 3。",
+      "caption": "例如负 2x 大于 6。为了得到 x，两边除以负 2。因为除的是负数，大于号变成小于号，得到 x 小于负 3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s4-03.wav",
+      "duration": 2.123667,
+      "start": 140.75612500000005,
+      "end": 142.87979200000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 5,
+      "text": "例题一：解不等式 3x 减 5 大于 7。左边有含 x 的 3x 和常数负 5，目标是单独留下 x。",
+      "caption": "例题一：解不等式 3x 减 5 大于 7。左边有含 x 的 3x 和常数负 5，目标是单独留下 x。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s5-01.wav",
+      "duration": 0.754708,
+      "start": 143.29979200000005,
+      "end": 144.05450000000005,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 5,
+      "text": "第一步把负 5 移到右边，两边同时加 5，得 3x 大于 12。第二步两边同除以正数 3，不等号方向不变，得到 x 大于 4。",
+      "caption": "第一步把负 5 移到右边，两边同时加 5，得 3x 大于 12。第二步两边同除以正数 3，不等号方向不变，得到 x 大于 4。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s5-02.wav",
+      "duration": 6.145125,
+      "start": 144.23450000000005,
+      "end": 150.37962500000006,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 5,
+      "text": "数轴表示时，4 只是分界点，不包含在解集里，所以画空心点。比 4 大的数在右边，向右画射线。",
+      "caption": "数轴表示时，4 只是分界点，不包含在解集里，所以画空心点。比 4 大的数在右边，向右画射线。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s5-03.wav",
+      "duration": 5.833292,
+      "start": 150.55962500000007,
+      "end": 156.39291700000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 6,
+      "text": "不等式组的解集必须同时满足所有条件。注意同时这两个字，只满足其中一个条件还不够，两个条件都满足的数才留下。",
+      "caption": "不等式组的解集必须同时满足所有条件。注意同时这两个字，只满足其中一个条件还不够，两个条件都满足的数才留下。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s6-01.wav",
+      "duration": 10.985792,
+      "start": 156.81291700000006,
+      "end": 167.79870900000006,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 6,
+      "text": "先把每个不等式分别画成一个范围，再看两段范围重叠在哪里。重叠的那一段，才是不等式组的公共部分。",
+      "caption": "先把每个不等式分别画成一个范围，再看两段范围重叠在哪里。重叠的那一段，才是不等式组的公共部分。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s6-02.wav",
+      "duration": 9.632417,
+      "start": 167.97870900000007,
+      "end": 177.61112600000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 7,
+      "text": "例题二：x 大于负 1，x 小于等于 3。第一个条件要求 x 在负 1 的右边，第二个条件要求 x 不超过 3。",
+      "caption": "例题二：x 大于负 1，x 小于等于 3。第一个条件要求 x 在负 1 的右边，第二个条件要求 x 不超过 3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s7-01.wav",
+      "duration": 10.508625,
+      "start": 178.03112600000006,
+      "end": 188.53975100000005,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 7,
+      "text": "两个范围重叠的部分从负 1 的右边开始，到 3 结束。所以解集写作负 1 小于 x，且 x 小于等于 3。",
+      "caption": "两个范围重叠的部分从负 1 的右边开始，到 3 结束。所以解集写作负 1 小于 x，且 x 小于等于 3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s7-02.wav",
+      "duration": 8.832292,
+      "start": 188.71975100000006,
+      "end": 197.55204300000005,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 7,
+      "text": "端点也要对应准确：负 1 不包含，画空心；3 包含，画实心。图和式子必须一一对应。",
+      "caption": "端点也要对应准确：负 1 不包含，画空心；3 包含，画实心。图和式子必须一一对应。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s7-03.wav",
+      "duration": 1.553625,
+      "start": 197.73204300000006,
+      "end": 199.28566800000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 8,
+      "text": "易错点一：把解集写成一个等号答案。看到不等式时要提醒自己，答案通常是一段范围，不是 x 等于几。",
+      "caption": "易错点一：把解集写成一个等号答案。看到不等式时要提醒自己，答案通常是一段范围，不是 x 等于几。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s8-01.wav",
+      "duration": 9.009125,
+      "start": 199.70566800000006,
+      "end": 208.71479300000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 8,
+      "text": "易错点二：空心点和实心点画反。判断方法很简单：有等号就包含端点，画实心；没有等号就不包含，画空心。",
+      "caption": "易错点二：空心点和实心点画反。判断方法很简单：有等号就包含端点，画实心；没有等号就不包含，画空心。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s8-02.wav",
+      "duration": 14.596375,
+      "start": 208.89479300000008,
+      "end": 223.49116800000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 8,
+      "text": "易错点三：除以负数时忘记变号。只要最后一步是除以负数，先停一下，检查不等号有没有反向。",
+      "caption": "易错点三：除以负数时忘记变号。只要最后一步是除以负数，先停一下，检查不等号有没有反向。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s8-03.wav",
+      "duration": 10.276375,
+      "start": 223.67116800000008,
+      "end": 233.94754300000008,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 9,
+      "text": "最后记住口诀：不等式看范围，数轴看端点，负数运算要变号。不等式组还要加一句：多个条件取公共部分。",
+      "caption": "最后记住口诀：不等式看范围，数轴看端点，负数运算要变号。不等式组还要加一句：多个条件取公共部分。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s9-01.wav",
+      "duration": 1.481417,
+      "start": 234.36754300000007,
+      "end": 235.84896000000006,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    },
+    {
+      "scene": 9,
+      "text": "回到软件完成第五章单元小测。每道题按顺序检查：先看符号，再算范围，再画端点，最后确认取公共部分。",
+      "caption": "回到软件完成第五章单元小测。每道题按顺序检查：先看符号，再算范围，再画端点，最后确认取公共部分。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-5-yi-yuan-yi-ci-bu-deng-shi/assets/sentence-segments-warm-generous-teacher-v2/trimmed/seg-s9-02.wav",
+      "duration": 11.222792,
+      "start": 236.02896000000007,
+      "end": 247.25175200000007,
+      "estimatedTiming": false,
+      "exactMeasured": true
+    }
+  ],
+  "scenes": [
+    {
+      "scene": 1,
+      "start": 0,
+      "end": 25.869208999999998,
+      "duration": 25.869208999999998
+    },
+    {
+      "scene": 2,
+      "start": 25.869208999999998,
+      "end": 86.72458400000004,
+      "duration": 60.85537500000004
+    },
+    {
+      "scene": 3,
+      "start": 86.72458400000004,
+      "end": 115.86079200000005,
+      "duration": 29.13620800000001
+    },
+    {
+      "scene": 4,
+      "start": 115.86079200000005,
+      "end": 143.29979200000005,
+      "duration": 27.439000000000007
+    },
+    {
+      "scene": 5,
+      "start": 143.29979200000005,
+      "end": 156.81291700000006,
+      "duration": 13.513125000000002
+    },
+    {
+      "scene": 6,
+      "start": 156.81291700000006,
+      "end": 178.03112600000006,
+      "duration": 21.218209
+    },
+    {
+      "scene": 7,
+      "start": 178.03112600000006,
+      "end": 199.70566800000006,
+      "duration": 21.674542000000002
+    },
+    {
+      "scene": 8,
+      "start": 199.70566800000006,
+      "end": 234.36754300000007,
+      "duration": 34.66187500000001
+    },
+    {
+      "scene": 9,
+      "start": 234.36754300000007,
+      "end": 248.2,
+      "duration": 13.83245699999992
+    }
+  ]
+}

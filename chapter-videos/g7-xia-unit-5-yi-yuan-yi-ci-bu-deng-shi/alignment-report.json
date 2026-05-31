@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "id": "warm-generous-teacher-v2",
+    "voice": "serena",
+    "speed": 1.08,
+    "temperature": 0.58,
+    "top_k": 42,
+    "top_p": 0.9,
+    "repetition_penalty": 1.05,
+    "subtalker_temperature": 0.58,
+    "subtalker_top_k": 42,
+    "subtalker_top_p": 0.9,
+    "instructions": "你是一位普通话标准、声音温暖大方的女数学老师。请用同一个稳定声线连续讲课：语气温暖、大方、自然、亲切，像在给全班同学耐心讲解。整段保持同一种课堂讲解状态——温暖而从容，不冷淡也不过度兴奋。音量一致，句与句之间顺畅承接。不要表演，不要夸张，不要突然提高音量，不要把短句读得断裂。数学符号、不等号、字母、端点和步骤要读清楚，语速中等偏慢。"
+  },
+  "audioDuration": 248.07175,
+  "rootDuration": 248.2,
+  "sentenceCount": 29,
+  "sceneCount": 9,
+  "timingMethod": "per-segment-measured",
+  "audioVideoDurationDelta": 0.12824999999998,
+  "checks": {
+    "everySegmentMeasured": true,
+    "captionsMatchMeasuredAudio": true,
+    "scenesTrackedFromSegments": true,
+    "audioVideoDurationWithinPointTwoSeconds": true
+  }
+}

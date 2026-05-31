@@ -1,0 +1,254 @@
+{
+  "profile": {
+    "id": "warm-female-teacher-v1",
+    "voice": "serena",
+    "speed": 1.1,
+    "temperature": 0.62,
+    "top_k": 42,
+    "top_p": 0.9,
+    "repetition_penalty": 1.05,
+    "subtalker_temperature": 0.62,
+    "subtalker_top_k": 42,
+    "subtalker_top_p": 0.9,
+    "instructions": "你是一位普通话标准、声音温暖大方的女数学老师。请用同一个稳定声线连续讲课：语气温暖、大方、自然、亲切，像在给全班同学耐心讲解。整段保持同一种课堂讲解状态——温暖而从容，不冷淡也不过度兴奋。音量一致，句与句之间顺畅承接。不要表演，不要夸张，不要突然提高音量，不要把短句读得断裂。数学符号、根号、平方、立方和数字读清楚，语速中等偏慢。"
+  },
+  "audioDuration": 149.824125,
+  "rootDuration": 150,
+  "sentenceCount": 28,
+  "sceneCount": 8,
+  "timingMethod": "scene-audio-proportional-captions",
+  "maxCaptionDrift": "estimated within each scene from text weight",
+  "audioVideoDurationDelta": 0.17587499999999068,
+  "checks": {
+    "sceneAudioMeasured": true,
+    "captionsUseSceneMeasuredAudio": true,
+    "scenesUseMeasuredAudioRanges": true,
+    "audioVideoDurationWithinPointTwoSeconds": true
+  },
+  "segments": [
+    {
+      "index": 1,
+      "scene": 1,
+      "start": 0,
+      "end": 5.533,
+      "duration": 5.533,
+      "caption": "这一节学习：七年级下册第二章，实数。"
+    },
+    {
+      "index": 2,
+      "scene": 1,
+      "start": 5.533,
+      "end": 16.071,
+      "duration": 10.538,
+      "caption": "先学平方根、算术平方根和立方根，再认识无理数和实数。"
+    },
+    {
+      "index": 3,
+      "scene": 1,
+      "start": 16.071,
+      "end": 21.077,
+      "duration": 5.006,
+      "caption": "主线：想逆运算，分清根号，估位置，再比较。"
+    },
+    {
+      "index": 4,
+      "scene": 2,
+      "start": 21.497,
+      "end": 28.951,
+      "duration": 7.455,
+      "caption": "求平方根，要反问：什么数平方后等于它。"
+    },
+    {
+      "index": 5,
+      "scene": 2,
+      "start": 28.951,
+      "end": 37.105,
+      "duration": 8.154,
+      "caption": "7² = 49，(-7)² = 49，所以 49 的平方根是 ±7。"
+    },
+    {
+      "index": 6,
+      "scene": 2,
+      "start": 37.105,
+      "end": 42.23,
+      "duration": 5.125,
+      "caption": "算术平方根只取非负值，√49 = 7。"
+    },
+    {
+      "index": 7,
+      "scene": 2,
+      "start": 42.23,
+      "end": 46.423,
+      "duration": 4.193,
+      "caption": "负数没有平方根，0 的平方根还是 0。"
+    },
+    {
+      "index": 8,
+      "scene": 3,
+      "start": 46.843,
+      "end": 49.816,
+      "duration": 2.973,
+      "caption": "x³ = a 时，x 叫做 a 的立方根，记作 ∛a。"
+    },
+    {
+      "index": 9,
+      "scene": 3,
+      "start": 49.816,
+      "end": 53.904,
+      "duration": 4.088,
+      "caption": "负数也有立方根，∛(-27) = -3。"
+    },
+    {
+      "index": 10,
+      "scene": 3,
+      "start": 53.904,
+      "end": 56.226,
+      "duration": 2.322,
+      "caption": "先看题目问平方根、算术平方根，还是立方根。"
+    },
+    {
+      "index": 11,
+      "scene": 4,
+      "start": 56.646,
+      "end": 60.119,
+      "duration": 3.473,
+      "caption": "有限小数和无限循环小数是有理数。"
+    },
+    {
+      "index": 12,
+      "scene": 4,
+      "start": 60.119,
+      "end": 61.242,
+      "duration": 1.124,
+      "caption": "有理数和无理数统称实数。"
+    },
+    {
+      "index": 13,
+      "scene": 4,
+      "start": 61.242,
+      "end": 65.124,
+      "duration": 3.881,
+      "caption": "√9 = 3 是有理数，不是所有带根号的数都是无理数。"
+    },
+    {
+      "index": 14,
+      "scene": 5,
+      "start": 65.544,
+      "end": 74.164,
+      "duration": 8.62,
+      "caption": "实数都能在数轴上找到对应点。"
+    },
+    {
+      "index": 15,
+      "scene": 5,
+      "start": 74.164,
+      "end": 80.956,
+      "duration": 6.792,
+      "caption": "2² < 5 < 3²，所以 2 < √5 < 3。"
+    },
+    {
+      "index": 16,
+      "scene": 5,
+      "start": 80.956,
+      "end": 89.576,
+      "duration": 8.62,
+      "caption": "继续比较 2.2²、2.3²，可以把位置估得更准。"
+    },
+    {
+      "index": 17,
+      "scene": 6,
+      "start": 89.996,
+      "end": 95.911,
+      "duration": 5.915,
+      "caption": "例题一：求 64 的算术平方根、64 的平方根和 -27 的立方根。"
+    },
+    {
+      "index": 18,
+      "scene": 6,
+      "start": 95.911,
+      "end": 101.825,
+      "duration": 5.915,
+      "caption": "64 的算术平方根是 8。"
+    },
+    {
+      "index": 19,
+      "scene": 6,
+      "start": 101.825,
+      "end": 105.768,
+      "duration": 3.943,
+      "caption": "64 的平方根是 ±8。"
+    },
+    {
+      "index": 20,
+      "scene": 6,
+      "start": 105.768,
+      "end": 110.608,
+      "duration": 4.839,
+      "caption": "-27 的立方根是 -3。"
+    },
+    {
+      "index": 21,
+      "scene": 7,
+      "start": 111.028,
+      "end": 115.226,
+      "duration": 4.199,
+      "caption": "例题二：比较 √10 与 3.1 的大小。"
+    },
+    {
+      "index": 22,
+      "scene": 7,
+      "start": 115.226,
+      "end": 124.149,
+      "duration": 8.922,
+      "caption": "3² = 9，4² = 16，所以 3 < √10 < 4。"
+    },
+    {
+      "index": 23,
+      "scene": 7,
+      "start": 124.149,
+      "end": 135.958,
+      "duration": 11.809,
+      "caption": "3.1² = 9.61，3.2² = 10.24，所以 3.1 < √10 < 3.2。"
+    },
+    {
+      "index": 24,
+      "scene": 7,
+      "start": 135.958,
+      "end": 138.582,
+      "duration": 2.624,
+      "caption": "因此 √10 > 3.1。"
+    },
+    {
+      "index": 25,
+      "scene": 8,
+      "start": 139.002,
+      "end": 141.982,
+      "duration": 2.979,
+      "caption": "易错点：混淆平方根和算术平方根，误判负数开根，误判带根号的数。"
+    },
+    {
+      "index": 26,
+      "scene": 8,
+      "start": 141.982,
+      "end": 143.524,
+      "duration": 1.543,
+      "caption": "三步：看根号类型，想逆运算，用数轴或平方估位置。"
+    },
+    {
+      "index": 27,
+      "scene": 8,
+      "start": 143.524,
+      "end": 145.546,
+      "duration": 2.022,
+      "caption": "平方根、立方根、实数比较，都要回到逆运算和数轴。"
+    },
+    {
+      "index": 28,
+      "scene": 8,
+      "start": 145.546,
+      "end": 149.004,
+      "duration": 3.458,
+      "caption": "回到软件里完成第二章单元小测。"
+    }
+  ]
+}

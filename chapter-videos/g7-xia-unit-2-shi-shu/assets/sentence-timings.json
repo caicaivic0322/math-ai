@@ -1,0 +1,337 @@
+{
+  "rootDuration": 150,
+  "audioDuration": 149.824125,
+  "segments": [
+    {
+      "scene": 1,
+      "text": "同学你好，这一节我们学习七年级下册第二章，实数。",
+      "caption": "这一节学习：七年级下册第二章，实数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-01.wav",
+      "duration": 5.53263585,
+      "start": 0,
+      "end": 5.53263585,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 1,
+      "text": "这一章先学习平方根、算术平方根和立方根，再认识无理数和实数，最后用数轴与估算来比较大小。",
+      "caption": "先学平方根、算术平方根和立方根，再认识无理数和实数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-01.wav",
+      "duration": 10.538354,
+      "start": 5.53263585,
+      "end": 16.07098985,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 1,
+      "text": "学习主线是：想逆运算，分清根号，估位置，再比较。",
+      "caption": "主线：想逆运算，分清根号，估位置，再比较。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-01.wav",
+      "duration": 5.00571815,
+      "start": 16.07098985,
+      "end": 21.076708,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 2,
+      "text": "先看平方根。求一个数的平方根，不是只背答案，而是反问：什么数平方后等于它。",
+      "caption": "求平方根，要反问：什么数平方后等于它。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-02.wav",
+      "duration": 7.45470414953271,
+      "start": 21.496708,
+      "end": 28.95141214953271,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 2,
+      "text": "比如七的平方等于四十九，负七的平方也等于四十九，所以四十九的平方根是正负七。",
+      "caption": "7² = 49，(-7)² = 49，所以 49 的平方根是 ±7。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-02.wav",
+      "duration": 8.1535826635514,
+      "start": 28.95141214953271,
+      "end": 37.10499481308411,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 2,
+      "text": "算术平方根只取非负的那个，记作根号四十九等于七。",
+      "caption": "算术平方根只取非负值，√49 = 7。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-02.wav",
+      "duration": 5.125109102803738,
+      "start": 37.10499481308411,
+      "end": 42.23010391588785,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 2,
+      "text": "注意，负数没有平方根，但零的平方根还是零。",
+      "caption": "负数没有平方根，0 的平方根还是 0。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-02.wav",
+      "duration": 4.193271084112148,
+      "start": 42.23010391588785,
+      "end": 46.423375,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 3,
+      "text": "再看立方根。若 x 的三次方等于 a，那么 x 就叫做 a 的立方根，记作三次根号 a。",
+      "caption": "x³ = a 时，x 叫做 a 的立方根，记作 ∛a。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-03.wav",
+      "duration": 2.972765782178218,
+      "start": 46.843375,
+      "end": 49.81614078217822,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 3,
+      "text": "立方根和平方根不同，负数也有立方根。比如负三的三次方等于负二十七，所以三次根号负二十七等于负三。",
+      "caption": "负数也有立方根，∛(-27) = -3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-03.wav",
+      "duration": 4.087552950495049,
+      "start": 49.81614078217822,
+      "end": 53.903693732673275,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 3,
+      "text": "做根号题时，先看题目问的是平方根、算术平方根，还是立方根。",
+      "caption": "先看题目问平方根、算术平方根，还是立方根。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-03.wav",
+      "duration": 2.3224732673267283,
+      "start": 53.903693732673275,
+      "end": 56.226167000000004,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 4,
+      "text": "接着认识实数。有限小数和无限循环小数都是有理数；无限不循环小数叫做无理数。",
+      "caption": "有限小数和无限循环小数是有理数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-04.wav",
+      "duration": 3.4727448433734938,
+      "start": 56.646167000000005,
+      "end": 60.118911843373496,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 4,
+      "text": "有理数和无理数统称实数。",
+      "caption": "有理数和无理数统称实数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-04.wav",
+      "duration": 1.1235350963855422,
+      "start": 60.118911843373496,
+      "end": 61.24244693975904,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 4,
+      "text": "像根号二、π 通常是无理数，但根号九等于三，是有理数，所以不是所有带根号的数都是无理数。",
+      "caption": "√9 = 3 是有理数，不是所有带根号的数都是无理数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-04.wav",
+      "duration": 3.8813030602409597,
+      "start": 61.24244693975904,
+      "end": 65.12375,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 5,
+      "text": "实数都可以在数轴上找到对应点。遇到根号五这样的数，可以用平方关系估位置。",
+      "caption": "实数都能在数轴上找到对应点。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-05.wav",
+      "duration": 8.620308423913043,
+      "start": 65.54375,
+      "end": 74.16405842391305,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 5,
+      "text": "因为二的平方小于五小于三的平方，所以二小于根号五小于三。",
+      "caption": "2² < 5 < 3²，所以 2 < √5 < 3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-05.wav",
+      "duration": 6.791758152173912,
+      "start": 74.16405842391305,
+      "end": 80.95581657608696,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 5,
+      "text": "继续细分时，可以比较二点二的平方、二点三的平方这些平方，让位置越来越准确。",
+      "caption": "继续比较 2.2²、2.3²，可以把位置估得更准。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-05.wav",
+      "duration": 8.620308423913045,
+      "start": 80.95581657608696,
+      "end": 89.576125,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 6,
+      "text": "看例题一：分别求六十四的算术平方根、六十四的平方根以及负二十七的立方根。",
+      "caption": "例题一：求 64 的算术平方根、64 的平方根和 -27 的立方根。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-06.wav",
+      "duration": 5.9146164,
+      "start": 89.996125,
+      "end": 95.9107414,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 6,
+      "text": "因为八的平方等于六十四，且算术平方根取非负，所以六十四的算术平方根是八。",
+      "caption": "64 的算术平方根是 8。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-06.wav",
+      "duration": 5.9146164,
+      "start": 95.9107414,
+      "end": 101.8253578,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 6,
+      "text": "平方根要写两个结果，所以六十四的平方根是正负八。",
+      "caption": "64 的平方根是 ±8。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-06.wav",
+      "duration": 3.9430776,
+      "start": 101.8253578,
+      "end": 105.7684354,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 6,
+      "text": "因为负三的三次方等于负二十七，所以负二十七的立方根是负三。",
+      "caption": "-27 的立方根是 -3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-06.wav",
+      "duration": 4.839231600000005,
+      "start": 105.7684354,
+      "end": 110.607667,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 7,
+      "text": "看例题二：比较根号十与三点一的大小。",
+      "caption": "例题二：比较 √10 与 3.1 的大小。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-07.wav",
+      "duration": 4.1987936,
+      "start": 111.02766700000001,
+      "end": 115.22646060000001,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 7,
+      "text": "先估算根号十，因为三的平方等于九，四的平方等于十六，所以三小于根号十小于四。",
+      "caption": "3² = 9，4² = 16，所以 3 < √10 < 4。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-07.wav",
+      "duration": 8.9224364,
+      "start": 115.22646060000001,
+      "end": 124.148897,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 7,
+      "text": "继续缩小范围：三点一的平方等于九点六一，三点二的平方等于十点二四，所以三点一小于根号十小于三点二。",
+      "caption": "3.1² = 9.61，3.2² = 10.24，所以 3.1 < √10 < 3.2。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-07.wav",
+      "duration": 11.809107000000001,
+      "start": 124.148897,
+      "end": 135.95800400000002,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 7,
+      "text": "因此根号十大于三点一。",
+      "caption": "因此 √10 > 3.1。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-07.wav",
+      "duration": 2.6242459999999994,
+      "start": 135.95800400000002,
+      "end": 138.58225000000002,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 8,
+      "text": "本章最容易错的地方有三个。第一，把平方根和算术平方根混成一个答案；第二，以为负数不能开任何根；第三，看到根号就直接说是无理数。",
+      "caption": "易错点：混淆平方根和算术平方根，误判负数开根，误判带根号的数。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-08.wav",
+      "duration": 2.979281914893617,
+      "start": 139.00225,
+      "end": 141.98153191489362,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 8,
+      "text": "做题时按三步来：先看根号类型，再想逆运算，最后用数轴或平方估位置。",
+      "caption": "三步：看根号类型，想逆运算，用数轴或平方估位置。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-08.wav",
+      "duration": 1.542842420212766,
+      "start": 141.98153191489362,
+      "end": 143.5243743351064,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 8,
+      "text": "最后总结：平方根看平方后等于谁，立方根看立方后等于谁，实数比较大小要借助数轴和估算。",
+      "caption": "平方根、立方根、实数比较，都要回到逆运算和数轴。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-08.wav",
+      "duration": 2.021655585106383,
+      "start": 143.5243743351064,
+      "end": 145.54602992021276,
+      "estimatedTiming": true
+    },
+    {
+      "scene": 8,
+      "text": "学完这一章，你要能准确求根、判断有理数和无理数，并用区间估算比较根号数大小。现在回到软件里完成第二章单元小测，检查自己能不能把实数放到数轴上。",
+      "caption": "回到软件里完成第二章单元小测。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-xia-unit-2-shi-shu/assets/sentence-segments-warm-female-teacher-v1/trimmed/scene-08.wav",
+      "duration": 3.458095079787256,
+      "start": 145.54602992021276,
+      "end": 149.00412500000002,
+      "estimatedTiming": true
+    }
+  ],
+  "scenes": [
+    {
+      "scene": 1,
+      "start": 0,
+      "end": 21.076708,
+      "duration": 21.496708
+    },
+    {
+      "scene": 2,
+      "start": 21.496708,
+      "end": 46.423375,
+      "duration": 25.346667
+    },
+    {
+      "scene": 3,
+      "start": 46.843375,
+      "end": 56.226167000000004,
+      "duration": 9.802792000000004
+    },
+    {
+      "scene": 4,
+      "start": 56.646167000000005,
+      "end": 65.12375,
+      "duration": 8.897582999999997
+    },
+    {
+      "scene": 5,
+      "start": 65.54375,
+      "end": 89.576125,
+      "duration": 24.452375000000004
+    },
+    {
+      "scene": 6,
+      "start": 89.996125,
+      "end": 110.607667,
+      "duration": 21.031542
+    },
+    {
+      "scene": 7,
+      "start": 111.02766700000001,
+      "end": 138.58225000000002,
+      "duration": 27.974582999999996
+    },
+    {
+      "scene": 8,
+      "start": 139.00225,
+      "end": 149.00412500000002,
+      "duration": 10.997749999999996
+    }
+  ],
+  "timingMethod": "scene-audio-proportional-captions"
+}

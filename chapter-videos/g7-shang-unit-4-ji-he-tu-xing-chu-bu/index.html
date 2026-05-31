@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f7f3e8;
+        color: #1f2a2c;
+        font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      [data-composition-id="main"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          linear-gradient(90deg, rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          #f7f3e8;
+        background-size: 64px 64px;
+      }
+      .clip { visibility: hidden; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background-color: #f7f3e8; opacity: 0; visibility: hidden; }
+      #scene-1 { opacity: 1; visibility: visible; }
+      .scene::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(216, 239, 229, 0.72), rgba(216, 239, 229, 0) 28%),
+          radial-gradient(circle at 84% 74%, rgba(245, 200, 75, 0.20), rgba(245, 200, 75, 0) 31%);
+        z-index: 0;
+      }
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 84px 116px 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 0.94fr 1.06fr;
+        align-items: center;
+        gap: 72px;
+      }
+      .kicker {
+        width: fit-content;
+        border: 2px solid rgba(31, 42, 44, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.78);
+        padding: 12px 22px;
+        color: #0d8b7d;
+        font-size: 25px;
+        font-weight: 900;
+      }
+      h1, h2 {
+        max-width: 1180px;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+      h1 { font-size: 108px; }
+      h2 { font-size: 80px; }
+      .lead {
+        max-width: 920px;
+        color: rgba(31, 42, 44, 0.72);
+        font-size: 34px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .highlight {
+        display: inline-block;
+        border-radius: 26px;
+        background: #f5c84b;
+        padding: 0 22px 8px;
+      }
+      .panel, .example-card, .check-card {
+        border: 3px solid rgba(31, 42, 44, 0.14);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 15px 17px 0 rgba(31, 42, 44, 0.08);
+      }
+      .panel { padding: 36px; }
+      .chapter-mark {
+        width: 190px;
+        height: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid #1f2a2c;
+        border-radius: 42px;
+        background: #f5c84b;
+        box-shadow: 14px 16px 0 rgba(31, 42, 44, 0.12);
+        font-size: 82px;
+        font-weight: 900;
+      }
+      .stack { display: grid; gap: 20px; }
+      .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+      .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+      .mini-card, .shape-card, .line-card, .view-card, .fact-card {
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 2px solid rgba(31, 42, 44, 0.10);
+        padding: 22px;
+      }
+      .mini-card h3, .shape-card h3, .line-card h3, .view-card h3, .fact-card h3 {
+        color: #0d8b7d;
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 1.18;
+      }
+      .mini-card p, .shape-card p, .line-card p, .view-card p, .fact-card p {
+        margin-top: 12px;
+        color: rgba(31, 42, 44, 0.74);
+        font-size: 24px;
+        line-height: 1.36;
+        font-weight: 720;
+      }
+      .formula {
+        border-radius: 24px;
+        background: #0d8b7d;
+        padding: 22px 30px;
+        color: #f7f3e8;
+        font-size: 50px;
+        font-weight: 900;
+        line-height: 1.24;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula.lemon { background: #f5c84b; color: #1f2a2c; }
+      .formula.soft { background: #d8efe5; color: #1f2a2c; border: 3px solid rgba(13, 139, 125, 0.22); }
+      #s1-focus, #s7-calc { background: #f5c84b; color: #1f2a2c; }
+      .warning {
+        border-radius: 22px;
+        background: rgba(239, 106, 91, 0.16);
+        border: 2px solid rgba(239, 106, 91, 0.34);
+        padding: 22px 26px;
+        color: #1f2a2c;
+        font-size: 30px;
+        line-height: 1.42;
+        font-weight: 850;
+      }
+      .shape-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .shape-icon {
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cube {
+        position: relative;
+        width: 92px;
+        height: 92px;
+        border: 5px solid #1f2a2c;
+        background: #d8efe5;
+        transform: skewY(-8deg);
+        box-shadow: 22px 20px 0 #f5c84b;
+      }
+      .cylinder {
+        position: relative;
+        width: 94px;
+        height: 118px;
+        border: 5px solid #1f2a2c;
+        border-radius: 48px / 20px;
+        background: #d8efe5;
+      }
+      .sphere {
+        width: 116px;
+        height: 116px;
+        border: 5px solid #1f2a2c;
+        border-radius: 999px;
+        background: radial-gradient(circle at 35% 30%, #ffffff, #d8efe5 45%, #0d8b7d 120%);
+      }
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        border-bottom: 112px solid #f5c84b;
+        filter: drop-shadow(0 0 0 #1f2a2c);
+      }
+      .circle-shape {
+        width: 112px;
+        height: 112px;
+        border: 5px solid #1f2a2c;
+        border-radius: 999px;
+        background: #f5c84b;
+      }
+      .rect-shape {
+        width: 134px;
+        height: 92px;
+        border: 5px solid #1f2a2c;
+        border-radius: 14px;
+        background: #d8efe5;
+      }
+      .view-board {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 24px;
+        align-items: center;
+      }
+      .view-grid { display: grid; gap: 16px; }
+      .view-card { display: grid; grid-template-columns: 70px 1fr; gap: 16px; align-items: center; min-height: 118px; }
+      .face {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        border: 4px solid #1f2a2c;
+        background: #d8efe5;
+      }
+      .line-set { display: grid; gap: 18px; }
+      .line-card {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 22px;
+        align-items: center;
+        min-height: 145px;
+      }
+      .line-svg, .angle-svg {
+        width: 100%;
+        height: 130px;
+        overflow: visible;
+      }
+      .angle-board { display: grid; grid-template-columns: 1fr 0.88fr; gap: 24px; align-items: center; }
+      .facts { display: grid; gap: 18px; }
+      .example-card, .check-card { padding: 34px; }
+      .problem {
+        color: #0d8b7d;
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 1.34;
+      }
+      .steps { display: grid; gap: 16px; margin-top: 22px; }
+      .step {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 18px;
+        align-items: start;
+        border-radius: 20px;
+        background: rgba(216, 239, 229, 0.72);
+        padding: 17px 20px;
+      }
+      .step-num {
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f5c84b;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .step-text {
+        font-size: 28px;
+        line-height: 1.42;
+        font-weight: 760;
+      }
+      .mistake-list { display: grid; gap: 18px; margin-top: 24px; }
+      .mistake-row {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 20px;
+        font-size: 30px;
+        font-weight: 850;
+        line-height: 1.28;
+      }
+      .mistake-dot {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ef6a5b;
+        color: #f7f3e8;
+        font-weight: 900;
+      }
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .road-step {
+        min-height: 178px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 3px solid rgba(31, 42, 44, 0.12);
+        padding: 24px;
+      }
+      .road-step .num {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #f5c84b;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .road-step h3 { margin-top: 18px; font-size: 34px; line-height: 1.15; font-weight: 900; }
+      .road-step p { margin-top: 10px; color: rgba(31, 42, 44, 0.70); font-size: 22px; line-height: 1.34; font-weight: 700; }
+      .caption {
+        position: absolute;
+        left: 50%;
+        bottom: 48px;
+        z-index: 30;
+        max-width: 1500px;
+        border: 2px solid rgba(31, 42, 44, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 250, 240, 0.94);
+        box-shadow: 10px 12px 0 rgba(31, 42, 44, 0.08);
+        padding: 18px 30px;
+        color: #1f2a2c;
+        font-size: 34px;
+        font-weight: 900;
+        line-height: 1.34;
+        text-align: center;
+      }
+      .math-mark {
+        position: absolute;
+        z-index: 1;
+        color: #0d8b7d;
+        font-size: 108px;
+        font-weight: 900;
+      }
+      .blob {
+        position: absolute;
+        z-index: 1;
+        width: 330px;
+        height: 188px;
+        border-radius: 48px;
+        background: #d8efe5;
+        opacity: 0.76;
+      }
+      .wipe {
+        position: absolute;
+        top: -10%;
+        left: -28%;
+        z-index: 22;
+        width: 156%;
+        height: 120%;
+        background:
+          linear-gradient(90deg, rgba(216, 239, 229, 0), #d8efe5 10%, #f7f3e8 52%, #f5c84b 88%, rgba(245, 200, 75, 0));
+        box-shadow: 0 0 70px rgba(13, 139, 125, 0.18);
+        clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+      }
+      svg text { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-weight: 900; fill: #1f2a2c; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="227.7" data-width="1920" data-height="1080">
+      <div id="scene-1" class="scene">
+        <span class="math-mark" style="left: 120px; top: 110px">△ ○</span>
+        <span class="math-mark" style="right: 140px; bottom: 130px">∠</span>
+        <div class="blob" style="right: 250px; top: 145px"></div>
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">七年级上册 · 第四章</div>
+            <h1>几何图形初步 <span class="highlight">看图形，抓关系</span></h1>
+            <p class="lead">本章主线：从生活物体抽象出图形，再用端点和角度关系完成判断与计算。</p>
+          </div>
+          <div class="panel stack">
+            <div class="chapter-mark">形</div>
+            <div class="two-col">
+              <div id="s1-card-1" class="mini-card"><h3>图形识别</h3><p>立体和平面，先看是否占有空间。</p></div>
+              <div id="s1-card-2" class="mini-card"><h3>线与角</h3><p>端点、顶点、角度关系要清楚。</p></div>
+            </div>
+            <div id="s1-focus" class="formula">立体图形 · 平面图形 · 直线射线线段 · 角</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-2" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 1：立体和平面</div>
+            <h2>先分清：空间里的物体，还是平面上的形状</h2>
+            <p class="lead">立体图形占有空间，平面图形只在一个平面内。生活物体常常可以抽象成几何图形。</p>
+          </div>
+          <div class="panel stack">
+            <div class="shape-grid">
+              <div id="s2-solid-1" class="shape-card"><div class="shape-icon"><div class="cube"></div></div><h3>正方体</h3><p>占有空间</p></div>
+              <div id="s2-solid-2" class="shape-card"><div class="shape-icon"><div class="cylinder"></div></div><h3>圆柱</h3><p>占有空间</p></div>
+              <div id="s2-solid-3" class="shape-card"><div class="shape-icon"><div class="sphere"></div></div><h3>球</h3><p>占有空间</p></div>
+              <div id="s2-plane-1" class="shape-card"><div class="shape-icon"><div class="rect-shape"></div></div><h3>长方形</h3><p>平面图形</p></div>
+              <div id="s2-plane-2" class="shape-card"><div class="shape-icon"><div class="triangle"></div></div><h3>三角形</h3><p>平面图形</p></div>
+              <div id="s2-plane-3" class="shape-card"><div class="shape-icon"><div class="circle-shape"></div></div><h3>圆</h3><p>平面图形</p></div>
+            </div>
+            <div id="s2-warning" class="warning">不要把“整个物体”和“物体表面的形状”混为一谈。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-3" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 2：从不同方向观察</div>
+            <h2>看见的是某个方向上的面</h2>
+            <p class="lead">观察立体图形时，正面、左面、上面看到的图形，可能相同，也可能不同。</p>
+          </div>
+          <div class="panel view-board">
+            <div id="s3-cube" class="shape-icon" style="height: 360px"><div class="cube" style="width: 180px; height: 180px; box-shadow: 48px 42px 0 #f5c84b"></div></div>
+            <div class="view-grid">
+              <div id="s3-front" class="view-card"><div class="face"></div><div><h3>正面看</h3><p>看到前面的一个面。</p></div></div>
+              <div id="s3-top" class="view-card"><div class="face"></div><div><h3>上面看</h3><p>看到上面的一个面。</p></div></div>
+              <div id="s3-note" class="formula soft">正方体的每个面都是正方形</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-4" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 3：直线、射线、线段</div>
+            <h2>判断线，先看端点</h2>
+            <p class="lead">端点个数和延伸方向，是区分三种线的关键。</p>
+          </div>
+          <div class="panel line-set">
+            <div id="s4-line" class="line-card">
+              <svg class="line-svg" viewBox="0 0 330 130">
+                <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f2a2c"/></marker></defs>
+                <line x1="44" y1="65" x2="286" y2="65" stroke="#1f2a2c" stroke-width="8" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                <text x="140" y="110" font-size="28">直线 AB</text>
+              </svg>
+              <div><h3>直线</h3><p>没有端点，向两端无限延伸。</p></div>
+            </div>
+            <div id="s4-ray" class="line-card">
+              <svg class="line-svg" viewBox="0 0 330 130">
+                <circle cx="70" cy="65" r="12" fill="#f5c84b" stroke="#1f2a2c" stroke-width="5"/>
+                <line x1="70" y1="65" x2="282" y2="65" stroke="#1f2a2c" stroke-width="8" marker-end="url(#arrow)"/>
+                <text x="52" y="110" font-size="28">O</text><text x="260" y="110" font-size="28">A</text>
+              </svg>
+              <div><h3>射线</h3><p>一个端点，端点要写在前面。</p></div>
+            </div>
+            <div id="s4-segment" class="line-card">
+              <svg class="line-svg" viewBox="0 0 330 130">
+                <circle cx="70" cy="65" r="12" fill="#f5c84b" stroke="#1f2a2c" stroke-width="5"/>
+                <circle cx="260" cy="65" r="12" fill="#f5c84b" stroke="#1f2a2c" stroke-width="5"/>
+                <line x1="70" y1="65" x2="260" y2="65" stroke="#1f2a2c" stroke-width="8"/>
+                <text x="54" y="110" font-size="28">A</text><text x="244" y="110" font-size="28">B</text>
+              </svg>
+              <div><h3>线段</h3><p>两个端点，长度确定，可记作 AB。</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-5" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 4：角</div>
+            <h2>角由两条有公共端点的射线组成</h2>
+            <p class="lead">公共端点叫角的顶点。写三个字母表示角时，顶点字母必须放在中间。</p>
+          </div>
+          <div class="panel angle-board">
+            <svg id="s5-angle" class="angle-svg" viewBox="0 0 620 430" style="height: 430px">
+              <defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f2a2c"/></marker></defs>
+              <line x1="120" y1="320" x2="520" y2="320" stroke="#1f2a2c" stroke-width="10" marker-end="url(#arrow2)"/>
+              <line x1="120" y1="320" x2="440" y2="110" stroke="#1f2a2c" stroke-width="10" marker-end="url(#arrow2)"/>
+              <path d="M205 320 A85 85 0 0 0 192 275" fill="none" stroke="#f5c84b" stroke-width="18"/>
+              <circle cx="120" cy="320" r="14" fill="#f5c84b" stroke="#1f2a2c" stroke-width="5"/>
+              <text x="92" y="370" font-size="34">O</text>
+              <text x="526" y="332" font-size="34">B</text>
+              <text x="448" y="110" font-size="34">A</text>
+              <text x="230" y="265" font-size="42">∠AOB</text>
+            </svg>
+            <div class="facts">
+              <div id="s5-notation" class="fact-card"><h3>表示角</h3><p>∠AOB 中，O 是顶点。</p></div>
+              <div id="s5-flat" class="formula lemon">平角 = 180°</div>
+              <div id="s5-full" class="formula soft">周角 = 360°</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-6" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 1：观察正方体</div>
+            <h2>从方向看面，不是看整个物体</h2>
+            <p class="lead">一个正方体纸盒放在桌面上，从正面看和从上面看分别是什么图形？</p>
+          </div>
+          <div class="example-card stack">
+            <div id="s6-problem" class="problem">正方体纸盒：正面？上面？</div>
+            <div class="steps">
+              <div id="s6-step-1" class="step"><div class="step-num">1</div><div class="step-text">正方体的每个面都是大小相同的正方形。</div></div>
+              <div id="s6-step-2" class="step"><div class="step-num">2</div><div class="step-text">从某个方向看，就是看那个方向上的一个面。</div></div>
+              <div id="s6-step-3" class="step"><div class="step-num">3</div><div class="step-text">正面和上面看到的都是正方形。</div></div>
+            </div>
+            <div id="s6-answer" class="formula lemon">答案：正方形，正方形</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-7" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 2：利用平角求角度</div>
+            <h2>先找 180°，再做减法</h2>
+            <p class="lead">A、O、B 在同一直线上，OC 把平角 AOB 分成两个角，已知 ∠AOC = 68°。</p>
+          </div>
+          <div class="check-card stack">
+            <svg id="s7-diagram" class="angle-svg" viewBox="0 0 760 330" style="height: 330px">
+              <line x1="90" y1="235" x2="670" y2="235" stroke="#1f2a2c" stroke-width="10"/>
+              <line x1="380" y1="235" x2="500" y2="76" stroke="#1f2a2c" stroke-width="10" marker-end="url(#arrow2)"/>
+              <path d="M304 235 A76 76 0 0 1 332 177" fill="none" stroke="#d8efe5" stroke-width="22"/>
+              <path d="M444 151 A104 104 0 0 1 476 104" fill="none" stroke="#f5c84b" stroke-width="18"/>
+              <circle cx="380" cy="235" r="14" fill="#f5c84b" stroke="#1f2a2c" stroke-width="5"/>
+              <text x="70" y="285" font-size="34">A</text>
+              <text x="363" y="285" font-size="34">O</text>
+              <text x="676" y="285" font-size="34">B</text>
+              <text x="510" y="82" font-size="34">C</text>
+              <text x="438" y="150" font-size="38">68°</text>
+              <text x="232" y="180" font-size="38">?</text>
+            </svg>
+            <div id="s7-known" class="formula soft">∠AOB = 180°，∠AOC = 68°</div>
+            <div id="s7-calc" class="formula">∠COB = 180° - 68° = 112°</div>
+            <div id="s7-answer" class="formula lemon">答案：∠COB = 112°</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-8" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">本章易错点</div>
+            <h2>这三个地方要慢一点</h2>
+            <p class="lead">几何题最怕看图太快。先把图形类型、端点、角度关系标清楚，再计算。</p>
+          </div>
+          <div class="panel">
+            <div class="mistake-list">
+              <div id="s8-m1" class="mistake-row"><div class="mistake-dot">1</div><div>把整个立体图形和看到的平面形状混在一起。</div></div>
+              <div id="s8-m2" class="mistake-row"><div class="mistake-dot">2</div><div>表示射线时，忘记端点要写在前面。</div></div>
+              <div id="s8-m3" class="mistake-row"><div class="mistake-dot">3</div><div>角度算出来了，却漏写单位“°”。</div></div>
+            </div>
+            <div id="s8-check" class="warning" style="margin-top: 22px">做题前先标：图形类型、端点、角度关系。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-9" class="scene">
+        <span class="math-mark" style="left: 200px; top: 110px">∠</span>
+        <div class="scene-content">
+          <div class="kicker">练</div>
+          <h2>几何图形初步：观察、表达、计算</h2>
+          <p class="lead">回到软件里完成第四章单元小测，检查自己能不能把图形信息读清楚。</p>
+          <div class="roadmap">
+            <div class="road-step"><div class="num">1</div><h3>识图形</h3><p>立体还是平面。</p></div>
+            <div class="road-step"><div class="num">2</div><h3>抓端点</h3><p>直线、射线、线段。</p></div>
+            <div class="road-step"><div class="num">3</div><h3>认角</h3><p>顶点写中间。</p></div>
+            <div class="road-step"><div class="num">4</div><h3>计算</h3><p>用 180° 和 360°。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <audio id="narration" class="clip" data-start="0" data-duration="227.541" data-track-index="2" src="assets/narration.wav" data-volume="1"></audio>
+      <div id="cap-1" class="caption clip" data-start="0.000" data-duration="6.028" data-track-index="3">这一节学习：七年级上册第四章，几何图形初步。</div>
+      <div id="cap-2" class="caption clip" data-start="6.168" data-duration="8.739" data-track-index="3">从生活物体出发，认识图形、线和角。</div>
+      <div id="cap-3" class="caption clip" data-start="15.047" data-duration="10.828" data-track-index="3">主线：看空间和平面，抓端点，找角度关系。</div>
+      <div id="cap-4" class="caption clip" data-start="26.275" data-duration="7.303" data-track-index="3">立体图形：占有空间，能看出长宽高。</div>
+      <div id="cap-5" class="caption clip" data-start="33.719" data-duration="14.423" data-track-index="3">长方体、正方体、圆柱、圆锥、球；长方形、正方形、三角形、圆。</div>
+      <div id="cap-6" class="caption clip" data-start="48.282" data-duration="5.461" data-track-index="3">先分清：整个物体，还是表面的形状。</div>
+      <div id="cap-7" class="caption clip" data-start="54.143" data-duration="5.865" data-track-index="3">从不同方向观察，看到的平面形状可能不同。</div>
+      <div id="cap-8" class="caption clip" data-start="60.148" data-duration="8.978" data-track-index="3">正方体：从正面和上面看，都可以是正方形。</div>
+      <div id="cap-9" class="caption clip" data-start="69.267" data-duration="5.540" data-track-index="3">关键：看某个方向看到的面。</div>
+      <div id="cap-10" class="caption clip" data-start="75.207" data-duration="7.455" data-track-index="3">直线、射线、线段：先看端点个数。</div>
+      <div id="cap-11" class="caption clip" data-start="82.801" data-duration="3.628" data-track-index="3">直线：没有端点，向两端无限延伸。</div>
+      <div id="cap-12" class="caption clip" data-start="86.570" data-duration="4.582" data-track-index="3">射线：一个端点，向一端无限延伸。</div>
+      <div id="cap-13" class="caption clip" data-start="91.292" data-duration="8.587" data-track-index="3">线段：两个端点，长度确定，可记作 AB。</div>
+      <div id="cap-14" class="caption clip" data-start="100.279" data-duration="8.575" data-track-index="3">角：两条有公共端点的射线组成，公共端点叫顶点。</div>
+      <div id="cap-15" class="caption clip" data-start="108.994" data-duration="5.858" data-track-index="3">∠AOB 中，O 是顶点，必须写在中间。</div>
+      <div id="cap-16" class="caption clip" data-start="114.992" data-duration="6.245" data-track-index="3">平角 = 180°，周角 = 360°。</div>
+      <div id="cap-17" class="caption clip" data-start="121.636" data-duration="7.276" data-track-index="3">例题 1：正方体从正面和上面看，分别是什么图形？</div>
+      <div id="cap-18" class="caption clip" data-start="129.052" data-duration="8.015" data-track-index="3">正方体每个面都是正方形；观察方向决定看到哪个面。</div>
+      <div id="cap-19" class="caption clip" data-start="137.207" data-duration="3.701" data-track-index="3">结论：正面和上面看到的都是正方形。</div>
+      <div id="cap-20" class="caption clip" data-start="141.309" data-duration="9.061" data-track-index="3">例题 2：A、O、B 在同一直线上，OC 分平角 AOB。</div>
+      <div id="cap-21" class="caption clip" data-start="150.510" data-duration="5.859" data-track-index="3">已知 ∠AOC = 68°，求 ∠COB。</div>
+      <div id="cap-22" class="caption clip" data-start="156.509" data-duration="11.625" data-track-index="3">∠COB = 180° - 68° = 112°。</div>
+      <div id="cap-23" class="caption clip" data-start="168.274" data-duration="7.061" data-track-index="3">答案：∠COB = 112°，不要漏写单位。</div>
+      <div id="cap-24" class="caption clip" data-start="175.734" data-duration="7.537" data-track-index="3">易错点 1：混淆立体图形和看到的平面形状。</div>
+      <div id="cap-25" class="caption clip" data-start="183.412" data-duration="9.857" data-track-index="3">易错点 2：射线端点写错。易错点 3：角度漏单位。</div>
+      <div id="cap-26" class="caption clip" data-start="193.408" data-duration="6.896" data-track-index="3">做题前先标：图形类型、端点、角度关系。</div>
+      <div id="cap-27" class="caption clip" data-start="200.704" data-duration="7.308" data-track-index="3">总结：几何图形初步，核心是观察和表达。</div>
+      <div id="cap-28" class="caption clip" data-start="208.152" data-duration="11.225" data-track-index="3">会识图、会表示线和角、会用 180° 和 360° 计算。</div>
+      <div id="cap-29" class="caption clip" data-start="219.518" data-duration="7.223" data-track-index="3">回到软件里完成第四章单元小测。</div>
+      <div id="wipe-1" class="wipe"></div>
+      <div id="wipe-2" class="wipe"></div>
+      <div id="wipe-3" class="wipe"></div>
+      <div id="wipe-4" class="wipe"></div>
+      <div id="wipe-5" class="wipe"></div>
+      <div id="wipe-6" class="wipe"></div>
+      <div id="wipe-7" class="wipe"></div>
+      <div id="wipe-8" class="wipe"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      gsap.set(".caption", { xPercent: -50, opacity: 0 });
+      const sceneStarts = {
+        "scene-1": 0,
+        "scene-2": 26.275,
+        "scene-3": 54.143,
+        "scene-4": 75.207,
+        "scene-5": 100.279,
+        "scene-6": 121.636,
+        "scene-7": 141.309,
+        "scene-8": 175.734,
+        "scene-9": 200.704
+};
+      const segmentStarts = {
+        "seg-1": 0,
+        "seg-2": 6.168,
+        "seg-3": 15.047,
+        "seg-4": 26.275,
+        "seg-5": 33.719,
+        "seg-6": 48.282,
+        "seg-7": 54.143,
+        "seg-8": 60.148,
+        "seg-9": 69.267,
+        "seg-10": 75.207,
+        "seg-11": 82.801,
+        "seg-12": 86.57,
+        "seg-13": 91.292,
+        "seg-14": 100.279,
+        "seg-15": 108.994,
+        "seg-16": 114.992,
+        "seg-17": 121.636,
+        "seg-18": 129.052,
+        "seg-19": 137.207,
+        "seg-20": 141.309,
+        "seg-21": 150.51,
+        "seg-22": 156.509,
+        "seg-23": 168.274,
+        "seg-24": 175.734,
+        "seg-25": 183.412,
+        "seg-26": 193.408,
+        "seg-27": 200.704,
+        "seg-28": 208.152,
+        "seg-29": 219.518
+};
+      const captionTimings = [
+        {
+                "id": "#cap-1",
+                "start": 0,
+                "end": 6.028
+        },
+        {
+                "id": "#cap-2",
+                "start": 6.168,
+                "end": 14.907
+        },
+        {
+                "id": "#cap-3",
+                "start": 15.047,
+                "end": 25.875
+        },
+        {
+                "id": "#cap-4",
+                "start": 26.275,
+                "end": 33.579
+        },
+        {
+                "id": "#cap-5",
+                "start": 33.719,
+                "end": 48.142
+        },
+        {
+                "id": "#cap-6",
+                "start": 48.282,
+                "end": 53.743
+        },
+        {
+                "id": "#cap-7",
+                "start": 54.143,
+                "end": 60.008
+        },
+        {
+                "id": "#cap-8",
+                "start": 60.148,
+                "end": 69.127
+        },
+        {
+                "id": "#cap-9",
+                "start": 69.267,
+                "end": 74.807
+        },
+        {
+                "id": "#cap-10",
+                "start": 75.207,
+                "end": 82.661
+        },
+        {
+                "id": "#cap-11",
+                "start": 82.801,
+                "end": 86.43
+        },
+        {
+                "id": "#cap-12",
+                "start": 86.57,
+                "end": 91.152
+        },
+        {
+                "id": "#cap-13",
+                "start": 91.292,
+                "end": 99.879
+        },
+        {
+                "id": "#cap-14",
+                "start": 100.279,
+                "end": 108.854
+        },
+        {
+                "id": "#cap-15",
+                "start": 108.994,
+                "end": 114.852
+        },
+        {
+                "id": "#cap-16",
+                "start": 114.992,
+                "end": 121.236
+        },
+        {
+                "id": "#cap-17",
+                "start": 121.636,
+                "end": 128.912
+        },
+        {
+                "id": "#cap-18",
+                "start": 129.052,
+                "end": 137.067
+        },
+        {
+                "id": "#cap-19",
+                "start": 137.207,
+                "end": 140.909
+        },
+        {
+                "id": "#cap-20",
+                "start": 141.309,
+                "end": 150.37
+        },
+        {
+                "id": "#cap-21",
+                "start": 150.51,
+                "end": 156.369
+        },
+        {
+                "id": "#cap-22",
+                "start": 156.509,
+                "end": 168.134
+        },
+        {
+                "id": "#cap-23",
+                "start": 168.274,
+                "end": 175.334
+        },
+        {
+                "id": "#cap-24",
+                "start": 175.734,
+                "end": 183.272
+        },
+        {
+                "id": "#cap-25",
+                "start": 183.412,
+                "end": 193.268
+        },
+        {
+                "id": "#cap-26",
+                "start": 193.408,
+                "end": 200.304
+        },
+        {
+                "id": "#cap-27",
+                "start": 200.704,
+                "end": 208.012
+        },
+        {
+                "id": "#cap-28",
+                "start": 208.152,
+                "end": 219.378
+        },
+        {
+                "id": "#cap-29",
+                "start": 219.518,
+                "end": 226.741
+        }
+];
+      const rootDuration = 227.7;
+      const ambientRepeatA = Math.max(0, Math.ceil(rootDuration / 3) - 1);
+      const ambientRepeatB = Math.max(0, Math.ceil(rootDuration / 3.4) - 1);
+
+      tl.set(".scene", { opacity: 0, visibility: "hidden" }, 0);
+      tl.set("#scene-1", { opacity: 1, visibility: "visible" }, 0);
+      tl.set(".wipe", { xPercent: -115 }, 0);
+      tl.to(".math-mark", { y: -18, rotation: 2, duration: 3, ease: "sine.inOut", repeat: ambientRepeatA, yoyo: true }, 0);
+      tl.to(".blob", { y: 16, x: -12, duration: 3.4, ease: "sine.inOut", repeat: ambientRepeatB, yoyo: true }, 0);
+
+      function fromIfPresent(selector, vars, at) {
+        const targets = gsap.utils.toArray(selector);
+        if (targets.length > 0 && Number.isFinite(at)) tl.from(targets, vars, at);
+      }
+      function enterScene(id, at) {
+        fromIfPresent(id + " .kicker", { opacity: 0, y: 28, duration: 0.45, ease: "power3.out" }, at + 0.18);
+        fromIfPresent(id + " h1, " + id + " h2", { opacity: 0, y: 52, duration: 0.62, ease: "power2.out" }, at + 0.40);
+        fromIfPresent(id + " .lead", { opacity: 0, y: 34, duration: 0.50, ease: "back.out(1.35)" }, at + 0.76);
+        fromIfPresent(id + " .panel, " + id + " .example-card, " + id + " .check-card, " + id + " .chapter-mark", { opacity: 0, x: 62, y: 18, duration: 0.66, stagger: 0.08, ease: "power3.out" }, at + 0.56);
+      }
+      for (const [id, start] of Object.entries(sceneStarts)) enterScene("#" + id, start);
+
+      fromIfPresent("#s1-card-1, #s1-card-2, #s1-focus", { opacity: 0, y: 24, duration: 0.42, stagger: 0.14, ease: "power2.out" }, segmentStarts["seg-2"]);
+      fromIfPresent("#s2-solid-1, #s2-solid-2, #s2-solid-3", { opacity: 0, y: 24, duration: 0.42, stagger: 0.12, ease: "power3.out" }, segmentStarts["seg-4"]);
+      fromIfPresent("#s2-plane-1, #s2-plane-2, #s2-plane-3", { opacity: 0, y: 24, duration: 0.42, stagger: 0.12, ease: "power3.out" }, segmentStarts["seg-5"]);
+      fromIfPresent("#s2-warning", { opacity: 0, y: 22, duration: 0.38, ease: "power3.out" }, segmentStarts["seg-6"]);
+      fromIfPresent("#s3-cube", { opacity: 0, scale: 0.92, duration: 0.55, ease: "power2.out" }, segmentStarts["seg-7"]);
+      fromIfPresent("#s3-front, #s3-top", { opacity: 0, x: 34, duration: 0.42, stagger: 0.15, ease: "power3.out" }, segmentStarts["seg-8"]);
+      fromIfPresent("#s3-note", { opacity: 0, y: 24, duration: 0.44, ease: "back.out(1.25)" }, segmentStarts["seg-9"]);
+      fromIfPresent("#s4-line", { opacity: 0, x: 36, duration: 0.45, ease: "power3.out" }, segmentStarts["seg-11"]);
+      fromIfPresent("#s4-ray", { opacity: 0, x: 36, duration: 0.45, ease: "power3.out" }, segmentStarts["seg-12"]);
+      fromIfPresent("#s4-segment", { opacity: 0, x: 36, duration: 0.45, ease: "power3.out" }, segmentStarts["seg-13"]);
+      fromIfPresent("#s5-angle", { opacity: 0, scale: 0.94, duration: 0.52, ease: "power2.out" }, segmentStarts["seg-14"]);
+      fromIfPresent("#s5-notation", { opacity: 0, x: 30, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-15"]);
+      fromIfPresent("#s5-flat, #s5-full", { opacity: 0, y: 24, duration: 0.42, stagger: 0.16, ease: "power3.out" }, segmentStarts["seg-16"]);
+      fromIfPresent("#s6-problem", { opacity: 0, y: 24, duration: 0.40, ease: "power2.out" }, segmentStarts["seg-17"]);
+      fromIfPresent("#s6-step-1, #s6-step-2", { opacity: 0, x: 34, duration: 0.40, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-18"]);
+      fromIfPresent("#s6-step-3, #s6-answer", { opacity: 0, x: 34, duration: 0.40, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-19"]);
+      fromIfPresent("#s7-diagram", { opacity: 0, scale: 0.94, duration: 0.50, ease: "power2.out" }, segmentStarts["seg-20"]);
+      fromIfPresent("#s7-known", { opacity: 0, y: 24, duration: 0.40, ease: "power2.out" }, segmentStarts["seg-21"]);
+      fromIfPresent("#s7-calc", { opacity: 0, y: 24, duration: 0.44, ease: "power3.out" }, segmentStarts["seg-22"]);
+      fromIfPresent("#s7-answer", { opacity: 0, y: 24, duration: 0.44, ease: "back.out(1.25)" }, segmentStarts["seg-23"]);
+      fromIfPresent("#s8-m1", { opacity: 0, x: 34, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-24"]);
+      fromIfPresent("#s8-m2, #s8-m3", { opacity: 0, x: 34, duration: 0.42, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-25"]);
+      fromIfPresent("#s8-check", { opacity: 0, y: 24, duration: 0.44, ease: "back.out(1.25)" }, segmentStarts["seg-26"]);
+      fromIfPresent("#scene-9 .road-step", { opacity: 0, y: 28, duration: 0.44, stagger: 0.10, ease: "power3.out" }, sceneStarts["scene-9"] + 1.0);
+
+      Object.entries(sceneStarts).slice(1).forEach(function ([id, start], index) {
+        const prevId = "#scene-" + (index + 1);
+        tl.set("#" + id, { opacity: 1, visibility: "visible" }, Math.max(0, start - 0.02));
+        tl.set(prevId, { opacity: 0, visibility: "hidden" }, start + 0.08);
+        tl.fromTo("#wipe-" + (index + 1), { xPercent: -115 }, { xPercent: 115, duration: 0.70, ease: "sine.inOut" }, Math.max(0, start - 0.35));
+      });
+
+      captionTimings.forEach(function (group) {
+        tl.fromTo(group.id, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, group.start + 0.01);
+        tl.to(group.id, { opacity: 0, y: 10, duration: 0.12, ease: "power2.in" }, Math.max(group.start + 0.18, group.end - 0.12));
+        tl.set(group.id, { opacity: 0 }, group.end);
+      });
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

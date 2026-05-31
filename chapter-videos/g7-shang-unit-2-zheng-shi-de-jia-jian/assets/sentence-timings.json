@@ -1,0 +1,368 @@
+{
+  "rootDuration": 211.8,
+  "audioDuration": 211.64,
+  "segments": [
+    {
+      "scene": 1,
+      "text": "同学你好，这一节我们学习七年级上册第二章，整式的加减。",
+      "caption": "这一节学习：七年级上册第二章，整式的加减。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/01.wav",
+      "duration": 5.2,
+      "start": 0,
+      "end": 5.2
+    },
+    {
+      "scene": 1,
+      "text": "这一章主要解决两件事。",
+      "caption": "这一章主要解决两件事。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/02.wav",
+      "duration": 1.76,
+      "start": 5.38,
+      "end": 7.14
+    },
+    {
+      "scene": 1,
+      "text": "第一，什么叫同类项，哪些项能合并。",
+      "caption": "第一，什么叫同类项，哪些项能合并。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/03.wav",
+      "duration": 5.52,
+      "start": 7.319999999999999,
+      "end": 12.84
+    },
+    {
+      "scene": 1,
+      "text": "第二，遇到括号以后，怎样按顺序完成整式的加减化简。",
+      "caption": "第二，遇到括号以后，怎样按顺序完成整式的加减化简。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/04.wav",
+      "duration": 8.64,
+      "start": 13.02,
+      "end": 21.66
+    },
+    {
+      "scene": 2,
+      "text": "先看同类项。",
+      "caption": "先看同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/05.wav",
+      "duration": 2.32,
+      "start": 22.080000000000002,
+      "end": 24.400000000000002
+    },
+    {
+      "scene": 2,
+      "text": "判断同类项的时候，不要先看系数，要先看字母部分是不是完全一样。",
+      "caption": "判断同类项：先看字母部分是不是完全一样。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/06.wav",
+      "duration": 8.08,
+      "start": 24.580000000000002,
+      "end": 32.660000000000004
+    },
+    {
+      "scene": 2,
+      "text": "比如三 x 和负五 x，是同类项；二 a 平方 b 和负七 a 平方 b，也是同类项。",
+      "caption": "3x 和 -5x 是同类项；2a²b 和 -7a²b 也是同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/07.wav",
+      "duration": 10.4,
+      "start": 32.84,
+      "end": 43.24
+    },
+    {
+      "scene": 2,
+      "text": "因为它们的字母相同，而且相同字母的指数也一样。",
+      "caption": "因为字母相同，相同字母的指数也一样。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/08.wav",
+      "duration": 4.48,
+      "start": 43.42,
+      "end": 47.900000000000006
+    },
+    {
+      "scene": 3,
+      "text": "但如果字母不同，或者指数不同，就不是同类项。",
+      "caption": "字母不同，或者指数不同，就不是同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/09.wav",
+      "duration": 4.24,
+      "start": 48.32000000000001,
+      "end": 52.56000000000001
+    },
+    {
+      "scene": 3,
+      "text": "像四 a b 和四 a，不是同类项；x 平方和 x 立方，也不是同类项。",
+      "caption": "4ab 和 4a 不是同类项；x² 和 x³ 也不是同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/10.wav",
+      "duration": 6.32,
+      "start": 52.74000000000001,
+      "end": 59.06000000000001
+    },
+    {
+      "scene": 3,
+      "text": "这个地方最容易丢分，因为很多同学看到有同一个字母，就急着合并。",
+      "caption": "最容易丢分：看到同一个字母，就急着合并。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/11.wav",
+      "duration": 7.2,
+      "start": 59.24000000000001,
+      "end": 66.44000000000001
+    },
+    {
+      "scene": 4,
+      "text": "接下来记住合并规则。",
+      "caption": "接下来记住合并规则。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/12.wav",
+      "duration": 2.24,
+      "start": 66.86000000000001,
+      "end": 69.10000000000001
+    },
+    {
+      "scene": 4,
+      "text": "合并同类项时，只把系数相加减，字母和字母的指数都保持不变。",
+      "caption": "合并同类项：只合并系数，字母和指数保持不变。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/13.wav",
+      "duration": 5.92,
+      "start": 69.28000000000002,
+      "end": 75.20000000000002
+    },
+    {
+      "scene": 4,
+      "text": "比如三 x 加五 x，结果是八 x；七 a 平方 b 减二 a 平方 b，结果是五 a 平方 b。",
+      "caption": "3x + 5x = 8x；7a²b - 2a²b = 5a²b。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/14.wav",
+      "duration": 7.2,
+      "start": 75.38000000000002,
+      "end": 82.58000000000003
+    },
+    {
+      "scene": 4,
+      "text": "不是同类项的式子，不能硬合并。",
+      "caption": "不是同类项，不能硬合并。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/15.wav",
+      "duration": 3.04,
+      "start": 82.76000000000003,
+      "end": 85.80000000000004
+    },
+    {
+      "scene": 5,
+      "text": "再看整式的加减。",
+      "caption": "再看整式的加减。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/16.wav",
+      "duration": 3.44,
+      "start": 86.22000000000004,
+      "end": 89.66000000000004
+    },
+    {
+      "scene": 5,
+      "text": "做这类题，最稳的顺序是先去括号，再合并同类项。",
+      "caption": "最稳顺序：先去括号，再合并同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/17.wav",
+      "duration": 6.72,
+      "start": 89.84000000000005,
+      "end": 96.56000000000004
+    },
+    {
+      "scene": 5,
+      "text": "括号前如果是加号，去括号后，括号里的每一项符号都不变。",
+      "caption": "括号前是加号：括号内各项符号不变。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/18.wav",
+      "duration": 5.6,
+      "start": 96.74000000000005,
+      "end": 102.34000000000005
+    },
+    {
+      "scene": 5,
+      "text": "括号前如果是减号，去括号后，括号里的每一项都要变号，而且是一项一项都变，不能只改第一项。",
+      "caption": "括号前是减号：每一项都要变号，不能只改第一项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/19.wav",
+      "duration": 10.24,
+      "start": 102.52000000000005,
+      "end": 112.76000000000005
+    },
+    {
+      "scene": 6,
+      "text": "看第一个例题。",
+      "caption": "看第一个例题。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/20.wav",
+      "duration": 1.36,
+      "start": 113.18000000000005,
+      "end": 114.54000000000005
+    },
+    {
+      "scene": 6,
+      "text": "化简四 x 加七减二 x 加三。",
+      "caption": "化简：4x + 7 - 2x + 3。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/21.wav",
+      "duration": 4.24,
+      "start": 114.72000000000006,
+      "end": 118.96000000000005
+    },
+    {
+      "scene": 6,
+      "text": "先找同类项，四 x 和负二 x 是同类项，七和三也是同类项。",
+      "caption": "4x 和 -2x 是同类项，7 和 3 也是同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/22.wav",
+      "duration": 5.92,
+      "start": 119.14000000000006,
+      "end": 125.06000000000006
+    },
+    {
+      "scene": 6,
+      "text": "分别合并以后，四 x 减二 x 等于二 x，七加三等于十，所以原式化简为二 x 加十。",
+      "caption": "4x - 2x = 2x，7 + 3 = 10，所以结果是 2x + 10。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/23.wav",
+      "duration": 7.84,
+      "start": 125.24000000000007,
+      "end": 133.08000000000007
+    },
+    {
+      "scene": 7,
+      "text": "再看第二个例题。",
+      "caption": "再看第二个例题。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/24.wav",
+      "duration": 1.36,
+      "start": 133.50000000000006,
+      "end": 134.86000000000007
+    },
+    {
+      "scene": 7,
+      "text": "化简三 a 减括号二 a 减五括号，再加四。",
+      "caption": "化简：3a - (2a - 5) + 4。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/25.wav",
+      "duration": 5.52,
+      "start": 135.04000000000008,
+      "end": 140.5600000000001
+    },
+    {
+      "scene": 7,
+      "text": "先去括号，注意括号前是减号，所以括号里的二 a 要变成负二 a，负五要变成正五。",
+      "caption": "括号前是减号：2a 变成 -2a，-5 变成 +5。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/26.wav",
+      "duration": 9.68,
+      "start": 140.7400000000001,
+      "end": 150.4200000000001
+    },
+    {
+      "scene": 7,
+      "text": "原式就变成三 a 减二 a 加五加四。",
+      "caption": "原式变成：3a - 2a + 5 + 4。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/27.wav",
+      "duration": 6.48,
+      "start": 150.6000000000001,
+      "end": 157.0800000000001
+    },
+    {
+      "scene": 7,
+      "text": "接着合并同类项，三 a 减二 a 等于 a，五加四等于九，所以结果是 a 加九。",
+      "caption": "3a - 2a = a，5 + 4 = 9，所以结果是 a + 9。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/28.wav",
+      "duration": 13.2,
+      "start": 157.2600000000001,
+      "end": 170.4600000000001
+    },
+    {
+      "scene": 8,
+      "text": "这一章最关键的失分点有两个。",
+      "caption": "这一章最关键的失分点有两个。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/29.wav",
+      "duration": 6,
+      "start": 170.88000000000008,
+      "end": 176.88000000000008
+    },
+    {
+      "scene": 8,
+      "text": "第一，把不是同类项的项硬合并。",
+      "caption": "第一，把不是同类项的项硬合并。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/30.wav",
+      "duration": 2.88,
+      "start": 177.0600000000001,
+      "end": 179.94000000000008
+    },
+    {
+      "scene": 8,
+      "text": "第二，去括号时漏变号，尤其漏掉后面的常数项。",
+      "caption": "第二，去括号时漏变号，尤其漏掉后面的常数项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/31.wav",
+      "duration": 5.84,
+      "start": 180.1200000000001,
+      "end": 185.9600000000001
+    },
+    {
+      "scene": 8,
+      "text": "做题时记住一句话：先看字母部分，再看括号前符号，最后合并同类项。",
+      "caption": "口诀：先看字母部分，再看括号前符号，最后合并同类项。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/32.wav",
+      "duration": 6.32,
+      "start": 186.1400000000001,
+      "end": 192.4600000000001
+    },
+    {
+      "scene": 9,
+      "text": "学完这一章，你要能快速判断同类项，能正确去括号，也能把整式一步一步化简。",
+      "caption": "学完这一章：会判断同类项，会去括号，会一步一步化简整式。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/33.wav",
+      "duration": 7.2,
+      "start": 192.88000000000008,
+      "end": 200.08000000000007
+    },
+    {
+      "scene": 9,
+      "text": "现在，回到软件里完成第二章单元小测，检查自己对整式加减的掌握情况。",
+      "caption": "回到软件里完成第二章单元小测。",
+      "file": "/Users/vic/Downloads/初中数学Ai教学/chapter-videos/g7-shang-unit-2-zheng-shi-de-jia-jian/assets/sentence-segments/34.wav",
+      "duration": 10.48,
+      "start": 200.26000000000008,
+      "end": 210.74000000000007
+    }
+  ],
+  "scenes": [
+    {
+      "scene": 1,
+      "start": 0,
+      "end": 21.66,
+      "duration": 22.080000000000002
+    },
+    {
+      "scene": 2,
+      "start": 22.080000000000002,
+      "end": 47.900000000000006,
+      "duration": 26.240000000000006
+    },
+    {
+      "scene": 3,
+      "start": 48.32000000000001,
+      "end": 66.44000000000001,
+      "duration": 18.540000000000006
+    },
+    {
+      "scene": 4,
+      "start": 66.86000000000001,
+      "end": 85.80000000000004,
+      "duration": 19.360000000000028
+    },
+    {
+      "scene": 5,
+      "start": 86.22000000000004,
+      "end": 112.76000000000005,
+      "duration": 26.960000000000008
+    },
+    {
+      "scene": 6,
+      "start": 113.18000000000005,
+      "end": 133.08000000000007,
+      "duration": 20.320000000000007
+    },
+    {
+      "scene": 7,
+      "start": 133.50000000000006,
+      "end": 170.4600000000001,
+      "duration": 37.380000000000024
+    },
+    {
+      "scene": 8,
+      "start": 170.88000000000008,
+      "end": 192.4600000000001,
+      "duration": 22
+    },
+    {
+      "scene": 9,
+      "start": 192.88000000000008,
+      "end": 210.74000000000007,
+      "duration": 18.91999999999993
+    }
+  ]
+}

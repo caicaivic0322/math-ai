@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f7f3e8;
+        color: #1f2a2c;
+        font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      [data-composition-id="main"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          linear-gradient(90deg, rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          #f7f3e8;
+        background-size: 64px 64px;
+      }
+      .clip { visibility: hidden; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background-color: #f7f3e8; opacity: 0; visibility: hidden; }
+      #scene-1 { opacity: 1; visibility: visible; }
+      .scene::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(216, 239, 229, 0.72), rgba(216, 239, 229, 0) 28%),
+          radial-gradient(circle at 84% 74%, rgba(245, 200, 75, 0.20), rgba(245, 200, 75, 0) 31%);
+        z-index: 0;
+      }
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 84px 116px 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 0.96fr 1.04fr;
+        align-items: center;
+        gap: 72px;
+      }
+      .kicker {
+        width: fit-content;
+        border: 2px solid rgba(31, 42, 44, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.78);
+        padding: 12px 22px;
+        color: #0d8b7d;
+        font-size: 25px;
+        font-weight: 900;
+      }
+      h1, h2 {
+        max-width: 1180px;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+      h1 { font-size: 110px; }
+      h2 { font-size: 82px; }
+      .lead {
+        max-width: 910px;
+        color: rgba(31, 42, 44, 0.72);
+        font-size: 34px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .highlight {
+        display: inline-block;
+        border-radius: 26px;
+        background: #f5c84b;
+        padding: 0 22px 8px;
+      }
+      .panel, .rule-card, .example-card, .quiz-card, .check-card {
+        border: 3px solid rgba(31, 42, 44, 0.14);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 15px 17px 0 rgba(31, 42, 44, 0.08);
+      }
+      .panel { padding: 42px; }
+      .chapter-mark {
+        width: 190px;
+        height: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid #1f2a2c;
+        border-radius: 42px;
+        background: #f5c84b;
+        box-shadow: 14px 16px 0 rgba(31, 42, 44, 0.12);
+        font-size: 82px;
+        font-weight: 900;
+      }
+      .formula {
+        border-radius: 24px;
+        background: #1f2a2c;
+        padding: 24px 32px;
+        color: #f7f3e8;
+        font-size: 54px;
+        font-weight: 900;
+        line-height: 1.24;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula.teal { background: #0d8b7d; }
+      .formula.coral { background: #ef6a5b; }
+      .formula.soft { background: #d8efe5; color: #1f2a2c; }
+      .formula.lemon { background: #f5c84b; color: #1f2a2c; }
+      #s4-formula { background: #f5c84b; color: #1f2a2c; }
+      #s3-good {
+        background: #d8efe5;
+        color: #1f2a2c;
+        border: 3px solid rgba(13, 139, 125, 0.30);
+      }
+      #s3-bad {
+        background: rgba(239, 106, 91, 0.18);
+        color: #1f2a2c;
+        border: 3px solid rgba(239, 106, 91, 0.34);
+      }
+      .stack { display: grid; gap: 20px; }
+      .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+      .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+      .mini-card {
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 2px solid rgba(31, 42, 44, 0.10);
+        padding: 24px;
+      }
+      .mini-card h3, .mini-card h4 {
+        color: #0d8b7d;
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 1.18;
+      }
+      .mini-card p {
+        margin-top: 14px;
+        font-size: 27px;
+        line-height: 1.42;
+        font-weight: 750;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #0d8b7d;
+        padding: 10px 18px;
+        color: #f7f3e8;
+        font-size: 24px;
+        font-weight: 900;
+      }
+      .warning {
+        border-radius: 22px;
+        background: rgba(239, 106, 91, 0.16);
+        border: 2px solid rgba(239, 106, 91, 0.34);
+        padding: 22px 26px;
+        color: #1f2a2c;
+        font-size: 30px;
+        line-height: 1.42;
+        font-weight: 850;
+      }
+      .balance {
+        display: grid;
+        grid-template-columns: 1fr 90px 1fr;
+        align-items: center;
+        gap: 22px;
+      }
+      .balance-side {
+        min-height: 184px;
+        border-radius: 26px;
+        background: #d8efe5;
+        border: 3px solid rgba(13, 139, 125, 0.28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        font-size: 50px;
+        font-weight: 900;
+      }
+      .equals {
+        width: 86px;
+        height: 86px;
+        border-radius: 999px;
+        background: #f5c84b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 54px;
+        font-weight: 900;
+      }
+      .criteria-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .criterion {
+        min-height: 130px;
+        border-radius: 22px;
+        background: rgba(216, 239, 229, 0.76);
+        border: 2px solid rgba(13, 139, 125, 0.20);
+        padding: 22px;
+      }
+      .criterion strong {
+        display: block;
+        color: #0d8b7d;
+        font-size: 29px;
+        font-weight: 900;
+      }
+      .criterion span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(31, 42, 44, 0.72);
+        font-size: 23px;
+        line-height: 1.34;
+        font-weight: 700;
+      }
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .road-step {
+        min-height: 188px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 3px solid rgba(31, 42, 44, 0.12);
+        padding: 24px;
+      }
+      .road-step .num {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #f5c84b;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .road-step h3 {
+        margin-top: 20px;
+        font-size: 34px;
+        line-height: 1.15;
+        font-weight: 900;
+      }
+      .road-step p {
+        margin-top: 12px;
+        color: rgba(31, 42, 44, 0.70);
+        font-size: 22px;
+        line-height: 1.34;
+        font-weight: 700;
+      }
+      .example-card, .quiz-card, .check-card { padding: 34px; }
+      .problem {
+        color: #0d8b7d;
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 1.34;
+      }
+      .steps { display: grid; gap: 16px; margin-top: 24px; }
+      .step {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 18px;
+        align-items: start;
+        border-radius: 20px;
+        background: rgba(216, 239, 229, 0.72);
+        padding: 17px 20px;
+      }
+      .step-num {
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f5c84b;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .step-text {
+        font-size: 28px;
+        line-height: 1.42;
+        font-weight: 760;
+      }
+      .mistake-list { display: grid; gap: 18px; margin-top: 24px; }
+      .mistake-row {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 20px;
+        font-size: 30px;
+        font-weight: 850;
+        line-height: 1.28;
+      }
+      .mistake-dot {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ef6a5b;
+        color: #f7f3e8;
+        font-weight: 900;
+      }
+      .caption {
+        position: absolute;
+        left: 50%;
+        bottom: 48px;
+        z-index: 30;
+        max-width: 1500px;
+        border: 2px solid rgba(31, 42, 44, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 250, 240, 0.94);
+        box-shadow: 10px 12px 0 rgba(31, 42, 44, 0.08);
+        padding: 18px 30px;
+        color: #1f2a2c;
+        font-size: 34px;
+        font-weight: 900;
+        line-height: 1.34;
+        text-align: center;
+      }
+      .math-mark {
+        position: absolute;
+        z-index: 1;
+        color: #0d8b7d;
+        font-size: 112px;
+        font-weight: 900;
+      }
+      .blob {
+        position: absolute;
+        z-index: 1;
+        width: 330px;
+        height: 188px;
+        border-radius: 48px;
+        background: #d8efe5;
+        opacity: 0.76;
+      }
+      .wipe {
+        position: absolute;
+        top: -10%;
+        left: -28%;
+        z-index: 22;
+        width: 156%;
+        height: 120%;
+        background:
+          linear-gradient(90deg, rgba(216, 239, 229, 0), #d8efe5 10%, #f7f3e8 52%, #f5c84b 88%, rgba(245, 200, 75, 0));
+        box-shadow: 0 0 70px rgba(13, 139, 125, 0.18);
+        clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="230.5" data-width="1920" data-height="1080">
+      <div id="scene-1" class="scene">
+        <span class="math-mark" style="left: 130px; top: 106px">x = ?</span>
+        <span class="math-mark" style="right: 138px; bottom: 138px">=</span>
+        <div class="blob" style="right: 250px; top: 145px"></div>
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">七年级上册 · 第三章</div>
+            <h1>一元一次方程 <span class="highlight">把问题写成等式</span></h1>
+            <p class="lead">本章主线：从实际问题中找等量关系，列出方程，再按步骤求解并检验。</p>
+          </div>
+          <div class="panel stack">
+            <div class="chapter-mark">方</div>
+            <div class="two-col">
+              <div id="s1-card-1" class="mini-card"><h3>文字问题</h3><p>先设未知数，再找等量关系。</p></div>
+              <div id="s1-card-2" class="mini-card"><h3>方程步骤</h3><p>列方程、解方程、代回检验。</p></div>
+            </div>
+            <div id="s1-focus" class="formula teal">方程 · 方程的解 · 解一元一次方程</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-2" class="scene">
+        <span class="math-mark" style="left: 150px; bottom: 150px">x + 5</span>
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 1：方程</div>
+            <h2>含有未知数的等式叫做方程</h2>
+            <p class="lead">判断时抓住两个条件：一是含有未知数，二是它必须是等式。</p>
+          </div>
+          <div class="panel stack">
+            <div id="s2-balance" class="balance">
+              <div class="balance-side">x + 5</div>
+              <div class="equals">=</div>
+              <div class="balance-side">12</div>
+            </div>
+            <div class="criteria-grid">
+              <div id="s2-c1" class="criterion"><strong>未知数</strong><span>用 x 表示还不知道的量。</span></div>
+              <div id="s2-c2" class="criterion"><strong>等式</strong><span>左右两边之间有等号。</span></div>
+              <div id="s2-c3" class="criterion"><strong>方程</strong><span>两个条件同时满足。</span></div>
+            </div>
+            <div id="s2-warning" class="warning">只有未知数还不够，不是等式就不是方程。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-3" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 2：一元一次</div>
+            <h2>一个未知数，次数是 1</h2>
+            <p class="lead">“一元”看未知数个数，“一次”看未知数的次数，两个条件都要满足。</p>
+          </div>
+          <div class="panel stack">
+            <div class="three-col">
+              <div id="s3-c1" class="mini-card"><h4>一元</h4><p>只含有一个未知数。</p></div>
+              <div id="s3-c2" class="mini-card"><h4>一次</h4><p>未知数的次数是 1。</p></div>
+              <div id="s3-c3" class="mini-card"><h4>方程</h4><p>仍然必须是等式。</p></div>
+            </div>
+            <div id="s3-good" class="formula teal">3x = 18　2x - 7 = 9</div>
+            <div id="s3-bad" class="formula coral">x + y = 10　x² = 9</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-4" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 3：方程的解</div>
+            <h2>让左右两边相等的值</h2>
+            <p class="lead">检验不是凭感觉看答案，而是把值代回原方程，左右两边分别算。</p>
+          </div>
+          <div class="check-card stack">
+            <div id="s4-formula" class="formula teal">x + 5 = 12，检验 x = 7</div>
+            <div id="s4-balance" class="balance">
+              <div class="balance-side">左边：7 + 5 = 12</div>
+              <div class="equals">=</div>
+              <div class="balance-side">右边：12</div>
+            </div>
+            <div id="s4-result" class="formula lemon">左右相等，所以 x = 7 是方程的解</div>
+            <div id="s4-warning" class="warning">代回原方程，能发现漏号、算错和列错式子。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-5" class="scene">
+        <span class="math-mark" style="right: 150px; top: 100px">x = a</span>
+        <div class="scene-content">
+          <div class="kicker">解一元一次方程</div>
+          <h2>目标：把方程变形成 x = a</h2>
+          <div class="roadmap">
+            <div id="s5-r1" class="road-step"><div class="num">1</div><h3>去括号</h3><p>有括号时，先把括号处理清楚。</p></div>
+            <div id="s5-r2" class="road-step"><div class="num">2</div><h3>移项</h3><p>把含未知数的项和常数项分开。</p></div>
+            <div id="s5-r3" class="road-step"><div class="num">3</div><h3>合并同类项</h3><p>把方程化成 ax = b。</p></div>
+            <div id="s5-r4" class="road-step"><div class="num">4</div><h3>系数化为 1</h3><p>两边同除以未知数的系数。</p></div>
+          </div>
+          <div id="s5-rule" class="formula soft">等式性质：两边同时做同样运算，等式仍然成立</div>
+        </div>
+      </div>
+
+      <div id="scene-6" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 1：文具费用</div>
+            <h2>先设未知数，再列方程</h2>
+            <p class="lead">练习本 3 元一本，又买一支 5 元的笔，总共花 20 元。求买了几本练习本。</p>
+          </div>
+          <div class="example-card">
+            <div id="s6-problem" class="problem">设买了 x 本，练习本费用是 3x 元</div>
+            <div class="steps">
+              <div id="s6-step-1" class="step"><div class="step-num">1</div><div class="step-text">等量关系：练习本费用 + 笔的费用 = 总费用。</div></div>
+              <div id="s6-step-2" class="step"><div class="step-num">2</div><div class="step-text">列方程：3x + 5 = 20。</div></div>
+              <div id="s6-step-3" class="step"><div class="step-num">3</div><div class="step-text">移项：3x = 15；两边除以 3，x = 5。</div></div>
+              <div id="s6-step-4" class="step"><div class="step-num">4</div><div class="step-text">检验：3×5+5=20，所以答案是 5 本。</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-7" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 2：未知数在两边</div>
+            <h2>移项要变号</h2>
+            <p class="lead">左右两边座位数相同，把含 x 的项放到一边，常数项放到另一边。</p>
+          </div>
+          <div class="example-card">
+            <div id="s7-problem" class="problem">左边：2x + 4　右边：x + 16</div>
+            <div class="steps">
+              <div id="s7-step-1" class="step"><div class="step-num">1</div><div class="step-text">列方程：2x + 4 = x + 16。</div></div>
+              <div id="s7-step-2" class="step"><div class="step-num">2</div><div class="step-text">右边的 x 移到左边，左边的 4 移到右边。</div></div>
+              <div id="s7-step-3" class="step"><div class="step-num">3</div><div class="step-text">移项变号：2x - x = 16 - 4。</div></div>
+              <div id="s7-step-4" class="step"><div class="step-num">4</div><div class="step-text">合并后得到 x = 12。</div></div>
+            </div>
+            <div id="s7-warning" class="warning" style="margin-top: 22px">移项不是搬位置，是两边同时加减后的简写，所以符号要改变。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-8" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">本章易错点</div>
+            <h2>这三个地方要慢一点</h2>
+            <p class="lead">方程题的计算通常不难，真正容易错的是条件判断、符号变化和最后的检验。</p>
+          </div>
+          <div class="quiz-card">
+            <div class="mistake-list">
+              <div id="s8-m1" class="mistake-row"><div class="mistake-dot">1</div><div>不是等式的式子，也误当成方程。</div></div>
+              <div id="s8-m2" class="mistake-row"><div class="mistake-dot">2</div><div>忘记检查未知数个数和未知数次数。</div></div>
+              <div id="s8-m3" class="mistake-row"><div class="mistake-dot">3</div><div>移项只移动位置，却忘记变号。</div></div>
+            </div>
+            <div id="s8-check" class="formula" style="margin-top: 28px">解完代回原方程检验</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-9" class="scene">
+        <div class="scene-content" style="align-items: center; text-align: center">
+          <div class="chapter-mark">练</div>
+          <h1>找等量关系 <span class="highlight">列方程，求解，再检验</span></h1>
+          <p class="lead" style="max-width: 1040px">回到软件里完成第三章单元小测，检查自己能不能把方程用起来。</p>
+          <div class="roadmap" style="width: 1280px">
+            <div class="road-step"><div class="num">1</div><h3>设未知数</h3><p>用 x 表示未知量。</p></div>
+            <div class="road-step"><div class="num">2</div><h3>列方程</h3><p>抓住等量关系。</p></div>
+            <div class="road-step"><div class="num">3</div><h3>求解</h3><p>按步骤变形成 x = a。</p></div>
+            <div class="road-step"><div class="num">4</div><h3>检验</h3><p>代回原方程。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-1" class="caption clip" data-start="0.000" data-duration="4.903" data-track-index="3">这一节学习：七年级上册第三章，一元一次方程。</div>
+      <div id="cap-2" class="caption clip" data-start="5.043" data-duration="5.618" data-track-index="3">把文字问题翻译成方程，再一步一步解出来。</div>
+      <div id="cap-3" class="caption clip" data-start="10.801" data-duration="8.179" data-track-index="3">本章重点：方程、方程的解、解一元一次方程。</div>
+      <div id="cap-4" class="caption clip" data-start="19.381" data-duration="3.858" data-track-index="3">先看方程：含有未知数的等式叫做方程。</div>
+      <div id="cap-5" class="caption clip" data-start="23.379" data-duration="6.728" data-track-index="3">一个数加 5 等于 12，可以写成 x + 5 = 12。</div>
+      <div id="cap-6" class="caption clip" data-start="30.247" data-duration="4.898" data-track-index="3">只有未知数还不够，它还必须是等式。</div>
+      <div id="cap-7" class="caption clip" data-start="35.544" data-duration="9.696" data-track-index="3">一元一次方程：一个未知数，次数是 1。</div>
+      <div id="cap-8" class="caption clip" data-start="45.381" data-duration="5.865" data-track-index="3">3x = 18 和 2x - 7 = 9 都是一元一次方程。</div>
+      <div id="cap-9" class="caption clip" data-start="51.386" data-duration="8.659" data-track-index="3">x + y = 10 和 x² = 9 都不符合。</div>
+      <div id="cap-10" class="caption clip" data-start="60.445" data-duration="4.578" data-track-index="3">方程的解：让左右两边相等的未知数的值。</div>
+      <div id="cap-11" class="caption clip" data-start="65.163" data-duration="5.141" data-track-index="3">检验要代回原方程，左右两边分别计算。</div>
+      <div id="cap-12" class="caption clip" data-start="70.444" data-duration="13.142" data-track-index="3">x = 7 时，7 + 5 = 12，左右相等。</div>
+      <div id="cap-13" class="caption clip" data-start="83.726" data-duration="5.305" data-track-index="3">只看答案不够，代回原方程才稳。</div>
+      <div id="cap-14" class="caption clip" data-start="89.431" data-duration="7.215" data-track-index="3">解方程目标：把方程变形成 x = a。</div>
+      <div id="cap-15" class="caption clip" data-start="96.786" data-duration="9.383" data-track-index="3">常用顺序：去括号、移项、合并同类项、系数化为 1。</div>
+      <div id="cap-16" class="caption clip" data-start="106.309" data-duration="9.296" data-track-index="3">等式性质：两边同时做同样运算，等式仍然成立。</div>
+      <div id="cap-17" class="caption clip" data-start="116.005" data-duration="8.665" data-track-index="3">例题：一本练习本 3 元，一支笔 5 元，总共 20 元。</div>
+      <div id="cap-18" class="caption clip" data-start="124.810" data-duration="5.061" data-track-index="3">设买了 x 本，练习本费用就是 3x 元。</div>
+      <div id="cap-19" class="caption clip" data-start="130.011" data-duration="9.293" data-track-index="3">练习本费用 + 笔的费用 = 总费用，列方程 3x + 5 = 20。</div>
+      <div id="cap-20" class="caption clip" data-start="139.444" data-duration="6.894" data-track-index="3">移项得 3x = 15，两边除以 3，得到 x = 5。</div>
+      <div id="cap-21" class="caption clip" data-start="146.478" data-duration="6.960" data-track-index="3">检验：3×5+5=20，所以答案是 5 本。</div>
+      <div id="cap-22" class="caption clip" data-start="153.839" data-duration="11.540" data-track-index="3">例题：左边 2x + 4，右边 x + 16，左右相同。</div>
+      <div id="cap-23" class="caption clip" data-start="165.519" data-duration="5.223" data-track-index="3">列出方程：2x + 4 = x + 16。</div>
+      <div id="cap-24" class="caption clip" data-start="170.881" data-duration="6.734" data-track-index="3">移项要变号：右边的 x 到左边，左边的 4 到右边。</div>
+      <div id="cap-25" class="caption clip" data-start="177.755" data-duration="6.813" data-track-index="3">得到 2x - x = 16 - 4，所以 x = 12。</div>
+      <div id="cap-26" class="caption clip" data-start="184.968" data-duration="9.139" data-track-index="3">易错点：不是等式也当方程；忘记检查未知数个数和次数。</div>
+      <div id="cap-27" class="caption clip" data-start="194.247" data-duration="3.946" data-track-index="3">第三：移项只移动位置，却忘记变号。</div>
+      <div id="cap-28" class="caption clip" data-start="198.333" data-duration="5.540" data-track-index="3">解完代回原方程检验，能抓住很多符号错误。</div>
+      <div id="cap-29" class="caption clip" data-start="204.274" data-duration="18.664" data-track-index="3">主线：找等量关系，列方程，求解，再检验。</div>
+      <div id="cap-30" class="caption clip" data-start="223.078" data-duration="6.503" data-track-index="3">回到软件里完成第三章单元小测。</div>
+      <div id="wipe-1" class="wipe"></div>
+      <div id="wipe-2" class="wipe"></div>
+      <div id="wipe-3" class="wipe"></div>
+      <div id="wipe-4" class="wipe"></div>
+      <div id="wipe-5" class="wipe"></div>
+      <div id="wipe-6" class="wipe"></div>
+      <div id="wipe-7" class="wipe"></div>
+      <div id="wipe-8" class="wipe"></div>
+
+      <audio id="narration" class="clip" data-start="0" data-duration="230.5" data-track-index="2" src="assets/narration.wav" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      gsap.set(".caption", { xPercent: -50, opacity: 0 });
+      const sceneStarts = {
+        "scene-1": 0,
+        "scene-2": 19.381,
+        "scene-3": 35.544,
+        "scene-4": 60.445,
+        "scene-5": 89.431,
+        "scene-6": 116.005,
+        "scene-7": 153.839,
+        "scene-8": 184.968,
+        "scene-9": 204.274
+};
+      const segmentStarts = {
+        "seg-1": 0,
+        "seg-2": 5.043,
+        "seg-3": 10.801,
+        "seg-4": 19.381,
+        "seg-5": 23.379,
+        "seg-6": 30.247,
+        "seg-7": 35.544,
+        "seg-8": 45.381,
+        "seg-9": 51.386,
+        "seg-10": 60.445,
+        "seg-11": 65.163,
+        "seg-12": 70.444,
+        "seg-13": 83.726,
+        "seg-14": 89.431,
+        "seg-15": 96.786,
+        "seg-16": 106.309,
+        "seg-17": 116.005,
+        "seg-18": 124.81,
+        "seg-19": 130.011,
+        "seg-20": 139.444,
+        "seg-21": 146.478,
+        "seg-22": 153.839,
+        "seg-23": 165.519,
+        "seg-24": 170.881,
+        "seg-25": 177.755,
+        "seg-26": 184.968,
+        "seg-27": 194.247,
+        "seg-28": 198.333,
+        "seg-29": 204.274,
+        "seg-30": 223.078
+};
+      const captionTimings = [
+        {
+                "id": "#cap-1",
+                "start": 0,
+                "end": 4.903
+        },
+        {
+                "id": "#cap-2",
+                "start": 5.043,
+                "end": 10.661
+        },
+        {
+                "id": "#cap-3",
+                "start": 10.801,
+                "end": 18.981
+        },
+        {
+                "id": "#cap-4",
+                "start": 19.381,
+                "end": 23.239
+        },
+        {
+                "id": "#cap-5",
+                "start": 23.379,
+                "end": 30.107
+        },
+        {
+                "id": "#cap-6",
+                "start": 30.247,
+                "end": 35.145
+        },
+        {
+                "id": "#cap-7",
+                "start": 35.544,
+                "end": 45.241
+        },
+        {
+                "id": "#cap-8",
+                "start": 45.381,
+                "end": 51.246
+        },
+        {
+                "id": "#cap-9",
+                "start": 51.386,
+                "end": 60.045
+        },
+        {
+                "id": "#cap-10",
+                "start": 60.445,
+                "end": 65.023
+        },
+        {
+                "id": "#cap-11",
+                "start": 65.163,
+                "end": 70.304
+        },
+        {
+                "id": "#cap-12",
+                "start": 70.444,
+                "end": 83.586
+        },
+        {
+                "id": "#cap-13",
+                "start": 83.726,
+                "end": 89.031
+        },
+        {
+                "id": "#cap-14",
+                "start": 89.431,
+                "end": 96.646
+        },
+        {
+                "id": "#cap-15",
+                "start": 96.786,
+                "end": 106.169
+        },
+        {
+                "id": "#cap-16",
+                "start": 106.309,
+                "end": 115.605
+        },
+        {
+                "id": "#cap-17",
+                "start": 116.005,
+                "end": 124.67
+        },
+        {
+                "id": "#cap-18",
+                "start": 124.81,
+                "end": 129.871
+        },
+        {
+                "id": "#cap-19",
+                "start": 130.011,
+                "end": 139.304
+        },
+        {
+                "id": "#cap-20",
+                "start": 139.444,
+                "end": 146.338
+        },
+        {
+                "id": "#cap-21",
+                "start": 146.478,
+                "end": 153.439
+        },
+        {
+                "id": "#cap-22",
+                "start": 153.839,
+                "end": 165.379
+        },
+        {
+                "id": "#cap-23",
+                "start": 165.519,
+                "end": 170.741
+        },
+        {
+                "id": "#cap-24",
+                "start": 170.881,
+                "end": 177.615
+        },
+        {
+                "id": "#cap-25",
+                "start": 177.755,
+                "end": 184.568
+        },
+        {
+                "id": "#cap-26",
+                "start": 184.968,
+                "end": 194.107
+        },
+        {
+                "id": "#cap-27",
+                "start": 194.247,
+                "end": 198.193
+        },
+        {
+                "id": "#cap-28",
+                "start": 198.333,
+                "end": 203.874
+        },
+        {
+                "id": "#cap-29",
+                "start": 204.274,
+                "end": 222.938
+        },
+        {
+                "id": "#cap-30",
+                "start": 223.078,
+                "end": 229.581
+        }
+];
+      const rootDuration = 230.5;
+      const ambientRepeatA = Math.max(0, Math.ceil(rootDuration / 3) - 1);
+      const ambientRepeatB = Math.max(0, Math.ceil(rootDuration / 3.4) - 1);
+
+      tl.set(".scene", { opacity: 0, visibility: "hidden" }, 0);
+      tl.set("#scene-1", { opacity: 1, visibility: "visible" }, 0);
+      tl.set(".wipe", { xPercent: -115 }, 0);
+      tl.to(".math-mark", { y: -18, rotation: 2, duration: 3, ease: "sine.inOut", repeat: ambientRepeatA, yoyo: true }, 0);
+      tl.to(".blob", { y: 16, x: -12, duration: 3.4, ease: "sine.inOut", repeat: ambientRepeatB, yoyo: true }, 0);
+
+      function fromIfPresent(selector, vars, at) {
+        const targets = gsap.utils.toArray(selector);
+        if (targets.length > 0) tl.from(targets, vars, at);
+      }
+      function enterScene(id, at) {
+        fromIfPresent(id + " .kicker", { opacity: 0, y: 28, duration: 0.45, ease: "power3.out" }, at + 0.18);
+        fromIfPresent(id + " h1, " + id + " h2", { opacity: 0, y: 52, duration: 0.62, ease: "power2.out" }, at + 0.40);
+        fromIfPresent(id + " .lead", { opacity: 0, y: 34, duration: 0.50, ease: "back.out(1.35)" }, at + 0.76);
+        fromIfPresent(id + " .panel, " + id + " .example-card, " + id + " .quiz-card, " + id + " .check-card, " + id + " .chapter-mark", { opacity: 0, x: 62, y: 18, duration: 0.66, stagger: 0.08, ease: "power3.out" }, at + 0.56);
+      }
+      for (const [id, start] of Object.entries(sceneStarts)) enterScene("#" + id, start);
+
+      fromIfPresent("#s1-card-1, #s1-card-2, #s1-focus", { opacity: 0, y: 24, duration: 0.42, stagger: 0.14, ease: "power2.out" }, segmentStarts["seg-2"]);
+      fromIfPresent("#s2-balance", { opacity: 0, scale: 0.94, duration: 0.50, ease: "power2.out" }, segmentStarts["seg-5"]);
+      fromIfPresent("#s2-c1, #s2-c2, #s2-c3", { opacity: 0, y: 24, duration: 0.36, stagger: 0.10, ease: "back.out(1.25)" }, segmentStarts["seg-4"]);
+      fromIfPresent("#s2-warning", { opacity: 0, y: 22, duration: 0.38, ease: "power3.out" }, segmentStarts["seg-6"]);
+      fromIfPresent("#s3-c1, #s3-c2, #s3-c3", { opacity: 0, y: 26, duration: 0.40, stagger: 0.10, ease: "power2.out" }, segmentStarts["seg-7"]);
+      fromIfPresent("#s3-good", { opacity: 0, x: 36, duration: 0.48, ease: "power3.out" }, segmentStarts["seg-8"]);
+      fromIfPresent("#s3-bad", { opacity: 0, x: 36, duration: 0.48, ease: "power3.out" }, segmentStarts["seg-9"]);
+      fromIfPresent("#s4-formula", { opacity: 0, y: 26, duration: 0.42, ease: "power2.out" }, segmentStarts["seg-10"]);
+      fromIfPresent("#s4-balance", { opacity: 0, scale: 0.95, duration: 0.52, ease: "power3.out" }, segmentStarts["seg-12"]);
+      fromIfPresent("#s4-result", { opacity: 0, y: 24, duration: 0.42, ease: "back.out(1.25)" }, segmentStarts["seg-12"] + 1.0);
+      fromIfPresent("#s4-warning", { opacity: 0, y: 22, duration: 0.38, ease: "power2.out" }, segmentStarts["seg-13"]);
+      fromIfPresent("#s5-r1, #s5-r2, #s5-r3, #s5-r4", { opacity: 0, y: 28, duration: 0.42, stagger: 0.16, ease: "power3.out" }, segmentStarts["seg-15"]);
+      fromIfPresent("#s5-rule", { opacity: 0, y: 24, duration: 0.44, ease: "power2.out" }, segmentStarts["seg-16"]);
+      fromIfPresent("#s6-problem", { opacity: 0, y: 24, duration: 0.40, ease: "power2.out" }, segmentStarts["seg-17"]);
+      fromIfPresent("#s6-step-1, #s6-step-2", { opacity: 0, x: 34, duration: 0.40, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-18"]);
+      fromIfPresent("#s6-step-3", { opacity: 0, x: 34, duration: 0.40, ease: "power3.out" }, segmentStarts["seg-19"]);
+      fromIfPresent("#s6-step-4", { opacity: 0, x: 34, duration: 0.40, ease: "power3.out" }, segmentStarts["seg-20"]);
+      fromIfPresent("#s7-problem", { opacity: 0, y: 24, duration: 0.40, ease: "power2.out" }, segmentStarts["seg-22"]);
+      fromIfPresent("#s7-step-1", { opacity: 0, x: 34, duration: 0.40, ease: "power3.out" }, segmentStarts["seg-23"]);
+      fromIfPresent("#s7-step-2, #s7-step-3", { opacity: 0, x: 34, duration: 0.40, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-24"]);
+      fromIfPresent("#s7-step-4", { opacity: 0, x: 34, duration: 0.40, ease: "power3.out" }, segmentStarts["seg-25"]);
+      fromIfPresent("#s7-warning", { opacity: 0, y: 22, duration: 0.40, ease: "power2.out" }, segmentStarts["seg-24"] + 1.0);
+      fromIfPresent("#s8-m1, #s8-m2", { opacity: 0, x: 34, duration: 0.42, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-26"]);
+      fromIfPresent("#s8-m3", { opacity: 0, x: 34, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-27"]);
+      fromIfPresent("#s8-check", { opacity: 0, y: 24, duration: 0.44, ease: "back.out(1.25)" }, segmentStarts["seg-28"]);
+      fromIfPresent("#scene-9 .road-step", { opacity: 0, y: 28, duration: 0.44, stagger: 0.10, ease: "power3.out" }, sceneStarts["scene-9"] + 1.0);
+
+      Object.entries(sceneStarts).slice(1).forEach(function ([id, start], index) {
+        const prevId = "#scene-" + (index + 1);
+        tl.set("#" + id, { opacity: 1, visibility: "visible" }, Math.max(0, start - 0.02));
+        tl.set(prevId, { opacity: 0, visibility: "hidden" }, start + 0.08);
+        tl.fromTo("#wipe-" + (index + 1), { xPercent: -115 }, { xPercent: 115, duration: 0.70, ease: "sine.inOut" }, Math.max(0, start - 0.35));
+      });
+
+      captionTimings.forEach(function (group) {
+        tl.fromTo(group.id, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, group.start + 0.01);
+        tl.to(group.id, { opacity: 0, y: 10, duration: 0.12, ease: "power2.in" }, Math.max(group.start + 0.18, group.end - 0.12));
+        tl.set(group.id, { opacity: 0 }, group.end);
+      });
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

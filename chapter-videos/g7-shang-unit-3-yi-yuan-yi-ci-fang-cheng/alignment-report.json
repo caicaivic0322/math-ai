@@ -1,0 +1,270 @@
+{
+  "profile": {
+    "id": "smooth-female-teacher-v2",
+    "voice": "serena",
+    "speed": 1.12,
+    "temperature": 0.58,
+    "top_k": 45,
+    "top_p": 0.92,
+    "repetition_penalty": 1.05,
+    "subtalker_temperature": 0.58,
+    "subtalker_top_k": 45,
+    "subtalker_top_p": 0.92,
+    "instructions": "你是一位普通话标准、声音清晰自然的女数学老师。请像在课堂上连续讲课一样朗读：语气平和、温暖、稳定，句与句之间自然承接。不要表演，不要夸张，不要突然提高音量，不要把短句读得断裂。数学公式、数字和步骤读清楚，语速中等偏慢，句尾自然收住。"
+  },
+  "audioDuration": 230.380958,
+  "rootDuration": 230.5,
+  "sentenceCount": 30,
+  "sceneCount": 9,
+  "maxCaptionDrift": 0,
+  "audioVideoDurationDelta": 0.11904200000000742,
+  "checks": {
+    "sentenceAudioMeasured": true,
+    "captionsUseSentenceStart": true,
+    "captionsUseSentenceDuration": true,
+    "scenesUseSentenceRanges": true,
+    "audioVideoDurationWithinPointTwoSeconds": true
+  },
+  "segments": [
+    {
+      "index": 1,
+      "scene": 1,
+      "start": 0,
+      "end": 4.903,
+      "duration": 4.903,
+      "caption": "这一节学习：七年级上册第三章，一元一次方程。"
+    },
+    {
+      "index": 2,
+      "scene": 1,
+      "start": 5.043,
+      "end": 10.661,
+      "duration": 5.618,
+      "caption": "把文字问题翻译成方程，再一步一步解出来。"
+    },
+    {
+      "index": 3,
+      "scene": 1,
+      "start": 10.801,
+      "end": 18.981,
+      "duration": 8.179,
+      "caption": "本章重点：方程、方程的解、解一元一次方程。"
+    },
+    {
+      "index": 4,
+      "scene": 2,
+      "start": 19.381,
+      "end": 23.239,
+      "duration": 3.858,
+      "caption": "先看方程：含有未知数的等式叫做方程。"
+    },
+    {
+      "index": 5,
+      "scene": 2,
+      "start": 23.379,
+      "end": 30.107,
+      "duration": 6.728,
+      "caption": "一个数加 5 等于 12，可以写成 x + 5 = 12。"
+    },
+    {
+      "index": 6,
+      "scene": 2,
+      "start": 30.247,
+      "end": 35.145,
+      "duration": 4.898,
+      "caption": "只有未知数还不够，它还必须是等式。"
+    },
+    {
+      "index": 7,
+      "scene": 3,
+      "start": 35.544,
+      "end": 45.241,
+      "duration": 9.696,
+      "caption": "一元一次方程：一个未知数，次数是 1。"
+    },
+    {
+      "index": 8,
+      "scene": 3,
+      "start": 45.381,
+      "end": 51.246,
+      "duration": 5.865,
+      "caption": "3x = 18 和 2x - 7 = 9 都是一元一次方程。"
+    },
+    {
+      "index": 9,
+      "scene": 3,
+      "start": 51.386,
+      "end": 60.045,
+      "duration": 8.659,
+      "caption": "x + y = 10 和 x² = 9 都不符合。"
+    },
+    {
+      "index": 10,
+      "scene": 4,
+      "start": 60.445,
+      "end": 65.023,
+      "duration": 4.578,
+      "caption": "方程的解：让左右两边相等的未知数的值。"
+    },
+    {
+      "index": 11,
+      "scene": 4,
+      "start": 65.163,
+      "end": 70.304,
+      "duration": 5.141,
+      "caption": "检验要代回原方程，左右两边分别计算。"
+    },
+    {
+      "index": 12,
+      "scene": 4,
+      "start": 70.444,
+      "end": 83.586,
+      "duration": 13.142,
+      "caption": "x = 7 时，7 + 5 = 12，左右相等。"
+    },
+    {
+      "index": 13,
+      "scene": 4,
+      "start": 83.726,
+      "end": 89.031,
+      "duration": 5.305,
+      "caption": "只看答案不够，代回原方程才稳。"
+    },
+    {
+      "index": 14,
+      "scene": 5,
+      "start": 89.431,
+      "end": 96.646,
+      "duration": 7.215,
+      "caption": "解方程目标：把方程变形成 x = a。"
+    },
+    {
+      "index": 15,
+      "scene": 5,
+      "start": 96.786,
+      "end": 106.169,
+      "duration": 9.383,
+      "caption": "常用顺序：去括号、移项、合并同类项、系数化为 1。"
+    },
+    {
+      "index": 16,
+      "scene": 5,
+      "start": 106.309,
+      "end": 115.605,
+      "duration": 9.296,
+      "caption": "等式性质：两边同时做同样运算，等式仍然成立。"
+    },
+    {
+      "index": 17,
+      "scene": 6,
+      "start": 116.005,
+      "end": 124.67,
+      "duration": 8.665,
+      "caption": "例题：一本练习本 3 元，一支笔 5 元，总共 20 元。"
+    },
+    {
+      "index": 18,
+      "scene": 6,
+      "start": 124.81,
+      "end": 129.871,
+      "duration": 5.061,
+      "caption": "设买了 x 本，练习本费用就是 3x 元。"
+    },
+    {
+      "index": 19,
+      "scene": 6,
+      "start": 130.011,
+      "end": 139.304,
+      "duration": 9.293,
+      "caption": "练习本费用 + 笔的费用 = 总费用，列方程 3x + 5 = 20。"
+    },
+    {
+      "index": 20,
+      "scene": 6,
+      "start": 139.444,
+      "end": 146.338,
+      "duration": 6.894,
+      "caption": "移项得 3x = 15，两边除以 3，得到 x = 5。"
+    },
+    {
+      "index": 21,
+      "scene": 6,
+      "start": 146.478,
+      "end": 153.439,
+      "duration": 6.96,
+      "caption": "检验：3×5+5=20，所以答案是 5 本。"
+    },
+    {
+      "index": 22,
+      "scene": 7,
+      "start": 153.839,
+      "end": 165.379,
+      "duration": 11.54,
+      "caption": "例题：左边 2x + 4，右边 x + 16，左右相同。"
+    },
+    {
+      "index": 23,
+      "scene": 7,
+      "start": 165.519,
+      "end": 170.741,
+      "duration": 5.223,
+      "caption": "列出方程：2x + 4 = x + 16。"
+    },
+    {
+      "index": 24,
+      "scene": 7,
+      "start": 170.881,
+      "end": 177.615,
+      "duration": 6.734,
+      "caption": "移项要变号：右边的 x 到左边，左边的 4 到右边。"
+    },
+    {
+      "index": 25,
+      "scene": 7,
+      "start": 177.755,
+      "end": 184.568,
+      "duration": 6.813,
+      "caption": "得到 2x - x = 16 - 4，所以 x = 12。"
+    },
+    {
+      "index": 26,
+      "scene": 8,
+      "start": 184.968,
+      "end": 194.107,
+      "duration": 9.139,
+      "caption": "易错点：不是等式也当方程；忘记检查未知数个数和次数。"
+    },
+    {
+      "index": 27,
+      "scene": 8,
+      "start": 194.247,
+      "end": 198.193,
+      "duration": 3.946,
+      "caption": "第三：移项只移动位置，却忘记变号。"
+    },
+    {
+      "index": 28,
+      "scene": 8,
+      "start": 198.333,
+      "end": 203.874,
+      "duration": 5.54,
+      "caption": "解完代回原方程检验，能抓住很多符号错误。"
+    },
+    {
+      "index": 29,
+      "scene": 9,
+      "start": 204.274,
+      "end": 222.938,
+      "duration": 18.664,
+      "caption": "主线：找等量关系，列方程，求解，再检验。"
+    },
+    {
+      "index": 30,
+      "scene": 9,
+      "start": 223.078,
+      "end": 229.581,
+      "duration": 6.503,
+      "caption": "回到软件里完成第三章单元小测。"
+    }
+  ]
+}

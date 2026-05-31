@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f7f3e8;
+        color: #1f2a2c;
+        font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      [data-composition-id="main"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          linear-gradient(90deg, rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          #f7f3e8;
+        background-size: 64px 64px;
+      }
+      .clip { visibility: hidden; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background-color: #f7f3e8; opacity: 0; visibility: hidden; }
+      #scene-1 { opacity: 1; visibility: visible; }
+      .scene::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 14% 18%, rgba(216, 239, 229, 0.72), rgba(216, 239, 229, 0) 28%),
+          radial-gradient(circle at 84% 76%, rgba(245, 200, 75, 0.20), rgba(245, 200, 75, 0) 31%);
+        z-index: 0;
+      }
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 82px 116px 154px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 0.94fr 1.06fr;
+        align-items: center;
+        gap: 70px;
+      }
+      .kicker {
+        width: fit-content;
+        border: 2px solid rgba(31, 42, 44, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.80);
+        padding: 12px 22px;
+        color: #087568;
+        font-size: 25px;
+        font-weight: 900;
+      }
+      h1, h2 {
+        max-width: 1180px;
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+      h1 { font-size: 96px; }
+      h2 { font-size: 76px; }
+      .lead {
+        max-width: 930px;
+        color: rgba(31, 42, 44, 0.72);
+        font-size: 34px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .highlight {
+        display: inline-block;
+        border-radius: 26px;
+        background: #f5c84b;
+        padding: 14px 22px 18px;
+        line-height: 1.18;
+      }
+      .panel, .example-card, .check-card {
+        border: 3px solid rgba(31, 42, 44, 0.14);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.80);
+        box-shadow: 15px 17px 0 rgba(31, 42, 44, 0.08);
+      }
+      .panel { padding: 34px; }
+      .chapter-mark {
+        width: 190px;
+        height: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid #1f2a2c;
+        border-radius: 42px;
+        background: #f5c84b;
+        box-shadow: 14px 16px 0 rgba(31, 42, 44, 0.12);
+        font-size: 82px;
+        font-weight: 900;
+      }
+      .stack { display: grid; gap: 20px; }
+      .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .mini-card, .rule-card, .point-card, .numberline-card {
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 2px solid rgba(31, 42, 44, 0.10);
+        padding: 22px;
+      }
+      .mini-card h3, .rule-card h3, .point-card h3, .numberline-card h3 {
+        color: #0d8b7d;
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 1.18;
+      }
+      .mini-card p, .rule-card p, .point-card p, .numberline-card p {
+        margin-top: 12px;
+        color: rgba(31, 42, 44, 0.74);
+        font-size: 24px;
+        line-height: 1.36;
+        font-weight: 720;
+      }
+      .formula {
+        border-radius: 24px;
+        background: #0d8b7d;
+        padding: 22px 30px;
+        color: #f7f3e8;
+        font-size: 48px;
+        font-weight: 900;
+        line-height: 1.24;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula.lemon { background: #f5c84b; color: #1f2a2c; }
+      .formula.soft { background: #d8efe5; color: #1f2a2c; border: 3px solid rgba(13, 139, 125, 0.22); }
+      #s2-range { background: #f5c84b; color: #1f2a2c; }
+      .warning {
+        border-radius: 22px;
+        background: rgba(239, 106, 91, 0.16);
+        border: 2px solid rgba(239, 106, 91, 0.34);
+        padding: 22px 26px;
+        color: #1f2a2c;
+        font-size: 30px;
+        line-height: 1.42;
+        font-weight: 850;
+      }
+      .number-board { display: grid; grid-template-columns: 1fr 0.92fr; gap: 24px; align-items: center; }
+      .line-svg {
+        width: 100%;
+        height: 210px;
+        overflow: visible;
+      }
+      .system-svg {
+        width: 100%;
+        height: 320px;
+        overflow: visible;
+      }
+      .steps { display: grid; gap: 16px; margin-top: 22px; }
+      .step {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 18px;
+        align-items: start;
+        border-radius: 20px;
+        background: rgba(216, 239, 229, 0.72);
+        padding: 17px 20px;
+      }
+      .step-num {
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f5c84b;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .step-text {
+        font-size: 28px;
+        line-height: 1.42;
+        font-weight: 760;
+      }
+      .rule-table { display: grid; gap: 16px; }
+      .rule-row {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        gap: 18px;
+        align-items: center;
+        border-radius: 22px;
+        background: rgba(216, 239, 229, 0.70);
+        border: 2px solid rgba(13, 139, 125, 0.20);
+        padding: 20px 24px;
+      }
+      .rule-label {
+        width: fit-content;
+        border-radius: 999px;
+        background: #f5c84b;
+        color: #1f2a2c;
+        padding: 10px 18px;
+        font-size: 25px;
+        font-weight: 900;
+      }
+      .rule-text {
+        color: #1f2a2c;
+        font-size: 31px;
+        line-height: 1.26;
+        font-weight: 900;
+      }
+      .mistake-list { display: grid; gap: 18px; margin-top: 24px; }
+      .mistake-row {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.74);
+        padding: 20px;
+        font-size: 30px;
+        font-weight: 850;
+        line-height: 1.28;
+      }
+      .mistake-dot {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #1f2a2c;
+        color: #f7f3e8;
+        font-weight: 900;
+      }
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .road-step {
+        min-height: 178px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 3px solid rgba(31, 42, 44, 0.12);
+        padding: 24px;
+      }
+      .road-step .num {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #f5c84b;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .road-step h3 { margin-top: 18px; font-size: 34px; line-height: 1.15; font-weight: 900; }
+      .road-step p { margin-top: 10px; color: rgba(31, 42, 44, 0.70); font-size: 22px; line-height: 1.34; font-weight: 700; }
+      .caption {
+        position: absolute;
+        left: 50%;
+        bottom: 48px;
+        z-index: 30;
+        max-width: 1500px;
+        border: 2px solid rgba(31, 42, 44, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 250, 240, 0.94);
+        box-shadow: 10px 12px 0 rgba(31, 42, 44, 0.08);
+        padding: 18px 30px;
+        color: #1f2a2c;
+        font-size: 34px;
+        font-weight: 900;
+        line-height: 1.34;
+        text-align: center;
+        transform: translateX(-50%);
+      }
+      .math-mark {
+        position: absolute;
+        z-index: 1;
+        color: #0d8b7d;
+        font-size: 108px;
+        font-weight: 900;
+      }
+      .blob {
+        position: absolute;
+        z-index: 1;
+        width: 330px;
+        height: 188px;
+        border-radius: 48px;
+        background: #d8efe5;
+        opacity: 0.76;
+      }
+      .wipe {
+        position: absolute;
+        top: -10%;
+        left: -28%;
+        z-index: 22;
+        width: 156%;
+        height: 120%;
+        background:
+          linear-gradient(90deg, rgba(216, 239, 229, 0), #d8efe5 10%, #f7f3e8 52%, #f5c84b 88%, rgba(245, 200, 75, 0));
+        box-shadow: 0 0 70px rgba(13, 139, 125, 0.18);
+        clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+      }
+      svg text {
+        font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-weight: 900;
+        fill: #1f2a2c;
+        font-variant-numeric: tabular-nums;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="248.2" data-width="1920" data-height="1080">
+      <div id="scene-1" class="scene">
+        <span class="math-mark" style="left: 120px; top: 110px">&gt; ≤</span>
+        <span class="math-mark" style="right: 140px; bottom: 130px">x</span>
+        <div class="blob" style="right: 250px; top: 145px"></div>
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">七年级下册 · 第五章</div>
+            <h1>一元一次不等式 <span class="highlight">看范围</span></h1>
+            <p class="lead">本章主线：从大小关系出发，求解集、画数轴，再用公共部分解决不等式组。</p>
+          </div>
+          <div class="panel stack">
+            <div class="chapter-mark">≤</div>
+            <div class="two-col">
+              <div id="s1-card-1" class="mini-card"><h3>解集</h3><p>答案常常不是一个数，而是一段范围。</p></div>
+              <div id="s1-card-2" class="mini-card"><h3>数轴</h3><p>端点是否包含，决定空心还是实心。</p></div>
+            </div>
+            <div id="s1-focus" class="formula lemon">看关系 · 求范围 · 标端点 · 取公共部分</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-2" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 1：不等式与解集</div>
+            <h2>方程找一个值，不等式找一段范围</h2>
+            <p class="lead">能使不等式成立的未知数的值叫做解；所有解组成解集。</p>
+          </div>
+          <div class="panel stack">
+            <div class="three-col">
+              <div id="s2-card-1" class="rule-card"><h3>x &gt; 3</h3><p>所有比 3 大的数。</p></div>
+              <div id="s2-card-2" class="rule-card"><h3>x ≤ -1</h3><p>-1 以及比 -1 更小的数。</p></div>
+              <div id="s2-card-3" class="rule-card"><h3>-2 &lt; x ≤ 4</h3><p>一段带端点条件的范围。</p></div>
+            </div>
+            <div id="s2-compare" class="formula soft">x + 2 = 5 → x = 3</div>
+            <div id="s2-range" class="formula">x &gt; 3 → 所有大于 3 的数</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-3" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 2：数轴表示</div>
+            <h2>端点决定空心还是实心</h2>
+            <p class="lead">大于、小于不包含端点；大于等于、小于等于包含端点。箭头方向表示范围方向。</p>
+          </div>
+          <div class="panel stack">
+            <div id="s3-line-1" class="numberline-card">
+              <h3>x &gt; 4：空心点，向右</h3>
+              <svg class="line-svg" viewBox="0 0 760 210">
+                <defs>
+                  <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#0d8b7d"/></marker>
+                </defs>
+                <line x1="80" y1="106" x2="690" y2="106" stroke="#1f2a2c" stroke-width="8"/>
+                <line x1="390" y1="106" x2="650" y2="106" stroke="#0d8b7d" stroke-width="8" marker-end="url(#arrow)"/>
+                <circle cx="390" cy="106" r="22" fill="#f7f3e8" stroke="#0d8b7d" stroke-width="8"/>
+                <text x="362" y="166" font-size="34">4</text>
+              </svg>
+            </div>
+            <div id="s3-line-2" class="numberline-card">
+              <h3>x ≤ -2：实心点，向左</h3>
+              <svg class="line-svg" viewBox="0 0 760 210">
+                <line x1="80" y1="106" x2="690" y2="106" stroke="#1f2a2c" stroke-width="8"/>
+                <line x1="370" y1="106" x2="110" y2="106" stroke="#0d8b7d" stroke-width="8" marker-end="url(#arrow)"/>
+                <circle cx="370" cy="106" r="22" fill="#0d8b7d" stroke="#1f2a2c" stroke-width="5"/>
+                <text x="330" y="166" font-size="34">-2</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-4" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 3：解一元一次不等式</div>
+            <h2>像解方程一样化简，但要盯住不等号</h2>
+            <p class="lead">移项、合并同类项、系数化为 1。只有遇到同乘或同除以负数时，不等号方向必须改变。</p>
+          </div>
+          <div class="panel">
+            <div class="rule-table">
+              <div id="s4-r1" class="rule-row"><div class="rule-label">步骤</div><div class="rule-text">移项 → 合并同类项 → 系数化为 1</div></div>
+              <div id="s4-r2" class="rule-row"><div class="rule-label">普通运算</div><div class="rule-text">两边同加、同减、同乘正数，方向不变</div></div>
+              <div id="s4-r3" class="rule-row"><div class="rule-label">负数运算</div><div class="rule-text">两边同乘或同除以负数，方向改变</div></div>
+            </div>
+            <div id="s4-warning" class="warning" style="margin-top: 22px">例：-2x &gt; 6，两边除以 -2，得到 x &lt; -3。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-5" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 1：解一元一次不等式</div>
+            <h2>3x - 5 &gt; 7</h2>
+            <p class="lead">先移项，再除以正数，最后把解集画到数轴上。</p>
+          </div>
+          <div class="example-card stack" style="padding: 34px">
+            <div id="s5-problem" class="formula soft">3x - 5 &gt; 7</div>
+            <div class="steps">
+              <div id="s5-step-1" class="step"><div class="step-num">1</div><div class="step-text">移项：3x &gt; 12</div></div>
+              <div id="s5-step-2" class="step"><div class="step-num">2</div><div class="step-text">两边同除以 3：x &gt; 4</div></div>
+              <div id="s5-step-3" class="step"><div class="step-num">3</div><div class="step-text">4 处画空心点，向右画射线。</div></div>
+            </div>
+            <div id="s5-answer" class="formula lemon">答案：x &gt; 4</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-6" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 4：不等式组</div>
+            <h2>多个条件，要同时满足</h2>
+            <p class="lead">分别求出每个不等式的范围，再在数轴上留下重叠的公共部分。</p>
+          </div>
+          <div class="panel number-board">
+            <svg id="s6-system" class="system-svg" viewBox="0 0 800 360">
+              <line x1="90" y1="110" x2="710" y2="110" stroke="#1f2a2c" stroke-width="8"/>
+              <line x1="330" y1="110" x2="680" y2="110" stroke="#0d8b7d" stroke-width="8" marker-end="url(#arrow)"/>
+              <circle cx="330" cy="110" r="19" fill="#f7f3e8" stroke="#0d8b7d" stroke-width="7"/>
+              <text x="292" y="164" font-size="32">-1</text>
+              <text x="392" y="80" font-size="32">x &gt; -1</text>
+              <line x1="90" y1="240" x2="710" y2="240" stroke="#1f2a2c" stroke-width="8"/>
+              <line x1="530" y1="240" x2="130" y2="240" stroke="#0d8b7d" stroke-width="8" marker-end="url(#arrow)"/>
+              <circle cx="530" cy="240" r="19" fill="#0d8b7d" stroke="#1f2a2c" stroke-width="5"/>
+              <text x="512" y="294" font-size="32">3</text>
+              <text x="394" y="213" font-size="32">x ≤ 3</text>
+            </svg>
+            <div class="stack">
+              <div id="s6-step-1" class="formula soft">x &gt; -1</div>
+              <div id="s6-step-2" class="formula soft">x ≤ 3</div>
+              <div id="s6-answer" class="formula lemon">公共部分：-1 &lt; x ≤ 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-7" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 2：解不等式组</div>
+            <h2>x &gt; -1，x ≤ 3</h2>
+            <p class="lead">第一个条件要求在 -1 右边，第二个条件要求不超过 3。答案是两个范围的交集。</p>
+          </div>
+          <div class="check-card stack" style="padding: 34px">
+            <svg id="s7-line" class="system-svg" viewBox="0 0 800 300">
+              <line x1="90" y1="150" x2="710" y2="150" stroke="#1f2a2c" stroke-width="8"/>
+              <line x1="330" y1="150" x2="530" y2="150" stroke="#0d8b7d" stroke-width="18"/>
+              <circle cx="330" cy="150" r="23" fill="#f7f3e8" stroke="#0d8b7d" stroke-width="8"/>
+              <circle cx="530" cy="150" r="23" fill="#0d8b7d" stroke="#1f2a2c" stroke-width="5"/>
+              <text x="292" y="214" font-size="36">-1</text>
+              <text x="512" y="214" font-size="36">3</text>
+              <text x="348" y="108" font-size="44">-1 &lt; x ≤ 3</text>
+            </svg>
+            <div id="s7-note" class="warning">-1 不包含画空心，3 包含画实心。</div>
+            <div id="s7-answer" class="formula lemon">答案：-1 &lt; x ≤ 3</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-8" class="scene">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">本章易错点</div>
+            <h2>三个地方慢一点</h2>
+            <p class="lead">不等式题不是只会算就行，还要把范围、端点和方向写准确。</p>
+          </div>
+          <div class="panel">
+            <div class="mistake-list">
+              <div id="s8-m1" class="mistake-row"><div class="mistake-dot" data-layout-ignore></div><div>1. 把解集误写成 x = a 这样的单个答案。</div></div>
+              <div id="s8-m2" class="mistake-row"><div class="mistake-dot" data-layout-ignore></div><div>2. 数轴端点空心和实心画反。</div></div>
+              <div id="s8-m3" class="mistake-row"><div class="mistake-dot" data-layout-ignore></div><div>3. 同乘或同除以负数时，忘记不等号变向。</div></div>
+            </div>
+            <div id="s8-check" class="warning" style="margin-top: 22px">不等式组取公共部分，不是把两个范围并在一起。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-9" class="scene">
+        <span class="math-mark" style="left: 200px; top: 110px">≥</span>
+        <div class="scene-content">
+          <div class="kicker">练</div>
+          <h2>一元一次不等式：范围、端点、公共部分</h2>
+          <p class="lead">回到软件里完成第五章单元小测，检查自己能不能把范围读准、算准、画准。</p>
+          <div class="roadmap">
+            <div class="road-step"><div class="num">1</div><h3>看关系</h3><p>大于、小于、是否等于。</p></div>
+            <div class="road-step"><div class="num">2</div><h3>求解集</h3><p>写一段范围。</p></div>
+            <div class="road-step"><div class="num">3</div><h3>标端点</h3><p>空心或实心。</p></div>
+            <div class="road-step"><div class="num">4</div><h3>取公共</h3><p>多个条件同时满足。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <audio id="narration" class="clip" data-start="0" data-duration="248.072" data-track-index="2" src="assets/narration.wav" data-volume="1"></audio>
+      <div id="cap-1" class="caption clip" data-start="0.000" data-duration="11.132" data-track-index="3">学习七年级下册第五章：一元一次不等式与一元一次不等式组。这一章学会把条件翻译成范围，再准确地写出来、画出来。</div>
+      <div id="cap-2" class="caption clip" data-start="11.337" data-duration="4.123" data-track-index="3">方程常常求一个确定的值，比如 x 等于几。不等式更多是在找一段范围，比如 x 大于几。所以看到不等式，先不要急着写等号答案。</div>
+      <div id="cap-3" class="caption clip" data-start="15.665" data-duration="9.760" data-track-index="3">主线四步：先看大小关系，再求解集；数轴要看端点；遇到负数运算要变号；不等式组则要取公共部分。</div>
+      <div id="cap-4" class="caption clip" data-start="25.869" data-duration="12.721" data-track-index="3">不等式用大于、小于、大于等于、小于等于表示大小关系。这里的符号不是装饰，它直接告诉我们哪些数能取、哪些数不能取。</div>
+      <div id="cap-5" class="caption clip" data-start="38.795" data-duration="10.958" data-track-index="3">比如 x 大于 3，不是说 x 只能等于 4，而是 3 右边的数都可以，像 3.1、4、10 都满足条件。</div>
+      <div id="cap-6" class="caption clip" data-start="49.958" data-duration="10.083" data-track-index="3">x 小于等于负 1，表示负 1 本身可以取，负 2、负 3 这些更小的数也可以取。有没有等号会影响端点是否包含。</div>
+      <div id="cap-7" class="caption clip" data-start="60.246" data-duration="10.402" data-track-index="3">能使不等式成立的未知数的值，叫做不等式的解。判断方法很简单：把数代进去，看大小关系是否成立。</div>
+      <div id="cap-8" class="caption clip" data-start="70.853" data-duration="2.709" data-track-index="3">所有解合在一起，叫做解集。解集通常是一段范围，最后要写成 x 大于几、x 小于等于几的形式。</div>
+      <div id="cap-9" class="caption clip" data-start="73.768" data-duration="0.789" data-track-index="3">对比一下：方程 x 加 2 等于 5 的解只有 x 等于 3，因为只有 3 代进去刚好相等。</div>
+      <div id="cap-10" class="caption clip" data-start="74.762" data-duration="11.518" data-track-index="3">但不等式 x 大于 3 的解集是所有大于 3 的数。答案不是一个点，而是从 3 往右的一整段，这是方程和不等式最大的区别。</div>
+      <div id="cap-11" class="caption clip" data-start="86.725" data-duration="10.891" data-track-index="3">数轴表示解集时，先看端点是否包含。端点是分界的那个数，比如 x 大于 4 里的 4，x 小于等于负 2 里的负 2。</div>
+      <div id="cap-12" class="caption clip" data-start="97.821" data-duration="12.558" data-track-index="3">大于或小于没有等号，画空心点，表示端点不包含。大于等于或小于等于有等号，画实心点，表示端点包含。</div>
+      <div id="cap-13" class="caption clip" data-start="110.584" data-duration="4.831" data-track-index="3">方向也要一起看。x 大于 4，表示比 4 大的数，箭头向右。x 小于等于负 2，表示负 2 和它左边的数，箭头向左。</div>
+      <div id="cap-14" class="caption clip" data-start="115.861" data-duration="14.002" data-track-index="3">解一元一次不等式，前半段和解方程很像：先移项，把含 x 的项和常数项分开；再合并同类项；最后把系数化为 1。</div>
+      <div id="cap-15" class="caption clip" data-start="130.068" data-duration="10.483" data-track-index="3">关键区别：不等式两边同乘或同除以同一个负数时，大小顺序会反过来，所以不等号方向必须改变。</div>
+      <div id="cap-16" class="caption clip" data-start="140.756" data-duration="2.099" data-track-index="3">例如负 2x 大于 6。为了得到 x，两边除以负 2。因为除的是负数，大于号变成小于号，得到 x 小于负 3。</div>
+      <div id="cap-17" class="caption clip" data-start="143.300" data-duration="0.730" data-track-index="3">例题一：解不等式 3x 减 5 大于 7。左边有含 x 的 3x 和常数负 5，目标是单独留下 x。</div>
+      <div id="cap-18" class="caption clip" data-start="144.235" data-duration="6.120" data-track-index="3">第一步把负 5 移到右边，两边同时加 5，得 3x 大于 12。第二步两边同除以正数 3，不等号方向不变，得到 x 大于 4。</div>
+      <div id="cap-19" class="caption clip" data-start="150.560" data-duration="5.808" data-track-index="3">数轴表示时，4 只是分界点，不包含在解集里，所以画空心点。比 4 大的数在右边，向右画射线。</div>
+      <div id="cap-20" class="caption clip" data-start="156.813" data-duration="10.961" data-track-index="3">不等式组的解集必须同时满足所有条件。注意同时这两个字，只满足其中一个条件还不够，两个条件都满足的数才留下。</div>
+      <div id="cap-21" class="caption clip" data-start="167.979" data-duration="9.607" data-track-index="3">先把每个不等式分别画成一个范围，再看两段范围重叠在哪里。重叠的那一段，才是不等式组的公共部分。</div>
+      <div id="cap-22" class="caption clip" data-start="178.031" data-duration="10.484" data-track-index="3">例题二：x 大于负 1，x 小于等于 3。第一个条件要求 x 在负 1 的右边，第二个条件要求 x 不超过 3。</div>
+      <div id="cap-23" class="caption clip" data-start="188.720" data-duration="8.807" data-track-index="3">两个范围重叠的部分从负 1 的右边开始，到 3 结束。所以解集写作负 1 小于 x，且 x 小于等于 3。</div>
+      <div id="cap-24" class="caption clip" data-start="197.732" data-duration="1.529" data-track-index="3">端点也要对应准确：负 1 不包含，画空心；3 包含，画实心。图和式子必须一一对应。</div>
+      <div id="cap-25" class="caption clip" data-start="199.706" data-duration="8.984" data-track-index="3">易错点一：把解集写成一个等号答案。看到不等式时要提醒自己，答案通常是一段范围，不是 x 等于几。</div>
+      <div id="cap-26" class="caption clip" data-start="208.895" data-duration="14.571" data-track-index="3">易错点二：空心点和实心点画反。判断方法很简单：有等号就包含端点，画实心；没有等号就不包含，画空心。</div>
+      <div id="cap-27" class="caption clip" data-start="223.671" data-duration="10.251" data-track-index="3">易错点三：除以负数时忘记变号。只要最后一步是除以负数，先停一下，检查不等号有没有反向。</div>
+      <div id="cap-28" class="caption clip" data-start="234.368" data-duration="1.456" data-track-index="3">最后记住口诀：不等式看范围，数轴看端点，负数运算要变号。不等式组还要加一句：多个条件取公共部分。</div>
+      <div id="cap-29" class="caption clip" data-start="236.029" data-duration="11.198" data-track-index="3">回到软件完成第五章单元小测。每道题按顺序检查：先看符号，再算范围，再画端点，最后确认取公共部分。</div>
+      <div id="wipe-1" class="wipe"></div>
+      <div id="wipe-2" class="wipe"></div>
+      <div id="wipe-3" class="wipe"></div>
+      <div id="wipe-4" class="wipe"></div>
+      <div id="wipe-5" class="wipe"></div>
+      <div id="wipe-6" class="wipe"></div>
+      <div id="wipe-7" class="wipe"></div>
+      <div id="wipe-8" class="wipe"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const sceneStarts = {
+        "scene-1": 0,
+        "scene-2": 18.669,
+        "scene-3": 51.996,
+        "scene-4": 66.014,
+        "scene-5": 86.526,
+        "scene-6": 103.363,
+        "scene-7": 111.447,
+        "scene-8": 125.696,
+        "scene-9": 145.32
+};
+      const segmentStarts = {
+        "seg-1": 0,
+        "seg-2": 7.552,
+        "seg-3": 14.071,
+        "seg-4": 18.669,
+        "seg-5": 25.335,
+        "seg-6": 28.715,
+        "seg-7": 34.015,
+        "seg-8": 38.92,
+        "seg-9": 42.472,
+        "seg-10": 47.63,
+        "seg-11": 51.996,
+        "seg-12": 56.029,
+        "seg-13": 61.815,
+        "seg-14": 66.014,
+        "seg-15": 72.369,
+        "seg-16": 78.716,
+        "seg-17": 86.526,
+        "seg-18": 91.2,
+        "seg-19": 98.67,
+        "seg-20": 103.363,
+        "seg-21": 107.149,
+        "seg-22": 111.447,
+        "seg-23": 112.388,
+        "seg-24": 117.209,
+        "seg-25": 125.696,
+        "seg-26": 132.124,
+        "seg-27": 138.232,
+        "seg-28": 145.32,
+        "seg-29": 152.143
+};
+      const captionTimings = [
+        {
+                "id": "#cap-1",
+                "start": 0,
+                "end": 7.392
+        },
+        {
+                "id": "#cap-2",
+                "start": 7.552,
+                "end": 13.911
+        },
+        {
+                "id": "#cap-3",
+                "start": 14.071,
+                "end": 18.249
+        },
+        {
+                "id": "#cap-4",
+                "start": 18.669,
+                "end": 25.175
+        },
+        {
+                "id": "#cap-5",
+                "start": 25.335,
+                "end": 28.555
+        },
+        {
+                "id": "#cap-6",
+                "start": 28.715,
+                "end": 33.855
+        },
+        {
+                "id": "#cap-7",
+                "start": 34.015,
+                "end": 38.76
+        },
+        {
+                "id": "#cap-8",
+                "start": 38.92,
+                "end": 42.312
+        },
+        {
+                "id": "#cap-9",
+                "start": 42.472,
+                "end": 47.47
+        },
+        {
+                "id": "#cap-10",
+                "start": 47.63,
+                "end": 51.576
+        },
+        {
+                "id": "#cap-11",
+                "start": 51.996,
+                "end": 55.869
+        },
+        {
+                "id": "#cap-12",
+                "start": 56.029,
+                "end": 61.655
+        },
+        {
+                "id": "#cap-13",
+                "start": 61.815,
+                "end": 65.594
+        },
+        {
+                "id": "#cap-14",
+                "start": 66.014,
+                "end": 72.209
+        },
+        {
+                "id": "#cap-15",
+                "start": 72.369,
+                "end": 78.556
+        },
+        {
+                "id": "#cap-16",
+                "start": 78.716,
+                "end": 86.106
+        },
+        {
+                "id": "#cap-17",
+                "start": 86.526,
+                "end": 91.04
+        },
+        {
+                "id": "#cap-18",
+                "start": 91.2,
+                "end": 98.51
+        },
+        {
+                "id": "#cap-19",
+                "start": 98.67,
+                "end": 102.943
+        },
+        {
+                "id": "#cap-20",
+                "start": 103.363,
+                "end": 106.989
+        },
+        {
+                "id": "#cap-21",
+                "start": 107.149,
+                "end": 111.027
+        },
+        {
+                "id": "#cap-22",
+                "start": 111.447,
+                "end": 112.228
+        },
+        {
+                "id": "#cap-23",
+                "start": 112.388,
+                "end": 117.049
+        },
+        {
+                "id": "#cap-24",
+                "start": 117.209,
+                "end": 125.276
+        },
+        {
+                "id": "#cap-25",
+                "start": 125.696,
+                "end": 131.964
+        },
+        {
+                "id": "#cap-26",
+                "start": 132.124,
+                "end": 138.072
+        },
+        {
+                "id": "#cap-27",
+                "start": 138.232,
+                "end": 144.9
+        },
+        {
+                "id": "#cap-28",
+                "start": 145.32,
+                "end": 151.983
+        },
+        {
+                "id": "#cap-29",
+                "start": 152.143,
+                "end": 155.782
+        }
+];
+      const rootDuration = 248.2;
+      const ambientRepeatA = Math.max(0, Math.ceil(rootDuration / 3) - 1);
+      const ambientRepeatB = Math.max(0, Math.ceil(rootDuration / 3.4) - 1);
+
+      tl.set(".scene", { opacity: 0, visibility: "hidden" }, 0);
+      tl.set("#scene-1", { opacity: 1, visibility: "visible" }, 0);
+      tl.set(".wipe", { xPercent: -115 }, 0);
+      tl.to(".math-mark", { y: -18, rotation: 2, duration: 3, ease: "sine.inOut", repeat: ambientRepeatA, yoyo: true }, 0);
+      tl.to(".blob", { y: 16, x: -12, duration: 3.4, ease: "sine.inOut", repeat: ambientRepeatB, yoyo: true }, 0);
+
+      function fromIfPresent(selector, vars, at) {
+        const targets = gsap.utils.toArray(selector);
+        if (targets.length > 0 && Number.isFinite(at)) tl.from(targets, vars, at);
+      }
+      function enterScene(id, at) {
+        fromIfPresent(id + " .kicker", { opacity: 0, y: 28, duration: 0.45, ease: "power3.out" }, at + 0.18);
+        fromIfPresent(id + " h1, " + id + " h2", { opacity: 0, y: 52, duration: 0.62, ease: "power2.out" }, at + 0.40);
+        fromIfPresent(id + " .lead", { opacity: 0, y: 34, duration: 0.50, ease: "back.out(1.35)" }, at + 0.76);
+        fromIfPresent(id + " .panel, " + id + " .example-card, " + id + " .check-card, " + id + " .chapter-mark", { opacity: 0, x: 62, y: 18, duration: 0.66, stagger: 0.08, ease: "power3.out" }, at + 0.56);
+      }
+      for (const [id, start] of Object.entries(sceneStarts)) enterScene("#" + id, start);
+
+      fromIfPresent("#s1-card-1, #s1-card-2, #s1-focus", { opacity: 0, y: 24, duration: 0.42, stagger: 0.14, ease: "power2.out" }, segmentStarts["seg-2"]);
+      fromIfPresent("#s2-card-1, #s2-card-2, #s2-card-3", { opacity: 0, y: 24, duration: 0.42, stagger: 0.12, ease: "power3.out" }, segmentStarts["seg-4"]);
+      fromIfPresent("#s2-compare", { opacity: 0, x: 30, duration: 0.42, ease: "power2.out" }, segmentStarts["seg-9"]);
+      fromIfPresent("#s2-range", { opacity: 0, x: 30, duration: 0.42, ease: "back.out(1.25)" }, segmentStarts["seg-10"]);
+      fromIfPresent("#s3-line-1", { opacity: 0, x: 36, duration: 0.48, ease: "power3.out" }, segmentStarts["seg-11"]);
+      fromIfPresent("#s3-line-2", { opacity: 0, x: 36, duration: 0.48, ease: "power3.out" }, segmentStarts["seg-12"]);
+      fromIfPresent("#s4-r1", { opacity: 0, y: 24, duration: 0.42, ease: "power2.out" }, segmentStarts["seg-14"]);
+      fromIfPresent("#s4-r2", { opacity: 0, y: 24, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-15"] - 2);
+      fromIfPresent("#s4-r3, #s4-warning", { opacity: 0, y: 24, duration: 0.42, stagger: 0.16, ease: "back.out(1.25)" }, segmentStarts["seg-15"]);
+      fromIfPresent("#s5-problem", { opacity: 0, y: 24, duration: 0.40, ease: "power2.out" }, segmentStarts["seg-17"]);
+      fromIfPresent("#s5-step-1, #s5-step-2", { opacity: 0, x: 34, duration: 0.40, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-18"]);
+      fromIfPresent("#s5-step-3, #s5-answer", { opacity: 0, x: 34, duration: 0.40, stagger: 0.18, ease: "power3.out" }, segmentStarts["seg-19"]);
+      fromIfPresent("#s6-system", { opacity: 0, scale: 0.94, duration: 0.50, ease: "power2.out" }, segmentStarts["seg-20"]);
+      fromIfPresent("#s6-step-1, #s6-step-2", { opacity: 0, y: 24, duration: 0.42, stagger: 0.14, ease: "power3.out" }, segmentStarts["seg-20"] + 1.0);
+      fromIfPresent("#s6-answer", { opacity: 0, y: 24, duration: 0.44, ease: "back.out(1.25)" }, segmentStarts["seg-21"]);
+      fromIfPresent("#s7-line", { opacity: 0, scale: 0.94, duration: 0.50, ease: "power2.out" }, segmentStarts["seg-22"]);
+      fromIfPresent("#s7-note", { opacity: 0, y: 24, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-24"]);
+      fromIfPresent("#s7-answer", { opacity: 0, y: 24, duration: 0.44, ease: "back.out(1.25)" }, segmentStarts["seg-23"]);
+      fromIfPresent("#s8-m1", { opacity: 0, x: 34, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-25"]);
+      fromIfPresent("#s8-m2", { opacity: 0, x: 34, duration: 0.42, ease: "power3.out" }, segmentStarts["seg-26"]);
+      fromIfPresent("#s8-m3, #s8-check", { opacity: 0, x: 34, duration: 0.42, stagger: 0.16, ease: "power3.out" }, segmentStarts["seg-27"]);
+      fromIfPresent("#scene-9 .road-step", { opacity: 0, y: 28, duration: 0.44, stagger: 0.10, ease: "power3.out" }, sceneStarts["scene-9"] + 1.0);
+
+      Object.entries(sceneStarts).slice(1).forEach(function ([id, start], index) {
+        const prevId = "#scene-" + (index + 1);
+        tl.set("#" + id, { opacity: 1, visibility: "visible" }, Math.max(0, start - 0.02));
+        tl.set(prevId, { opacity: 0, visibility: "hidden" }, start + 0.08);
+        tl.fromTo("#wipe-" + (index + 1), { xPercent: -115 }, { xPercent: 115, duration: 0.70, ease: "sine.inOut" }, Math.max(0, start - 0.35));
+      });
+
+      captionTimings.forEach(function (group) {
+        tl.fromTo(group.id, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, group.start + 0.01);
+        tl.to(group.id, { opacity: 0, y: 10, duration: 0.12, ease: "power2.in" }, Math.max(group.start + 0.18, group.end - 0.12));
+        tl.set(group.id, { opacity: 0 }, group.end);
+      });
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

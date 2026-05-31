@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f7f3e8;
+        color: #1f2a2c;
+        font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      [data-composition-id="main"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          linear-gradient(90deg, rgba(13, 139, 125, 0.08) 1px, rgba(247, 243, 232, 0) 1px),
+          #f7f3e8;
+        background-size: 64px 64px;
+      }
+      .clip { visibility: hidden; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background-color: #f7f3e8; }
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 86px 116px 148px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+      }
+      .split { display: grid; grid-template-columns: 0.96fr 1.04fr; align-items: center; gap: 72px; }
+      .kicker {
+        width: fit-content;
+        border: 2px solid rgba(31, 42, 44, 0.14);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.74);
+        padding: 12px 22px;
+        color: #0d8b7d;
+        font-size: 25px;
+        font-weight: 900;
+      }
+      h1, h2 {
+        max-width: 1220px;
+        font-weight: 900;
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+      h1 { font-size: 122px; }
+      h2 { font-size: 88px; }
+      .lead {
+        max-width: 900px;
+        color: rgba(31, 42, 44, 0.7);
+        font-size: 34px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .highlight { display: inline-block; border-radius: 26px; background: #f5c84b; padding: 0 22px 8px; }
+      .panel, .rule-card, .example-card, .quiz-card {
+        border: 3px solid rgba(31, 42, 44, 0.14);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 15px 17px 0 rgba(31, 42, 44, 0.08);
+      }
+      .panel { padding: 42px; }
+      .chapter-mark {
+        width: 190px; height: 190px; display: flex; align-items: center; justify-content: center;
+        border: 5px solid #1f2a2c; border-radius: 42px; background: #f5c84b;
+        box-shadow: 14px 16px 0 rgba(31, 42, 44, 0.12); font-size: 82px; font-weight: 900;
+      }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .rule-card { min-height: 250px; padding: 30px; }
+      .rule-card .badge {
+        display: inline-flex; border-radius: 999px; background: #0d8b7d; padding: 10px 18px;
+        color: #f7f3e8; font-size: 24px; font-weight: 900;
+      }
+      .rule-card h3 { margin-top: 28px; font-size: 40px; line-height: 1.15; }
+      .rule-card p { margin-top: 16px; color: rgba(31, 42, 44, 0.66); font-size: 24px; line-height: 1.42; font-weight: 650; }
+      .formula {
+        margin-top: 26px; border-radius: 24px; background: #1f2a2c; padding: 24px 32px;
+        color: #f7f3e8; font-size: 56px; font-weight: 900; line-height: 1.24;
+      }
+      .formula.teal { background: #0d8b7d; }
+      .formula.coral { background: #ef6a5b; }
+      .formula.soft { background: #d8efe5; color: #1f2a2c; }
+      .example-card { padding: 38px; }
+      .problem { color: #0d8b7d; font-size: 38px; font-weight: 900; line-height: 1.38; }
+      .steps { display: grid; gap: 18px; margin-top: 28px; }
+      .step {
+        display: grid; grid-template-columns: 62px 1fr; gap: 18px; align-items: start;
+        border-radius: 20px; background: rgba(216, 239, 229, 0.72); padding: 18px 20px;
+      }
+      .step-num {
+        width: 52px; height: 52px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+        background: #f5c84b; font-size: 26px; font-weight: 900;
+      }
+      .step-text { font-size: 28px; line-height: 1.45; font-weight: 750; }
+      .warning {
+        border-radius: 22px; background: rgba(239,106,91,0.16); border: 2px solid rgba(239,106,91,0.34);
+        padding: 22px 26px; color: #1f2a2c; font-size: 30px; line-height: 1.42; font-weight: 850;
+      }
+      .compare-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 18px; }
+      .mini-card { border-radius: 22px; background: rgba(255,255,255,0.7); border: 2px solid rgba(31,42,44,0.1); padding: 24px; }
+      .mini-card h4 { color: #0d8b7d; font-size: 28px; font-weight: 900; }
+      .mini-card p { margin-top: 14px; font-size: 26px; line-height: 1.42; font-weight: 700; }
+      .quiz-card { padding: 34px; }
+      .quiz-list { display: grid; gap: 20px; margin-top: 26px; }
+      .quiz-row {
+        display: grid; grid-template-columns: 72px 1fr; gap: 20px; align-items: center;
+        border-radius: 20px; background: rgba(255,255,255,0.68); padding: 20px; font-size: 30px; font-weight: 850;
+      }
+      .quiz-dot {
+        width: 56px; height: 56px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+        background: #0d8b7d; color: #f7f3e8;
+      }
+      .caption {
+        position: absolute; left: 50%; bottom: 48px; z-index: 10; max-width: 1480px;
+        border: 2px solid rgba(31,42,44,0.12); border-radius: 18px; background: rgba(255,250,240,0.92);
+        box-shadow: 10px 12px 0 rgba(31,42,44,0.08); padding: 18px 30px; color: #1f2a2c;
+        font-size: 34px; font-weight: 900; line-height: 1.34; text-align: center;
+      }
+      .math-mark { position: absolute; z-index: 1; color: rgba(13,139,125,0.11); font-size: 110px; font-weight: 900; }
+      .blob { position: absolute; z-index: 1; width: 340px; height: 186px; border-radius: 48px; background: #d8efe5; opacity: 0.76; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="186.5" data-width="1920" data-height="1080">
+      <div id="scene-1" class="scene clip" data-start="0.00" data-duration="19.65" data-track-index="1">
+        <span class="math-mark" style="left: 138px; top: 110px">x + x</span>
+        <span class="math-mark" style="right: 180px; bottom: 130px">( )</span>
+        <div class="blob" style="right: 260px; top: 150px"></div>
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">七年级上册 · 第二章</div>
+            <h1>整式的加减<br /><span class="highlight">先去括号，再化简</span></h1>
+            <p class="lead">本章目标：理解同类项，学会合并同类项，并正确完成去括号后的整式加减运算。</p>
+          </div>
+          <div class="panel">
+            <div class="chapter-mark">式</div>
+            <div class="formula">同类项 · 去括号<br />整式一步一步化简</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-2" class="scene clip" data-start="19.67" data-duration="22.83" data-track-index="1">
+        <span class="math-mark" style="left: 120px; bottom: 150px">a²b</span>
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">知识点 1：同类项</div>
+            <h2>先看字母部分<br />是不是完全一样</h2>
+            <p class="lead">判断同类项时，关键不在系数，而在字母种类和相同字母的指数是不是完全一致。</p>
+          </div>
+          <div class="panel">
+            <div class="compare-grid">
+              <div class="mini-card"><h4>是同类项</h4><p>3x 和 -5x</p><p>2a²b 和 -7a²b</p></div>
+              <div class="mini-card"><h4>不是同类项</h4><p>4ab 和 4a</p><p>x² 和 x³</p></div>
+            </div>
+            <div class="warning" style="margin-top: 24px">有相同字母还不够，指数不同，也不能算同类项。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-3" class="scene clip" data-start="42.52" data-duration="15.91" data-track-index="1">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">易错判断</div>
+            <h2>字母不同<br />指数不同，都不能合并</h2>
+            <p class="lead">别被“都有一个字母”骗了。同类项要求字母部分完全一致。</p>
+          </div>
+          <div class="panel">
+            <div class="formula coral">4ab 和 4a：不是同类项</div>
+            <div class="formula coral" style="margin-top: 18px">x² 和 x³：不是同类项</div>
+            <div class="warning" style="margin-top: 24px">看到同一个字母就急着合并，是这一章最常见的失分点之一。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-4" class="scene clip" data-start="58.45" data-duration="16.90" data-track-index="1">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">合并规则</div>
+            <h2>只合并系数<br />字母部分不变</h2>
+            <p class="lead">同类项能合并，不是同类项就不能硬凑。处理时，只对前面的数字做加减。</p>
+          </div>
+          <div class="panel">
+            <div class="formula teal">3x + 5x = 8x</div>
+            <div class="formula" style="margin-top: 18px">7a²b - 2a²b = 5a²b</div>
+            <div class="formula coral" style="margin-top: 18px">4m + 2n 不能合并</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-5" class="scene clip" data-start="75.37" data-duration="22.44" data-track-index="1">
+        <span class="math-mark" style="right: 140px; top: 110px">- ( )</span>
+        <div class="scene-content">
+          <div class="kicker">知识点 2：整式的加减</div>
+          <h2>先去括号，再合并同类项</h2>
+          <div class="grid-3">
+            <div class="rule-card"><span class="badge">加号在前</span><h3>符号不变</h3><p>括号里的每一项照原样写出</p><div class="formula soft">a + (2a - 3)</div></div>
+            <div class="rule-card"><span class="badge">减号在前</span><h3>每一项都变号</h3><p>不能只改第一项，后面的常数也要改</p><div class="formula coral">x - (3x + 2)</div></div>
+            <div class="rule-card"><span class="badge">标准顺序</span><h3>去括号</h3><p>然后再找同类项，最后完成化简</p><div class="formula teal">先去括号 → 再合并</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-6" class="scene clip" data-start="97.83" data-duration="18.33" data-track-index="1">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 1：合并同类项</div>
+            <h2>先找同类项<br />再分别合并</h2>
+            <p class="lead">化简：4x + 7 - 2x + 3。这里的关键是，不要把字母项和常数项混在一起算。</p>
+          </div>
+          <div class="example-card">
+            <div class="problem">原式：4x + 7 - 2x + 3</div>
+            <div class="steps">
+              <div class="step"><div class="step-num">1</div><div class="step-text">4x 和 -2x 是同类项，7 和 3 也是同类项。</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-text">4x - 2x = 2x，7 + 3 = 10。</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-text">所以原式化简为 2x + 10。</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-7" class="scene clip" data-start="116.18" data-duration="33.23" data-track-index="1">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">例题 2：去括号化简</div>
+            <h2>括号前是减号<br />每一项都要变号</h2>
+            <p class="lead">化简：3a - (2a - 5) + 4。只要括号前有减号，里面每一项都要一起改符号。</p>
+          </div>
+          <div class="example-card">
+            <div class="problem">原式：3a - (2a - 5) + 4</div>
+            <div class="formula coral">去括号后：3a - 2a + 5 + 4</div>
+            <div class="formula teal">合并后：a + 9</div>
+            <div class="warning" style="margin-top: 24px">最常见错误：只把 2a 变号，却忘了把 -5 变成 +5。</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-8" class="scene clip" data-start="149.43" data-duration="18.30" data-track-index="1">
+        <div class="scene-content split">
+          <div>
+            <div class="kicker">本章易错点</div>
+            <h2>这两个地方<br />最容易失分</h2>
+            <p class="lead">很多题并不难，错就错在判断顺序乱了，或者处理括号时漏了一项。</p>
+          </div>
+          <div class="quiz-card">
+            <div class="quiz-list">
+              <div class="quiz-row"><div class="quiz-dot">1</div><div>把不是同类项的项硬合并</div></div>
+              <div class="quiz-row"><div class="quiz-dot">2</div><div>括号前有减号，却漏掉后面项的变号</div></div>
+              <div class="quiz-row"><div class="quiz-dot">3</div><div>没有按“先去括号，再合并”的顺序做题</div></div>
+            </div>
+            <div class="formula" style="margin-top: 28px">先看字母部分 → 再看括号前符号 → 最后合并</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-9" class="scene clip" data-start="167.75" data-duration="18.75" data-track-index="1">
+        <div class="scene-content" style="align-items: center; text-align: center">
+          <div class="chapter-mark">练</div>
+          <h1>回到软件<br /><span class="highlight">完成第二章小测</span></h1>
+          <p class="lead" style="max-width: 980px">检查自己会不会判断同类项，会不会去括号，也会不会把整式一步一步化简。</p>
+        </div>
+      </div>
+
+      <div id="cap-1" class="caption clip" data-start="0.00" data-duration="4.21" data-track-index="3">这一节学习：七年级上册第二章，整式的加减。</div>
+      <div id="cap-2" class="caption clip" data-start="4.55" data-duration="0.87" data-track-index="3">这一章主要解决两件事。</div>
+      <div id="cap-3" class="caption clip" data-start="6.04" data-duration="5.19" data-track-index="3">第一，什么叫同类项，哪些项能合并。</div>
+      <div id="cap-4" class="caption clip" data-start="11.72" data-duration="7.73" data-track-index="3">第二，遇到括号以后，怎样按顺序完成整式的加减化简。</div>
+      <div id="cap-5" class="caption clip" data-start="19.67" data-duration="0.94" data-track-index="3">先看同类项。</div>
+      <div id="cap-6" class="caption clip" data-start="21.03" data-duration="6.47" data-track-index="3">判断同类项：先看字母部分是不是完全一样。</div>
+      <div id="cap-7" class="caption clip" data-start="27.89" data-duration="10.41" data-track-index="3">3x 和 -5x 是同类项；2a²b 和 -7a²b 也是同类项。</div>
+      <div id="cap-8" class="caption clip" data-start="38.53" data-duration="3.72" data-track-index="3">因为字母相同，相同字母的指数也一样。</div>
+      <div id="cap-9" class="caption clip" data-start="42.52" data-duration="2.14" data-track-index="3">字母不同，或者指数不同，就不是同类项。</div>
+      <div id="cap-10" class="caption clip" data-start="45.14" data-duration="5.47" data-track-index="3">4ab 和 4a 不是同类项；x² 和 x³ 也不是同类项。</div>
+      <div id="cap-11" class="caption clip" data-start="50.94" data-duration="7.24" data-track-index="3">最容易丢分：看到同一个字母，就急着合并。</div>
+      <div id="cap-12" class="caption clip" data-start="58.45" data-duration="1.41" data-track-index="3">接下来记住合并规则。</div>
+      <div id="cap-13" class="caption clip" data-start="60.13" data-duration="6.06" data-track-index="3">合并同类项：只合并系数，字母和指数保持不变。</div>
+      <div id="cap-14" class="caption clip" data-start="66.61" data-duration="4.65" data-track-index="3">3x + 5x = 8x；7a²b - 2a²b = 5a²b。</div>
+      <div id="cap-15" class="caption clip" data-start="71.73" data-duration="3.41" data-track-index="3">不是同类项，不能硬合并。</div>
+      <div id="cap-16" class="caption clip" data-start="75.37" data-duration="2.96" data-track-index="3">再看整式的加减。</div>
+      <div id="cap-17" class="caption clip" data-start="78.69" data-duration="6.05" data-track-index="3">最稳顺序：先去括号，再合并同类项。</div>
+      <div id="cap-18" class="caption clip" data-start="84.97" data-duration="3.21" data-track-index="3">括号前是加号：括号内各项符号不变。</div>
+      <div id="cap-19" class="caption clip" data-start="88.76" data-duration="8.30" data-track-index="3">括号前是减号：每一项都要变号，不能只改第一项。</div>
+      <div id="cap-20" class="caption clip" data-start="97.83" data-duration="0.96" data-track-index="3">看第一个例题。</div>
+      <div id="cap-21" class="caption clip" data-start="99.79" data-duration="3.35" data-track-index="3">化简：4x + 7 - 2x + 3。</div>
+      <div id="cap-22" class="caption clip" data-start="104.92" data-duration="4.02" data-track-index="3">4x 和 -2x 是同类项，7 和 3 也是同类项。</div>
+      <div id="cap-23" class="caption clip" data-start="109.49" data-duration="6.31" data-track-index="3">4x - 2x = 2x，7 + 3 = 10，所以结果是 2x + 10。</div>
+      <div id="cap-24" class="caption clip" data-start="116.18" data-duration="1.28" data-track-index="3">再看第二个例题。</div>
+      <div id="cap-25" class="caption clip" data-start="117.83" data-duration="4.56" data-track-index="3">化简：3a - (2a - 5) + 4。</div>
+      <div id="cap-26" class="caption clip" data-start="124.13" data-duration="6.94" data-track-index="3">括号前是减号：2a 变成 -2a，-5 变成 +5。</div>
+      <div id="cap-27" class="caption clip" data-start="131.56" data-duration="4.58" data-track-index="3">原式变成：3a - 2a + 5 + 4。</div>
+      <div id="cap-28" class="caption clip" data-start="136.75" data-duration="11.30" data-track-index="3">3a - 2a = a，5 + 4 = 9，所以结果是 a + 9。</div>
+      <div id="cap-29" class="caption clip" data-start="149.43" data-duration="5.38" data-track-index="3">这一章最关键的失分点有两个。</div>
+      <div id="cap-30" class="caption clip" data-start="155.31" data-duration="2.19" data-track-index="3">第一，把不是同类项的项硬合并。</div>
+      <div id="cap-31" class="caption clip" data-start="157.87" data-duration="4.39" data-track-index="3">第二，去括号时漏变号，尤其漏掉后面的常数项。</div>
+      <div id="cap-32" class="caption clip" data-start="162.67" data-duration="4.52" data-track-index="3">口诀：先看字母部分，再看括号前符号，最后合并同类项。</div>
+      <div id="cap-33" class="caption clip" data-start="167.75" data-duration="6.25" data-track-index="3">学完这一章：会判断同类项，会去括号，会一步一步化简整式。</div>
+      <div id="cap-34" class="caption clip" data-start="178.42" data-duration="5.90" data-track-index="3">回到软件里完成第二章单元小测。</div>
+
+      <audio id="narration" class="clip" data-start="0" data-duration="186.5" data-track-index="2" src="assets/narration-calm-warm-stable.wav" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      gsap.set(".caption", { xPercent: -50 });
+      const sceneStarts = {
+        "scene-1": 0,
+        "scene-2": 19.67,
+        "scene-3": 42.52,
+        "scene-4": 58.45,
+        "scene-5": 75.37,
+        "scene-6": 97.83,
+        "scene-7": 116.18,
+        "scene-8": 149.43,
+        "scene-9": 167.75
+};
+      tl.to(".math-mark", { y: -18, rotation: 2, duration: 3, ease: "sine.inOut", repeat: Math.floor(186.5 / 3) - 1, yoyo: true }, 0);
+      tl.to(".blob", { y: 16, x: -12, duration: 3.4, ease: "sine.inOut", repeat: Math.floor(186.5 / 3.4) - 1, yoyo: true }, 0);
+
+      function fromIfPresent(selector, vars, at) {
+        const targets = gsap.utils.toArray(selector);
+        if (targets.length > 0) tl.from(targets, vars, at);
+      }
+      function enterScene(id, at) {
+        fromIfPresent(id + " .kicker", { opacity: 0, y: 28, duration: 0.45, ease: "power3.out" }, at + 0.2);
+        fromIfPresent(id + " h1, " + id + " h2", { opacity: 0, y: 52, duration: 0.62, ease: "power2.out" }, at + 0.45);
+        fromIfPresent(id + " .lead", { opacity: 0, y: 34, duration: 0.5, ease: "back.out(1.4)" }, at + 0.82);
+        fromIfPresent(id + " .panel, " + id + " .rule-card, " + id + " .example-card, " + id + " .quiz-card, " + id + " .chapter-mark", { opacity: 0, x: 64, y: 20, duration: 0.66, stagger: 0.08, ease: "power3.out" }, at + 0.58);
+      }
+      for (const [id, start] of Object.entries(sceneStarts)) enterScene("#" + id, start);
+      fromIfPresent(".step", { opacity: 0, x: 32, duration: 0.45, stagger: 0.28, ease: "power3.out" }, sceneStarts["scene-6"] + 1.2);
+      fromIfPresent("#scene-7 .formula", { opacity: 0, y: 28, duration: 0.45, stagger: 0.45, ease: "power3.out" }, sceneStarts["scene-7"] + 1.2);
+      fromIfPresent(".quiz-row", { opacity: 0, x: 36, duration: 0.45, stagger: 0.24, ease: "power3.out" }, sceneStarts["scene-8"] + 1.2);
+      fromIfPresent(".caption", { opacity: 0, y: 22, duration: 0.18, stagger: 0, ease: "power2.out" }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

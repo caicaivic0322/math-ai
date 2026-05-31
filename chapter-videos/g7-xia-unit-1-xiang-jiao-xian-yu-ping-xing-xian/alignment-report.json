@@ -1,0 +1,262 @@
+{
+  "profile": {
+    "id": "scene-long-stable-teacher-v1",
+    "voice": "serena",
+    "speed": 1.08,
+    "temperature": 0.44,
+    "top_k": 35,
+    "top_p": 0.86,
+    "repetition_penalty": 1.06,
+    "subtalker_temperature": 0.44,
+    "subtalker_top_k": 35,
+    "subtalker_top_p": 0.86,
+    "instructions": "你是一位普通话标准、声音清晰自然的女数学老师。请用同一个稳定声线连续讲课：语气平和、温暖、自然，音量一致，句与句之间顺畅承接。不要表演，不要夸张，不要突然提高音量，不要把短句读得断裂。数学符号、角度、字母和步骤读清楚，语速中等偏慢，整段保持同一种课堂讲解状态。"
+  },
+  "audioDuration": 216.6385,
+  "rootDuration": 216.8,
+  "sentenceCount": 29,
+  "sceneCount": 8,
+  "timingMethod": "scene-audio-proportional-captions",
+  "maxCaptionDrift": "estimated within each scene from text weight",
+  "audioVideoDurationDelta": 0.16150000000001796,
+  "checks": {
+    "sceneAudioMeasured": true,
+    "captionsUseSceneMeasuredAudio": true,
+    "scenesUseMeasuredAudioRanges": true,
+    "audioVideoDurationWithinPointTwoSeconds": true
+  },
+  "segments": [
+    {
+      "index": 1,
+      "scene": 1,
+      "start": 0,
+      "end": 7.253,
+      "duration": 7.253,
+      "caption": "这一节学习：七年级下册第一章，相交线与平行线。"
+    },
+    {
+      "index": 2,
+      "scene": 1,
+      "start": 7.253,
+      "end": 16.738,
+      "duration": 9.485,
+      "caption": "先学邻补角和对顶角，再学平行线中的三类角。"
+    },
+    {
+      "index": 3,
+      "scene": 1,
+      "start": 16.738,
+      "end": 24.828,
+      "duration": 8.09,
+      "caption": "主线：找线和截线，定角的位置，用相等或互补计算。"
+    },
+    {
+      "index": 4,
+      "scene": 2,
+      "start": 25.248,
+      "end": 32.317,
+      "duration": 7.069,
+      "caption": "两条直线相交形成四个角，先看有没有公共边。"
+    },
+    {
+      "index": 5,
+      "scene": 2,
+      "start": 32.317,
+      "end": 42.496,
+      "duration": 10.179,
+      "caption": "邻补角：有公共边，另外两边在同一直线上，和为 180°。"
+    },
+    {
+      "index": 6,
+      "scene": 2,
+      "start": 42.496,
+      "end": 47.02,
+      "duration": 4.524,
+      "caption": "对顶角：面对面的两个角，对顶角相等。"
+    },
+    {
+      "index": 7,
+      "scene": 2,
+      "start": 47.02,
+      "end": 52.958,
+      "duration": 5.938,
+      "caption": "邻补角互补，对顶角相等，别混淆。"
+    },
+    {
+      "index": 8,
+      "scene": 3,
+      "start": 53.378,
+      "end": 60.889,
+      "duration": 7.511,
+      "caption": "平行线问题，先找到同时穿过两条直线的截线。"
+    },
+    {
+      "index": 9,
+      "scene": 3,
+      "start": 60.889,
+      "end": 68.401,
+      "duration": 7.511,
+      "caption": "同位角：两条线同侧，截线同侧，位置上下对应。"
+    },
+    {
+      "index": 10,
+      "scene": 3,
+      "start": 68.401,
+      "end": 73.408,
+      "duration": 5.008,
+      "caption": "内错角：两条线之间，分居截线两侧。"
+    },
+    {
+      "index": 11,
+      "scene": 3,
+      "start": 73.408,
+      "end": 79.251,
+      "duration": 5.842,
+      "caption": "同旁内角：两条线之间，在截线同一侧。"
+    },
+    {
+      "index": 12,
+      "scene": 4,
+      "start": 79.671,
+      "end": 86.361,
+      "duration": 6.69,
+      "caption": "两直线平行：同位角相等，内错角相等，同旁内角互补。"
+    },
+    {
+      "index": 13,
+      "scene": 4,
+      "start": 86.361,
+      "end": 93.853,
+      "duration": 7.493,
+      "caption": "同位角或内错角相等，可以判定两直线平行。"
+    },
+    {
+      "index": 14,
+      "scene": 4,
+      "start": 93.853,
+      "end": 98.938,
+      "duration": 5.084,
+      "caption": "同旁内角互补，也可以判定两直线平行。"
+    },
+    {
+      "index": 15,
+      "scene": 4,
+      "start": 98.938,
+      "end": 105.628,
+      "duration": 6.69,
+      "caption": "先看题目给的是“平行”还是“角度关系”。"
+    },
+    {
+      "index": 16,
+      "scene": 5,
+      "start": 106.048,
+      "end": 114.405,
+      "duration": 8.357,
+      "caption": "例题一：已知一个角 58°，求邻补角和对顶角。"
+    },
+    {
+      "index": 17,
+      "scene": 5,
+      "start": 114.405,
+      "end": 123.807,
+      "duration": 9.402,
+      "caption": "邻补角 = 180° - 58° = 122°。"
+    },
+    {
+      "index": 18,
+      "scene": 5,
+      "start": 123.807,
+      "end": 129.03,
+      "duration": 5.223,
+      "caption": "对顶角与已知角相等，所以是 58°。"
+    },
+    {
+      "index": 19,
+      "scene": 5,
+      "start": 129.03,
+      "end": 133.993,
+      "duration": 4.962,
+      "caption": "答案：邻补角 122°，对顶角 58°。"
+    },
+    {
+      "index": 20,
+      "scene": 6,
+      "start": 134.413,
+      "end": 143.109,
+      "duration": 8.697,
+      "caption": "例题二：a ∥ b，截线 c 所截，已知 ∠4 = 68°。"
+    },
+    {
+      "index": 21,
+      "scene": 6,
+      "start": 143.109,
+      "end": 150.965,
+      "duration": 7.855,
+      "caption": "同位角相等：∠8 = ∠4 = 68°。"
+    },
+    {
+      "index": 22,
+      "scene": 6,
+      "start": 150.965,
+      "end": 162.187,
+      "duration": 11.222,
+      "caption": "同旁内角互补：∠6 = 180° - 68° = 112°。"
+    },
+    {
+      "index": 23,
+      "scene": 6,
+      "start": 162.187,
+      "end": 169.481,
+      "duration": 7.294,
+      "caption": "答案：∠8 = 68°，∠6 = 112°。"
+    },
+    {
+      "index": 24,
+      "scene": 7,
+      "start": 169.901,
+      "end": 177.575,
+      "duration": 7.675,
+      "caption": "易错点 1：没先找截线就判断角名。"
+    },
+    {
+      "index": 25,
+      "scene": 7,
+      "start": 177.575,
+      "end": 186.431,
+      "duration": 8.855,
+      "caption": "易错点 2：把同旁内角误认为相等；易错点 3：漏写单位。"
+    },
+    {
+      "index": 26,
+      "scene": 7,
+      "start": 186.431,
+      "end": 191.449,
+      "duration": 5.018,
+      "caption": "三步：找截线，定位置，用关系。"
+    },
+    {
+      "index": 27,
+      "scene": 8,
+      "start": 191.869,
+      "end": 198.449,
+      "duration": 6.58,
+      "caption": "相交线看邻补和对顶，平行线看三类角。"
+    },
+    {
+      "index": 28,
+      "scene": 8,
+      "start": 198.449,
+      "end": 207.134,
+      "duration": 8.685,
+      "caption": "会识别角关系，会用相等和互补求角，也能判定平行。"
+    },
+    {
+      "index": 29,
+      "scene": 8,
+      "start": 207.134,
+      "end": 215.818,
+      "duration": 8.685,
+      "caption": "回到软件里完成第一章单元小测。"
+    }
+  ]
+}
