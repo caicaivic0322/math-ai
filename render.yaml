@@ -5,7 +5,7 @@ services:
     repo: https://github.com/caicaivic0322/math-ai
     branch: main
     plan: free
-    buildCommand: npm run build
+    buildCommand: npm install && npm run build
     startCommand: NEXT_DIST_DIR=.next-build npx next start -p $PORT
     envVars:
       - key: NODE_VERSION
