@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: math-sprint
+    runtime: node
+    repo: https://github.com/caicaivic0322/math-ai
+    branch: main
+    plan: free
+    buildCommand: npm run build
+    startCommand: NEXT_DIST_DIR=.next-build npx next start -p $PORT
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NEXT_DIST_DIR
+        value: .next-build
+    healthCheckPath: /
+    autoDeploy: true
